@@ -119,9 +119,9 @@
                                                         <li><a style="color:black"  href="{{ URL::to('admin/home-page') }}">Welcome admin!!</a></li>
                                                     @else
                                                         <li><a style="color:black"  href="{{ URL::to('users/' . Auth::user()->user_id) }}"> Welcome {{Auth::user()->user_name}}!!</a></li>
+                                                        <li><a style="color:black" href="{{ URL::to('/my-posts') }}">My Posts</a></li>
                                                     @endif
                                                 @endif
-                                                <li><a style="color:black" href="{{ URL::to('/my-posts') }}">My Posts</a></li>
                                                 <!-- <li><a href="{{ URL::to('create_post') }}">Create</a></li> -->
                                                 <li><a  style="color:black" href="#">Categories</a>
                                                     <ul class="submenu">

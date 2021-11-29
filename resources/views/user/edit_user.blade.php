@@ -85,36 +85,6 @@
                                                                         </small>
                                                                     </div>
                                                                 </div>
-                                                                <div class="space-4"></div>
-                                                                <hr />
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label no-padding-right"
-                                                                        for="form-field-date">Birth Date</label>
-
-                                                                    <div class="col-sm-9">
-                                                                        <span>
-                                                                            <input class="input-medium date-picker pr-1"
-                                                                                id="form-field-date" type="date"
-                                                                                data-date-format="dd-mm-yyyy"
-                                                                                name="birthday" value={{ $user->birthday }}>
-                                                                            <i class="ace-icon fa fa-calendar"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="space-4"></div>
-
-                                                                <div class="form-group">
-                                                                    <label
-                                                                        class="col-sm-3 control-label no-padding-right">Gender</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="radio" name="gender" value="Male"
-                                                                            {{ $user->gender == 'Male' ? 'checked' : '' }}>Male
-                                                                        <input type="radio" name="gender" value="Female"
-                                                                            {{ $user->gender == 'Female' ? 'checked' : '' }}>Female
-                                                                    </div>
-                                                                </div>
-
                                                                 <div class="space"></div>
                                                                 <h4 class="header blue bolder smaller">Contact</h4>
                                                                 <div class="form-group">
@@ -147,6 +117,7 @@
                                                                     </div>
                                                                 </div>
 
+
                                                                 <div class="space-4"></div>
 
                                                                 <div class="form-group">
@@ -169,6 +140,21 @@
                                                                                 @enderror
                                                                             </span>
                                                                         </small>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="space-4"></div>
+
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label no-padding-right"
+                                                                        for="form-field-website">Description</label>
+
+                                                                    <div class="col-sm-9">
+                                                                        <span>
+                                                                            <input style=" height: 100px; width:70%" type="text" id="form-field-website"
+                                                                                name="des" placeholder="description"
+                                                                                value={{ $user->des }}>
+                                                                        </span>
                                                                     </div>
                                                                 </div>
 

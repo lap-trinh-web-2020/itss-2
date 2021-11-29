@@ -101,6 +101,19 @@
                                                                                 </span>
                                                                             </div>
                                                                         </div>
+
+                                                                        <div class="space-4"></div>
+
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-4 control-label no-padding-right"
+                                                                                for="form-field-phone">Description</label>
+    
+                                                                            <div class="col-sm-8">
+                                                                                <span class="input-icon input-icon-right">
+                                                                                    {{ $user->des }}
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
 
