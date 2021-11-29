@@ -5,10 +5,10 @@
 
 
 ## About this project
-This project for ITSS in Japanese(2). 
-Develop team : Newworld
-Customer team : チーム３
-Documet : 
+* This project for ITSS in Japanese(2). 
+* Develop team : Newworld
+* Customer team : チーム３
+* Documet : 
 <a href="https://docs.google.com/spreadsheets/d/1v0W63Fp3sgSyQSfzTpAU_u_mhDlMOzKucGvB_YpyBcM/edit?usp=sharing">Click here</a>
 ## How to clone
 
