@@ -15,9 +15,9 @@
 Follow the following steps to clone this project: ❤❤
 
 * Clone:
-    * Using https: `` 
-    * Using ssh: ``
-    * Using Github CLI: ``
+    * Using https: `https://github.com/Sakeshioyaki/itss-2.git` 
+    * Using ssh: `git@github.com:Sakeshioyaki/itss-2.git`
+    * Using Github CLI: `gh repo clone Sakeshioyaki/itss-2`
 * Check out new branch: `git checkout -b {branch_name} origin/{branch_name}` 
 * Install php : version recomment (7.3.24) < 8.0
 * Install mysql serve : latest 
