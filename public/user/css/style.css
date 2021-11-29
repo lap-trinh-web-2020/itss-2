@@ -4021,8 +4021,12 @@ hr {
 
 .courses-area .properties {
     margin: 0 15px
+    /* width: 30%; */
 }
-
+.courses-area .properties_home {
+    /* margin: 0 15px */
+    width: 30%;
+}
 .courses-area .properties.properties2 {
     margin-bottom: 30px
 }
