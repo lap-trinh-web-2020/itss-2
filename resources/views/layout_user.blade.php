@@ -150,8 +150,8 @@
                                                         </ul>
                                                     </li>
                                                 @else
-                                                <li class="button-header margin-left "><a href="{{ URL::to('/register') }}" class="btn">Sign In</a></li>
-                                                <li class="button-header"><a href="{{ URL::to('/login') }}" class="btn btn3">Login</a></li> 
+                                                <li class="button-header margin-left "><a href="{{ URL::to('/register') }}" class="btn">Sign Up</a></li>
+                                                <li class="button-header"><a href="{{ URL::to('/login') }}" class="btn btn3">Sign In</a></li> 
                                                 @endif
                                             </ul>
                                         </nav>
