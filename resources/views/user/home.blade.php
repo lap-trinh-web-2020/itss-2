@@ -72,9 +72,9 @@
                 </div>
             </div>
         </div> -->
-        <div class="courses-actives">
-            @foreach($posts as $post)
-            <div class="properties pb-20">
+        <div class="card-group">
+        @foreach($posts as $post)
+            <div class="properties properties_home pb-20">
                 <div class="properties__card">
                     <div class="properties__img overlay1">
                         @if($post->post_url == null)
@@ -92,8 +92,7 @@
                 </div>
             </div>
             @endforeach
-
-        </div>
+</div>
     </div>
 </div>
 <!-- Courses area End -->
