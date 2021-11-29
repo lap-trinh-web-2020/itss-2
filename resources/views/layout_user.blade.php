@@ -207,6 +207,8 @@
                                     <ul>
                                         <li><a href="https://github.com/">Mai Mạnh Thục</a></li>
                                         <li><a href="https://github.com/">Nguyễn Thị Nguyệt Ánh</a></li>
+                                        <li><a href="https://github.com/">Đỗ Đức Thuận</a></li>
+                                        <li><a href="https://github.com/">Phạm Văn Hưng</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -218,6 +220,8 @@
                                     <ul>
                                         <li><a href="#">Leader</a></li>
                                         <li><a href="#">SP leader</a></li>
+                                        <li><a href="#">Dev</a></li>
+                                        <li><a href="#">Dev</a></li>
                                     </ul>
 
                                 </div>
