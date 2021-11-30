@@ -12,55 +12,40 @@ class TagSeeder extends Seeder
     public function run()
     {
         DB::table('tags')->insert([
-            'tag_title' => 'IOS',
+            'tag_title' => 'Desserts',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Android',
+            'tag_title' => 'Appetize',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'NLP',
+            'tag_title' => 'Juice',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Computer Vision',
+            'tag_title' => 'Main Dishes',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Machine Learning'
+            'tag_title' => 'Pourtry'
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'PHP',
+            'tag_title' => 'Seafood',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Laravel',
+            'tag_title' => 'Specialties',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Java',
+            'tag_title' => 'Snacks',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Web',
+            'tag_title' => 'Sweet Things',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Web Application',
+            'tag_title' => 'Chickens',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Python',
+            'tag_title' => 'Diet',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Network',
-        ]);
-        DB::table('tags')->insert([
-            'tag_title' => 'IoT',
-        ]);
-        DB::table('tags')->insert([
-            'tag_title' => 'VueJS',
-        ]);
-        DB::table('tags')->insert([
-            'tag_title' => 'NodeJS',
-        ]);
-        DB::table('tags')->insert([
-            'tag_title' => 'Ruby on Rails',
-        ]);
-        DB::table('tags')->insert([
-            'tag_title' => 'IT Tips',
+            'tag_title' => 'Salty Food',
         ]);
     }
 }
