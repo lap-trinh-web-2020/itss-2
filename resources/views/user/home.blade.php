@@ -92,7 +92,7 @@
                 </div>
             </div>
             @endforeach
-</div>
+</div>  
     </div>
 </div>
 <!-- Courses area End -->
