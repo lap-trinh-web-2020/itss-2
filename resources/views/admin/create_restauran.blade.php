@@ -34,62 +34,42 @@
     </section>
     <div class="container">
 
-        <form class="form-contact comment_form" action="new" id="commentForm" method="post">
-            @csrf
-            <div class="login-form">
-                <div class="form-input">
-                    <label for="name" class="col-form-label text-md-right">Name</label>
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                        value="{{ old('name') }}">
-                    @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
+    <form method="POST" action="{{rount('store')}}">
+        @csrf
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input type="text" class="form-control" id="first_name" name="first_name">
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" class="form-control" id="last_name" name="last_name">
+        </div>
 
-                <div class="form-input">
-                    <label for="email" class="col-form-label text-md-right">Mail</label>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                        value="{{ old('email') }}">
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
+        <div class="form-group">
+            <label for="user_name">User Name:</label>
+            <input type="text" class="form-control" id="user_name" name="user_name">
+        </div>
 
-                <div class="form-input">
-                    <label for="phone" class="col-form-label text-md-right">Phone number</label>
-                    <input id="phone" type="phone" name="phone"/>
-                </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="text" class="form-control" id="phone" name="phone">
+        </div>
 
-                <div class="form-input">
-                    <label for="email" class="col-form-label text-md-right">Avatar</label>
-                    <input type="file" name="avatar_url">
-                </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
 
-                <div class="form-input">
-                    <label for="password" class="col-form-label text-md-right">Password</label>
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                        name="password">
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
 
-                <div class="form-input">
-                    <label for="password-confirm" class="col-form-label text-md-right">Password confirmation</label>
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
-                </div>
-            </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-secondary btn-lg" name="submit" value="Registration">Add Restauran</button>
-            </div>
-        </form>
+        <div class="form-group">
+            <button style="cursor:pointer" type="submit" class="btn btn-primary">Add Restauran</button>
+        </div>
+    </form>
     </div>
     <div class="container">
         @include('admin.restauran_show')
