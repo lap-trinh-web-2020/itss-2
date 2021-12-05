@@ -38,10 +38,11 @@
                 <div class="card-body">
                     <div class="card-body-icon">
                         <i class="fas fa-fw fas fa-fw fa-comments"></i>
+                        <!--<i class="fas fa-fw fa-shopping-cart"></i>-->
                     </div>
-                    <div class="mr-5">{{1}} Restaurant</div>
+                    <div class="mr-5"> Restaurant</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1 edus-nav-item-3" href="/home">
+                <a class="card-footer text-white clearfix small z-1 edus-nav-item-4" href="#">
                     <span class="float-left">View Details</span>
                     <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -82,11 +83,12 @@
             </div>
         </div>
 
-        
+
     </div>
 @include('admin.users_show')
 @include('admin.posts_show')
 @include('admin.tags_show')
+@include('admin.restauran_show')
 </div>
 <!-- /.container-fluid -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
