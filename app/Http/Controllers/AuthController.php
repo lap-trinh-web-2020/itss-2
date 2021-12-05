@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use DB;
 use App\Http\Requests;
 use Session;
@@ -23,20 +24,14 @@ class AuthController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validate(request(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'user_name' => 'required',
-            'phone' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        $user = User::create(request(['first_name','last_name','user_name','phone','email', 'password']));
-
-        auth()->login($user);
-
-        return redirect()->to('/games');
+        $restauran = new User;
+        $restauran->user_name = $request->user_name;
+        $restauran->email = $request->email;
+        $restauran->password = bcrypt($request->password);
+        $restauran->isRestauran = 1;
+        $restauran->save();
+        $users = User::all();
+        return view('admin.create_restauran')->with(compact('users', $users));
     }
 
     public function profile(Request $request){
