@@ -53,7 +53,7 @@
                             {{$post->title}}
                         </h2>
                         <ul class="blog-info-link mt-3 mb-4">
-                            <li><a href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i>{{$post->user->user_name}}</a></li>
+                            <li><a style="color:blue; " href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i> <b>{{$post->user->user_name}}</b></a></li>
                             <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
                             <li><a href="#"><i class="far fa-calendar"></i> {{$post->date_create}} </a></li>
                             <li class="like-info">
