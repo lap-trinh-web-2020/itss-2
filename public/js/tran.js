@@ -1,6 +1,7 @@
 $(function() {
     $(".edus-content-item-2").css("display", "none");
     $(".edus-content-item-3").css("display", "none");
+    $(".edus-content-item-4").css("display", "none");
 
     $(".edus-nav-item-1").on("click", function() {
         $(".edus-content-item-1").css("display", "block");
