@@ -143,7 +143,7 @@
                                                                     Profile</a></li>
                                                             <!-- @if (auth()->user()->admin)
                                                                  <li><a href="{{ URL::to('admin/home-page') }}">Admin
-                                                                        Page</a></li> 
+                                                                        Page</a></li>
                                                             @endif -->
                                                             <!-- <li><a href="{{URL::to('/my-posts')}}">My posts</a></li> -->
                                                             <li><a href="{{ URL::to('/logout') }}">Logout</a></li>
@@ -151,7 +151,7 @@
                                                     </li>
                                                 @else
                                                 <li class="button-header margin-left "><a href="{{ URL::to('/register') }}" class="btn">Sign Up</a></li>
-                                                <li class="button-header"><a href="{{ URL::to('/login') }}" class="btn btn3">Sign In</a></li> 
+                                                <li class="button-header"><a href="{{ URL::to('/login') }}" class="btn btn3">Sign In</a></li>
                                                 @endif
                                             </ul>
                                         </nav>

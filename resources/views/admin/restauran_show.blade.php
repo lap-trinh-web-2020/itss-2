@@ -1,8 +1,10 @@
 <!-- DataTables Example -->
-<div class="card mb-3 edus-content-item-1">
+<div class="card mb-3 edus-content-item-4">
     <div class="card-header">
         <i class="fas fa-table"></i>
-        All Users
+        All Restauran
+        <div class="float-right"><a href="{{ URL::to('admin/create_restauran') }}"><button class="btn btn-outline-secondary btn-sm">Add new restauran</button></a>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -27,7 +29,7 @@
                 </tfoot>
                 <tbody>
                     @foreach ($users as $user)
-                        @if ($users->isRestauran == 1)
+                        @if ($user->isRestauran == 1)
                             <tr>
                                 <td><a href="{{ URL::to('users/' . $user->user_id) . '/posts' }}">{{ $user->user_name }}</a></td>
                                 <td>{{ $user->email }}</td>

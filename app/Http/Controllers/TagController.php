@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Tag;
 use App\Posttag;
 use App\Post;
+use App\User;
 
 class TagController extends Controller
 {
@@ -25,11 +26,25 @@ class TagController extends Controller
             $tag->tag_title = $request->title;
             $request->validate(['title' => "required|max:30|min:1|unique:tags,tag_title"]);
             $tag->save();
-            return redirect('tags/new')->with(compact('tags', $tags));    
+            return redirect('tags/new')->with(compact('tags', $tags));
         }
         return view('tag.new')->with(compact('tags', $tags));
     }
+    public function create2(Request $request)
+    {
+        $users = User::all();
+        $tags = Tag::all();
+        $tags = $tags->SortByDesc('tag_id');
 
+        if ($request->isMethod('post')) {
+            $tag = new Tag();
+            $tag->tag_title = $request->title;
+            $request->validate(['title' => "required|max:30|min:1|unique:tags,tag_title"]);
+            $tag->save();
+            return redirect('admin/create_restauran')->with(compact('tags', $tags))->with(compact('users', $users));
+        }
+        return view('admin.create_restauran')->with(compact('tags', $tags))->with(compact('users', $users));
+    }
     # Get tag by id
     public function show($tag_id)
     {

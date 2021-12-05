@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('user_name')->unique();
             $table->string('password');
             $table->boolean('admin')->default(false);
+            $table->boolean('isRestauran')->default(false);
             $table->string('gender')->nullable();
             $table->date('birthday')->nullable();
             $table->string('email')->unique();

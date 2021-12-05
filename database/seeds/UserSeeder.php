@@ -36,8 +36,8 @@ class UserSeeder extends Seeder
             'job' => Str::random(10),
         ]);
         DB::table('users')->insert([
-            'first_name' => 'Thanh',
-            'last_name' => 'Nguyen',
+            'first_name' => 'admin',
+            'last_name' => 'admin',
             'user_name' => 'admin ',
             'password' => Hash::make('123456'),
             'gender' => 'female',
@@ -60,6 +60,18 @@ class UserSeeder extends Seeder
             'address' => Str::random(20),
             'job' => Str::random(10),
         ]);
-
+        DB::table('users')->insert([
+            'first_name' => 'admin2',
+            'last_name' => 'A',
+            'user_name' => 'admin2 ',
+            'password' => Hash::make('123456'),
+            'gender' => 'male',
+            'birthday' => date('Y-m-d H:i:s',mt_rand(1, 2147385600)),
+            'email' => 'admin2@gmail.com',
+            'phone' => '0123456789',
+            'address' => Str::random(20),
+            'job' => Str::random(10),
+            'admin' => 1,
+        ]);
     }
 }

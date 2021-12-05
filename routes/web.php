@@ -31,6 +31,7 @@ Route::get('/my-posts','PostController@get_my_posts');
 /*User authen*/
 Route::match(['GET','POST'],'/login','AuthController@login');
 Route::match(['GET','POST'],'/register','AuthController@register');
+Route::post('/store-restauran', 'Authcontroller@store')->name('restauran.store');
 Route::match(['GET','POST'],'/profiles','AuthController@profile');
 Route::match(['GET','POST'],'/logout','Auth\LoginController@logout');
 
@@ -46,6 +47,7 @@ Route::get('users/{user_id}/posts', 'Auth\UserController@posts');
 Route::get('admin/home-page','AdminController@index')->middleware('require_admin');
 // Route::match(['GET','POST'],'/admin-change-pass','AdminController@change_pass');
 Route::get('/home-page','HomeController@homepage');
+Route::match(['GET','POST'],'admin/create_restauran','TagController@create2')->middleware('require_admin');
 
 
 Auth::routes();

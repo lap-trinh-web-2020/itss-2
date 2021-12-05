@@ -35,7 +35,7 @@
         <div class="form-input">
             <label for="phone" class="col-form-label text-md-right">Phone number</label>
             <input id="phone" type="phone" name="phone"/>
-        </div> 
+        </div>
 
         <div class="form-input">
             <label for="email" class="col-form-label text-md-right">Avatar</label>
