@@ -3,7 +3,7 @@
     <div class="card-header">
         <i class="fas fa-table"></i>
         All Restauran
-        <div class="float-right"><a href="{{ URL::to('tags/new') }}"><button class="btn btn-outline-secondary btn-sm">Add new restauran</button></a>
+        <div class="float-right"><a href="{{ URL::to('admin/create_restauran') }}"><button class="btn btn-outline-secondary btn-sm">Add new restauran</button></a>
         </div>
     </div>
     <div class="card-body">
