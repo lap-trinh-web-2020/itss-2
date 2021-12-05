@@ -34,7 +34,7 @@
     </section>
     <div class="container">
 
-    <form method="POST" action="{{rount('store')}}">
+    <form action="{{ route('restauran.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="first_name">First Name:</label>
