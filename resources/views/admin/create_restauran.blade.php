@@ -37,15 +37,6 @@
     <form action="{{ route('restauran.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label for="first_name">First Name:</label>
-            <input type="text" class="form-control" id="first_name" name="first_name">
-        </div>
-        <div class="form-group">
-            <label for="last_name">Last Name:</label>
-            <input type="text" class="form-control" id="last_name" name="last_name">
-        </div>
-
-        <div class="form-group">
             <label for="user_name">User Name:</label>
             <input type="text" class="form-control" id="user_name" name="user_name">
         </div>
@@ -65,13 +56,15 @@
             <input type="password" class="form-control" id="password" name="password">
         </div>
 
+        <div class="form-group">
+            <label for="des">Description:</label>
+            <input style="height:100px; width: 100%" type="text" class="form-control" id="des" name="des">
+        </div>
+
 
         <div class="form-group">
             <button style="cursor:pointer" type="submit" class="btn btn-primary">Add Restauran</button>
         </div>
     </form>
-    </div>
-    <div class="container">
-        @include('admin.restauran_show')
     </div>
 @endsection

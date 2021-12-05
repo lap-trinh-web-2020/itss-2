@@ -29,6 +29,7 @@
                 </tfoot>
                 <tbody>
                     @foreach ($users as $user)
+                        @if($user->isRestauran == 0 )
                         <tr>
                             <td><a href="{{ URL::to('users/' . $user->user_id) . '/posts' }}">{{ $user->user_name }}</a></td>
                             <td>{{ $user->email }}</td>
@@ -37,6 +38,7 @@
                             <td><a class="btn btn-primary btn-sm" href={{ URL::to('users/' . $user->user_id) }}>Show</a></td>
                             <td><a class="btn btn-danger btn-sm" href={{ URL::to('users/' . $user->user_id . '/delete') }} onclick="return alert_delete('Are you sure to delete?');">Delete</a></td>
                         </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>
