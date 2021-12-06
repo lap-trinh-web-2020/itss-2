@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             'phone' => '0123456789',
             'address' => Str::random(20),
             'job' => Str::random(10),
+            'des' => Str::random(10),
         ]);
         DB::table('users')->insert([
             'first_name' => Str::random(10),
@@ -34,6 +35,7 @@ class UserSeeder extends Seeder
             'phone' => '0123456789',
             'address' => Str::random(20),
             'job' => Str::random(10),
+            'des' => Str::random(10),
         ]);
         DB::table('users')->insert([
             'first_name' => 'admin',
@@ -47,6 +49,7 @@ class UserSeeder extends Seeder
             'address' => Str::random(20),
             'job' => Str::random(10),
             'admin' => 1,
+            'des' => Str::random(10),
         ]);
         DB::table('users')->insert([
             'first_name' => 'Dang Nam',
@@ -59,6 +62,7 @@ class UserSeeder extends Seeder
             'phone' => '0123456789',
             'address' => Str::random(20),
             'job' => Str::random(10),
+            'des' => Str::random(10),
         ]);
         DB::table('users')->insert([
             'first_name' => 'admin2',
@@ -72,6 +76,7 @@ class UserSeeder extends Seeder
             'address' => Str::random(20),
             'job' => Str::random(10),
             'admin' => 1,
+            'des' => Str::random(10),
         ]);
     }
 }

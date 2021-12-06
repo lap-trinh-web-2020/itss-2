@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('job')->nullable();
             $table->string('avatar_url')->nullable();
+            $table->text('des');
         });
     }
 
