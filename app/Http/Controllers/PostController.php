@@ -276,6 +276,17 @@ class PostController extends Controller
         return view('post.posts', compact('posts', 'title'));
     }
 
+    public function get_top_posts()
+    {
+        $tops = DB::table('user_post_like')
+        ->join('posts', 'posts.post_id', '=', 'user_post_like.post_id')
+        ->join('users', 'users.user_id', '=', 'user_post_like.user_id')
+        ->selectRaw('posts.*, users.user_name, sum(like_state) as top')
+        ->groupByRaw('posts.post_id')->orderByDesc('top')->limit(5)->get()->toArray();
+        // dd($top);
+        return view('user.top_post', compact('tops'));
+    }
+
     // public function unactive_post(Request $request){
     //     $post_id = $request->post_id;
     //     $user_id = (User::find(auth()->user()->user_id))->user_id;

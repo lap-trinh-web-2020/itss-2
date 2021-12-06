@@ -114,6 +114,7 @@
                                     <div class="main-menu d-none d-lg-block col-xl-8 col-lg-8">
                                         <nav>
                                             <ul id="navigation" class="d-flex justify-content-end align-items-center">
+                                                <li><a style="color:black"  href="{{ URL::to('/top-posts') }}">Top Posts</a></li>
                                                 @if(Auth::user())
                                                     @if(Auth::user()->admin)
                                                         <li><a style="color:black"  href="{{ URL::to('admin/home-page') }}">Welcome admin!!</a></li>
