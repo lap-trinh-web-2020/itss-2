@@ -86,13 +86,14 @@
                     <div class="properties__caption">
                         <h3>{{$post->title}}</h3>
                         <p>{{$post->description}}</p>
-                        <p style="font-style: italic">Posted on {{$post->date_create}} by {{$post->user->user_name}}</p>
+                        <p style="font-style: italic">Posted on {{$post->date_create}} by <a style="color:blue; " href="{{ URL::to('/users/' . $post->user_id) . '/posts' }}"><b>{{$post->user->user_name}}</b></a> </p>
+
                         <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">Read more</a>
                     </div>
                 </div>
             </div>
             @endforeach
-</div>
+</div>  
     </div>
 </div>
 <!-- Courses area End -->

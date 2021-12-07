@@ -56,13 +56,15 @@
             <input type="password" class="form-control" id="password" name="password">
         </div>
 
+        <div class="form-group">
+            <label for="des">Description:</label>
+            <input style="height:100px; width: 100%" type="text" class="form-control" id="des" name="des">
+        </div>
+
 
         <div class="form-group">
             <button style="cursor:pointer" type="submit" class="btn btn-primary">Add Restauran</button>
         </div>
     </form>
-    </div>
-    <div class="container">
-        @include('admin.restauran_show')
     </div>
 @endsection

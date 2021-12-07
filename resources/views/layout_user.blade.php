@@ -111,16 +111,20 @@
                                     </aside>
                                     </div>
 
-                                    <div class="main-menu d-none d-lg-block col-xl-8 col-lg-8">
+                                    <div class="main-menu d-none d-lg-block col-m-8 col-m-12">
                                         <nav>
                                             <ul id="navigation" class="d-flex justify-content-end align-items-center">
+
                                                 @if(Auth::user())
                                                     @if(Auth::user()->admin)
-                                                        <li><a style="color:black"  href="{{ URL::to('admin/home-page') }}">Welcome admin!!</a></li>
+                                                        <li><a style="color:black"  href="{{ URL::to('admin/home-page') }}">Admin</a></li>
                                                     @else
                                                         <li><a style="color:black"  href="{{ URL::to('users/' . Auth::user()->user_id) }}"> Welcome {{Auth::user()->user_name}}!!</a></li>
-                                                        <li><a style="color:black" href="{{ URL::to('/my-posts') }}">My Posts</a></li>
                                                     @endif
+                                                    <li><a style="color:black"  href="{{ URL::to('/top-posts') }}">Posts Rank</a></li>
+                                                    <li><a style="color:black" href="{{ URL::to('/my-posts') }}">My Posts</a></li>
+                                                    <li><a style="color:black" href="{{ URL::to('/create_post') }}">Create Posts</a></li>
+
                                                 @endif
                                                 <!-- <li><a href="{{ URL::to('create_post') }}">Create</a></li> -->
                                                 <li><a  style="color:black" href="#">Categories</a>

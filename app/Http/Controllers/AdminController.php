@@ -24,7 +24,7 @@ class AdminController extends Controller
             $tags = $tags->SortByDesc('tag_id');
 
 
-            $number_of_users = User::count();
+            $number_of_users = User::where('isRestauran', 0)->count();
             $number_of_restaurans = User::where('isRestauran', 1)->count();
             $number_of_posts = Post::count();
             $number_of_tags = Tag::count();
