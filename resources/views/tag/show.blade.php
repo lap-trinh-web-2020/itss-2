@@ -4,11 +4,10 @@
     <div class="container">
         <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a href="{{ URL::to('/admin/home-page') }}" class="nav-link active">Admin
-                        Page</a>
+                    <a href="{{ URL::to('/admin/home-page') }}" class="nav-link active">管理者ページ</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ URL::to('/home-page') }}" class="nav-link active">Home Page</a>
+                    <a href="{{ URL::to('/home-page') }}" class="nav-link active">ホームページ</a>
                 </li>
         </ul>
     </div>
@@ -20,10 +19,10 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="bounceIn" data-delay="0.2s">Tags <i>{{ $tag->tag_title }}</i></h1>
+                                <h1 data-animation="bounceIn" data-delay="0.2s">タグ <i>{{ $tag->tag_title }}</i></h1>
                                 <!-- breadcrumb Start-->
                                 <!-- breadcrumb End -->
-                                <h4 data-animation="bounceIn" data-delay="0.2s">All Posts of Tags</h4>
+                                <h4 data-animation="bounceIn" data-delay="0.2s">タグのすべての投稿</h4>
                             </div>
                         </div>
                     </div>
@@ -36,54 +35,51 @@
     <br>
     <br>
     @if (!isset($posts))
-        <h3>No post attached</h3>
+        <h3>投稿はありません</h3>
     @else
     <div class="container">
         <!-- DataTables Example -->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fas fa-table"></i>
-                All Post
+                <i class="fas fa-table">すべての投稿</i> 
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                {{-- <th>Tag (redirect to tag page)</th> --}}
-                                <th>Author</th>
-                                <th>Created at</th>
-                                <th colspan="2">Actions</th>
+                                <th>タイトル</th>
+                                 {{-<th>タグ（タグページにリダイレクト）</th>-}}
+                                 <th>作成者</th>
+                                 <th>作成者</th>
+                                 <th colspan = "2">アクション</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Title</th>
-                                {{-- <th>Tag</th> --}}
-                                <th>Author</th>
-                                <th>Created at</th>
-                                <th colspan="2">Actions</th>
+                                <th>タイトル</th>
+                                 {{-<th>タグ（タグページにリダイレクト）</th>-}}
+                                 <th>作成者</th>
+                                 <th>作成者</th>
+                                 <th colspan = "2">アクション</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             @foreach ($posts as $post)
 
                                     <td><a href="{{ URL::to('posts/' . $post->post_id) }}">{{ $post->title }}</a></td>
-                                    {{-- <td>Post's tags</td> --}}
+                                    {{-- <td>投稿のタグ</td> --}}
                                 <td><a href={{ URL::to('users/' . $post->user_id) }}>{{$post->user->user_name}}</a>
                                     </td>
                                     <td>{{ $post->date_create }}</td>
-                                    <td><a href={{ URL::to('posts/' . $post->post_id) }}>Show<a></td>
-                                    <td><a href={{ URL::to('posts/delete/' . $post->post_id) }}>Destroy<a></td>
+                                    <td><a href={{ URL::to('posts/' . $post->post_id) }}>見せる<a></td>
+                                    <td><a href={{ URL::to('posts/delete/' . $post->post_id) }}>破壊<a></td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
-            {{-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-            --}}
         </div>
     </div>
     @endif

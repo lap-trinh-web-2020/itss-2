@@ -26,7 +26,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-        <a class="navbar-brand mr-1" href={{ URL::to('/home-page') }}>Home Page</a>
+        <a class="navbar-brand mr-1" href={{ URL::to('/home-page') }}>ホームページ</a>
 
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
             <i class="fas fa-bars"></i>
@@ -45,14 +45,13 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ URL::to('/home-page') }}">Home page</a>
+                    <a class="dropdown-item" href="{{ URL::to('/home-page') }}">ホームページ</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ URL::to('users/' . auth()->user()->user_id) }}">Profile</a>
+                    <a class="dropdown-item" href="{{ URL::to('users/' . auth()->user()->user_id) }}">プロフィール</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ URL::to('users/' . auth()->user()->user_id . '/edit') }}">Edit
-                        profile</a>
+                    <a class="dropdown-item" href="{{ URL::to('users/' . auth()->user()->user_id . '/edit') }}">プロファイル編集</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ URL::to('logout') }}">Logout</a>
+                    <a class="dropdown-item" href="{{ URL::to('logout') }}">ログアウト</a>
                 </div>
             </li>
         </ul>
@@ -66,50 +65,28 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/admin/home-page">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Admin Page</span>
+                    <span>管理ページ</span>
                 </a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Manage</span>
+                    <span>管理</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                    <h6 class="dropdown-header">Admin Profile:</h6>
-                    <a class="dropdown-item" href={{ URL::to('/users/' . auth()->user()->user_id) }}>View Profile</a>
-                    <a class="dropdown-item" href={{ URL::to('/users/' . auth()->user()->user_id) . '/edit' }}>Edit
-                        Profile</a>
+                    <h6 class="dropdown-header">管理者プロファイル：</h6>
+                    <a class="dropdown-item" href={{ URL::to('/users/' . auth()->user()->user_id) }}>プロフィールを見る</a>
+                    <a class="dropdown-item" href={{ URL::to('/users/' . auth()->user()->user_id) . '/edit' }}>プロファイル編集</a>
                     <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header">Other Actions:</h6>
-                    <a class="dropdown-item" href={{URL::to('/tags/new')}}>Add tags</a>
-                    {{-- <a class="dropdown-item" href="blank.html">Blank Page</a> --}}
+                    <h6 class="dropdown-header">その他のアクション：</h6>
+                    <a class="dropdown-item" href={{URL::to('/tags/new')}}>タグを追加する</a>
                 </div>
             </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li> --}}
         </ul>
 
         <div id="content-wrapper">
             @yield('content')
-
-            <!-- Sticky Footer -->
-            <footer class="sticky-footer">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright © Your Website 2019</span>
-                    </div>
-                </div>
-            </footer>
-
         </div>
         <!-- /.content-wrapper -->
 
@@ -127,15 +104,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">出発する準備はできましたか？</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">現在のセッションを終了する準備ができている場合は、下の[ログアウト]を選択してください。</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
+                    <a class="btn btn-primary" href="login.html">ログアウト</a>
                 </div>
             </div>
         </div>

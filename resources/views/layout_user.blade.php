@@ -116,18 +116,14 @@
                                             <ul id="navigation" class="d-flex justify-content-end align-items-center">
 
                                                 @if(Auth::user())
-                                                    @if(Auth::user()->admin)
-                                                        <li><a style="color:black"  href="{{ URL::to('admin/home-page') }}">Admin</a></li>
-                                                    @else
-                                                        <li><a style="color:black"  href="{{ URL::to('users/' . Auth::user()->user_id) }}"> Welcome {{Auth::user()->user_name}}!!</a></li>
-                                                    @endif
-                                                    <li><a style="color:black"  href="{{ URL::to('/top-posts') }}">Posts Rank</a></li>
-                                                    <li><a style="color:black" href="{{ URL::to('/my-posts') }}">My Posts</a></li>
-                                                    <li><a style="color:black" href="{{ URL::to('/create_post') }}">Create Posts</a></li>
+                                                    <li><a style="color:black"  href="{{ URL::to('users/' . Auth::user()->user_id) }}"> いらっしゃいませ {{Auth::user()->user_name}}!!</a></li>
+                                                    <li><a style="color:black"  href="{{ URL::to('/top-posts') }}">投稿ランク</a></li>
+                                                    <li><a style="color:black" href="{{ URL::to('/my-posts') }}">私の投稿</a></li>
+                                                    <li><a style="color:black" href="{{ URL::to('/create_post') }}">投稿を作成する</a></li>
 
                                                 @endif
                                                 <!-- <li><a href="{{ URL::to('create_post') }}">Create</a></li> -->
-                                                <li><a  style="color:black" href="#">Categories</a>
+                                                <li><a  style="color:black" href="#">タグ</a>
                                                     <ul class="submenu">
                                                         @foreach ($tags as $tag)
                                                         <li><a  href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a>
@@ -137,25 +133,26 @@
                                                 </li>
 
                                                 @if (!session('status') && auth()->user())
-                                                    <li><a style="color:black" >Account</a>
+                                                    <li><a style="color:black" >アカウント</a>
                                                         <ul class="submenu">
+                                                            @if(Auth::user()->admin)
+                                                                <li><a   href="{{ URL::to('admin/home-page') }}">管理者</a></li>
+                                                            @endif
                                                             <li><a
-                                                                    href="{{ URL::to('users/' . Auth::user()->user_id) }}">View
-                                                                    Profile</a></li>
+                                                                    href="{{ URL::to('users/' . Auth::user()->user_id) }}">プロフィールを見る</a></li>
                                                             <li><a
-                                                                    href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">Edit
-                                                                    Profile</a></li>
+                                                                    href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">プロファイル編集</a></li>
                                                             <!-- @if (auth()->user()->admin)
                                                                  <li><a href="{{ URL::to('admin/home-page') }}">Admin
                                                                         Page</a></li>
                                                             @endif -->
                                                             <!-- <li><a href="{{URL::to('/my-posts')}}">My posts</a></li> -->
-                                                            <li><a href="{{ URL::to('/logout') }}">Logout</a></li>
+                                                            <li><a href="{{ URL::to('/logout') }}">ログアウト</a></li>
                                                         </ul>
                                                     </li>
                                                 @else
-                                                <li class="button-header margin-left "><a href="{{ URL::to('/register') }}" class="btn">Sign Up</a></li>
-                                                <li class="button-header"><a href="{{ URL::to('/login') }}" class="btn btn3">Sign In</a></li>
+                                                <li class="button-header margin-left "><a href="{{ URL::to('/register') }}" class="btn">サインアップ</a></li>
+                                                <li class="button-header"><a href="{{ URL::to('/login') }}" class="btn btn3">ログイン</a></li>
                                                 @endif
                                             </ul>
                                         </nav>
@@ -189,12 +186,6 @@
                                     <div class="footer-logo mb-25">
                                         <a href="index.html"><img src="{{ asset('/user/img/logo/logo2_footer.png') }}" alt=""></a>
                                     </div>
-                                    <div class="footer-tittle">.
-                                        <div class="footer-pera">
-                                            <p>Knowledge is power. Knowledge shared is power multiplied
-                                            </p>
-                                        </div>
-                                    </div>
                                     <!-- social -->
                                     <div class="footer-social">
                                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -222,10 +213,10 @@
                                 <div class="footer-tittle">
                                     <h4>Role</h4>
                                     <ul>
-                                        <li><a href="#">Leader</a></li>
-                                        <li><a href="#">SP leader</a></li>
-                                        <li><a href="#">Dev</a></li>
-                                        <li><a href="#">Dev</a></li>
+                                        <li> <a href = "＃">リーダー</a> </li>
+                                         <li> <a href = "＃"> SPリーダー</a> </li>
+                                         <li> <a href = "＃">開発</a> </li>
+                                         <li> <a href = "＃">開発</a> </li>
                                     </ul>
 
                                 </div>
@@ -234,7 +225,7 @@
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>Contacts</h4>
+                                    <h4>連絡先 </h4>
                                     <ul>
                                         <li><a href="#">HEDSPI-D9, Hanoi University of Science and Technology</a></li>
                                     </ul>

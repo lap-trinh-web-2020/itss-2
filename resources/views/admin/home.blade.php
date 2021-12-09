@@ -10,9 +10,9 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="/admin/home-page">Dashboard</a>
+            <a href="/admin/home-page">ダッシュボード</a>
         </li>
-        <li class="breadcrumb-item active">Overview</li>
+        <li class="breadcrumb-item active">概要</li>
     </ol>
 
     <!-- Icon Cards-->
@@ -23,10 +23,10 @@
                     <div class="card-body-icon">
                         <i class="fas fa-fw fa-comments"></i>
                     </div>
-                    <div class="mr-5">{{$number_of_users}} Users</div>
+                    <div class="mr-5">{{$number_of_users}} ユーザー</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1 edus-nav-item-1" href="#">
-                    <span class="float-left">View Details</span>
+                    <span class="float-left">詳細を見る</span>
                     <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
@@ -39,10 +39,10 @@
                     <div class="card-body-icon">
                         <i class="fas fa-fw fas fa-fw fa-comments"></i>
                     </div>
-                    <div class="mr-5">{{$number_of_restaurans}} Restaurant</div>
+                    <div class="mr-5">{{$number_of_restaurans}} レストラン</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1 edus-nav-item-4" href="#">
-                    <span class="float-left">View Details</span>
+                    <span class="float-left">詳細を見る</span>
                     <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
@@ -55,10 +55,10 @@
                     <div class="card-body-icon">
                         <i class="fas fa-fw fa-list"></i>
                     </div>
-                    <div class="mr-5">{{$number_of_posts}} Posts</div>
+                    <div class="mr-5">{{$number_of_posts}} 投稿</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1 edus-nav-item-2" href="#">
-                    <span class="float-left">View Details</span>
+                    <span class="float-left">詳細を見る</span>
                     <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
@@ -71,7 +71,7 @@
                     <div class="card-body-icon">
                         <i class="fas fa-fw fa-shopping-cart"></i>
                     </div>
-                    <div class="mr-5">{{$number_of_tags}} Tags</div>
+                    <div class="mr-5">{{$number_of_tags}} タグ</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1 edus-nav-item-3" href="#">
                     <span class="float-left">View Details</span>
