@@ -9,9 +9,9 @@
         <div class="logo-login">
             <a href="/"><img src="{{ asset('/user/img/logo/loder.png') }}" alt=""></a>
         </div>
-        <h2>Registration Here</h2>
+        <h2>ここで登録</h2>
         <div class="form-input">
-            <label for="name" class="col-form-label text-md-right">Name</label>
+            <label for="name" class="col-form-label text-md-right">名前</label>
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                 value="{{ old('name') }}">
             @error('name')
@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-input">
-            <label for="email" class="col-form-label text-md-right">Mail</label>
+            <label for="email" class="col-form-label text-md-right">メール</label>
             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
                 value="{{ old('email') }}">
             @error('email')
@@ -33,17 +33,17 @@
         </div>
 
         <div class="form-input">
-            <label for="phone" class="col-form-label text-md-right">Phone number</label>
+            <label for="phone" class="col-form-label text-md-right">電話番号</label>
             <input id="phone" type="phone" name="phone"/>
         </div>
 
         <div class="form-input">
-            <label for="email" class="col-form-label text-md-right">Avatar</label>
+            <label for="email" class="col-form-label text-md-right">アバター</label>
             <input type="file" name="avatar_url">
         </div>
 
         <div class="form-input">
-            <label for="password" class="col-form-label text-md-right">Password</label>
+            <label for="password" class="col-form-label text-md-right">パスワード</label>
             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                 name="password">
             @error('password')
@@ -54,7 +54,7 @@
         </div>
 
         <div class="form-input">
-            <label for="password-confirm" class="col-form-label text-md-right">Password confirmation</label>
+            <label for="password-confirm" class="col-form-label text-md-right">パスワード確認</label>
             <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
         </div>
 
@@ -62,7 +62,7 @@
             <input type="submit" name="submit" value="Registration">
         </div>
         <!-- Forget Password -->
-        <a href="{{ URL::to('/login') }}" class="registration">Login</a>
+        <a href="{{ URL::to('/login') }}" class="registration">ログイン</a>
     </div>
 </form>
 <!-- /end login form -->

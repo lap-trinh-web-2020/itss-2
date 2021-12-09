@@ -10,9 +10,9 @@
             <div class="logo-login">
                 <a href="/"><img src="{{ asset('/user/img/logo/loder.png') }}" alt=""></a>
             </div>
-            <h2>Login Here</h2>
+            <h2>ここでログイン</h2>
             <div class="form-input">
-                <label for="email">E-Mail Address</label>
+                <label for="email">メールアドレス</label>
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
                     placeholder="Input your email" required autocomplete="email" autofocus>
                 @error('email')
@@ -23,7 +23,7 @@
             </div>
 
             <div class="form-input">
-                <label for="password">Password</label>
+                <label for="password">パスワード</label>
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                     name="password" placeholder="Input your password" required autocomplete="current-password">
                 @error('password')
@@ -36,9 +36,9 @@
                 <input type="submit" name="submit" value="login">
             </div>
             <!-- Forget Password -->
-            {{-- <a href="#" class="forget">Forget Password</a> --}}
+            {{-- <a href="#" class="forget">パスワード忘れ</a> --}}
             <!-- Forget Password -->
-            <a href="{{ URL::to('/register') }}" class="registration">Registration</a>
+            <a href="{{ URL::to('/register') }}" class="registration">登録</a>
         </div>
     </form>
     <!-- /end login form -->
