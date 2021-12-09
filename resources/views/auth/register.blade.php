@@ -59,7 +59,7 @@
         </div>
 
         <div class="form-input pt-30">
-            <input type="submit" name="submit" value="Registration">
+            <input type="submit" name="submit" value="登録">
         </div>
         <!-- Forget Password -->
         <a href="{{ URL::to('/login') }}" class="registration">ログイン</a>
