@@ -2,29 +2,29 @@
 <div class="card mb-3 edus-content-item-1">
     <div class="card-header">
         <i class="fas fa-table"></i>
-        All Users
+        全てのユーザー
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Posts</th>
-                        <th>Admin</th>
-                        <th>Detail</th>
-                        <th>Actions</th>
+                        <th>ユーザー名</th>
+                         <th>メール</th>
+                         <th>投稿</th>
+                         <th>管理者</th>
+                         <th>詳細</th>
+                         <th>アクション</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Posts</th>
-                        <th>Admin</th>
-                        <th>Detail</th>
-                        <th>Actions</th>
+                        <th>ユーザー名</th>
+                         <th>メール</th>
+                         <th>投稿</th>
+                         <th>管理者</th>
+                         <th>詳細</th>
+                         <th>アクション</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -35,8 +35,8 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->posts->count() }}</td>
                             <td>{{$user->admin == 1 ? 1:0 }}</td>
-                            <td><a class="btn btn-primary btn-sm" href={{ URL::to('users/' . $user->user_id) }}>Show</a></td>
-                            <td><a class="btn btn-danger btn-sm" href={{ URL::to('users/' . $user->user_id . '/delete') }} onclick="return alert_delete('Are you sure to delete?');">Delete</a></td>
+                            <td><a class="btn btn-primary btn-sm" href={{ URL::to('users/' . $user->user_id) }}>見せる</a></td>
+                            <td><a class="btn btn-danger btn-sm" href={{ URL::to('users/' . $user->user_id . '/delete') }} onclick="return alert_delete('削除してもよろしいですか？');">削除</a></td>
                         </tr>
                         @endif
                     @endforeach
@@ -44,8 +44,6 @@
             </table>
         </div>
     </div>
-    {{-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-    --}}
 </div>
 <script>
     function alert_delete($message) {

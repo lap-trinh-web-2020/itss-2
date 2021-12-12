@@ -10,12 +10,12 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="bounceIn" data-delay="0.2s">Search post by title and content!!</h1>
+                                <h1 data-animation="bounceIn" data-delay="0.2s">タイトルで投稿を検索!!</h1>
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ URL::to('/home-page') }}">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ URL::to('/posts') }}">All Post</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ URL::to('/home-page') }}">ホーム</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ URL::to('/posts') }}">すべての投稿</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -35,7 +35,7 @@
                         <div class="row justify-content-center">
                             <div class="col-xl-7 col-lg-8">
                                 <div class="section-tittle text-center mb-55">
-                                    <h2>Sorry, no results found for the term <b>"{{ $searchterm }}"</b>.</h2>
+                                    <h2>申し訳ありませんが、その期間の結果は見つかりませんでした <b>"{{ $searchterm }}"</b>.</h2>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                     <div class="row justify-content-center">
                                         <div class="col-xl-7 col-lg-8">
                                             <div class="section-tittle text-center mb-55">
-                                                <h2>There are {{ $searchResults->count() }} results for the term <b>"{{ $searchterm }}"</b></h2>
+                                                <h2>{{ $searchResults->count() }} 結果があります <b>"{{ $searchterm }}"</b></h2>
                                             </div>
                                         </div>
                                     </div>
@@ -71,8 +71,8 @@
                                                         <div class="properties__caption">
                                                             <h3>{{$searchResult->title}}</h3>
                                                             <p>{{$searchResult->searchable->description}}</p>
-                                                            <p style="font-style: italic">Posted on {{$searchResult->searchable->date_create}} by {{$searchResult->searchable->user->user_name}}</p>
-                                                            <a href="{{URL::to('/posts/'.$searchResult->searchable->post_id)}}" class="border-btn border-btn2">Read more</a>
+                                                            <p style="font-style: italic">時間　：{{$searchResult->searchable->date_create}}、著者 ：{{$searchResult->searchable->user->user_name}}</p>
+                                                            <a href="{{URL::to('/posts/'.$searchResult->searchable->post_id)}}" class="border-btn border-btn2">続きを読む</a>
                                                         </div>
                                                     </div>
                                                 </div>

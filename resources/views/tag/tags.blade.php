@@ -9,13 +9,12 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="bounceIn" data-delay="0.2s">All {{$tag->tag_title}} Tags</h1>
+                                <h1 data-animation="bounceIn" data-delay="0.2s">All {{$tag->tag_title}} タグ</h1>
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home Page</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ URL::to('/admin/home-page') }}">Control
-                                                Page</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">ホームページ</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ URL::to('/admin/home-page') }}">コントロールページ</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -28,7 +27,7 @@
     </section>
 
     @if (!isset($data))
-        <h3>Empty Tag</h3>
+        <h3>空のタグ</h3>
     @else
         <!-- Courses area start -->
         <div class="courses-area section-padding40 fix">

@@ -2,28 +2,28 @@
 <div class="card mb-3 edus-content-item-2">
     <div class="card-header">
         <i class="fas fa-table"></i>
-        All Post
+        すべての投稿
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        {{-- <th>Tag</th> --}}
-                        <th>Author</th>
-                        <th>Created at</th>
-                        <th>Detail</th>
-                        <th>Actions</th>
+                        <th>タイトル</th>
+                        {{-- <th>タグ</th> --}}
+                        <th>著者</th>
+                        <th>時間</th>
+                        <th>詳細</th>
+                        <th>行動</th>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Title</th>
-                        {{-- <th>Tag</th> --}}
-                        <th>Author</th>
-                        <th>Created at</th>
-                        <th>Detail</th>
-                        <th>Actions</th>
+                        <th>タイトル</th>
+                        {{-- <th>タグ</th> --}}
+                        <th>著者</th>
+                        <th>時間</th>
+                        <th>詳細</th>
+                        <th>行動</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -42,6 +42,4 @@
             </table>
         </div>
     </div>
-    {{-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-    --}}
 </div>
