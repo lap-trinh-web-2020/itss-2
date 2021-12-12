@@ -14,7 +14,7 @@
                         <h3>{{$post->title}}</h3>
                         <p>{{$post->description}}</p>
                         <p style="font-style: italic">Posted on {{$post->date_create}} by {{$post->user->user_name}}</p>
-                        <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">Read more</a>
+                        <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">続きを読む</a>
                     </div>
                 </div>
             </div>

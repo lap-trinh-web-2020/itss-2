@@ -12,8 +12,8 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-12">
                         <div class="hero__caption hero__caption2">
-                        <h1 data-animation="fadeInLeft" data-delay="0.2s">Sharing my Food<br> platform</h1>
-                        <p data-animation="fadeInLeft" data-delay="0.4s">When you eat food with your family and friends, it always tastes better.</p>
+                        <h1 data-animation="fadeInLeft" data-delay="0.2s">私の食べ物を共有する<br> プラットホーム</h1>
+                        <p data-animation="fadeInLeft" data-delay="0.4s">家族や友達と一緒に食べると、いつも美味しくなります</p>
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
     </div>
 </section>
 <!-- ? services-area -->
-<!-- 
+<!--
 <div class="services-area">
     <div class="container">
         <div class="row justify-content-sm-center">
@@ -88,12 +88,12 @@
                         <p>{{$post->description}}</p>
                         <p style="font-style: italic">Posted on {{$post->date_create}} by <a style="color:blue; " href="{{ URL::to('/users/' . $post->user_id) . '/posts' }}"><b>{{$post->user->user_name}}</b></a> </p>
 
-                        <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">Read more</a>
+                        <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">続きを読む</a>
                     </div>
                 </div>
             </div>
             @endforeach
-</div>  
+</div>
     </div>
 </div>
 <!-- Courses area End -->

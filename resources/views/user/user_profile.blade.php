@@ -9,14 +9,14 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="bounceIn" data-delay="0.2s">Your profile</h1>
+                                <h1 data-animation="bounceIn" data-delay="0.2s">あなたのプロフィール</h1>
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">ホーム</a></li>
                                         <li class="breadcrumb-item"><a
                                                 href="{{ URL::to('users/' . $user->user_id . '/posts') }}">{{$user->user_name}}'s
-                                                Post</a></li>
+                                                ポスト</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -45,7 +45,7 @@
                                                 <div class="tabbable">
                                                     <div class="tab-content profile-edit-tab-content">
                                                         <div id="edit-basic" class="tab-pane in active">
-                                                            <h4 class="header blue bolder smaller">General</h4>
+                                                            <h4 class="header blue bolder smaller">一般</h4>
                                                             <div class="row">
                                                                 @if ($user->avatar_url != null)
                                                                 <div class="block-ava">
@@ -61,7 +61,7 @@
                                                                     <div class="form-group">
                                                                         <label
                                                                             class="col-sm-4 control-label no-padding-right"
-                                                                            for="form-field-username">Username</label>
+                                                                            for="form-field-username">ユーザー名</label>
                                                                         <div class="col-sm-8">
                                                                             {{ $user->user_name }}
                                                                         </div>
@@ -70,8 +70,8 @@
                                                                     <div class="col-xs-12 col-sm-8">
                                                                         <div class="form-group">
                                                                             <label class="col-sm-4 control-label no-padding-right"
-                                                                                for="form-field-email">Email</label>
-    
+                                                                                for="form-field-email">メール</label>
+
                                                                             <div class="col-sm-8">
                                                                                 <span class="input-icon input-icon-right">
                                                                                     {{ $user->email }}
@@ -80,21 +80,21 @@
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="col-sm-4 control-label no-padding-right"
-                                                                                for="form-field-website">Address</label>
-    
+                                                                                for="form-field-website">住所</label>
+
                                                                             <div class="col-sm-8">
                                                                                 <span class="input-icon input-icon-right">
                                                                                     {{ $user->address }}
                                                                                 </span>
                                                                             </div>
                                                                         </div>
-    
+
                                                                         <div class="space-4"></div>
-    
+
                                                                         <div class="form-group">
                                                                             <label class="col-sm-4 control-label no-padding-right"
-                                                                                for="form-field-phone">Phone</label>
-    
+                                                                                for="form-field-phone">電話</label>
+
                                                                             <div class="col-sm-8">
                                                                                 <span class="input-icon input-icon-right">
                                                                                     {{ $user->phone }}
@@ -106,8 +106,8 @@
 
                                                                         <div class="form-group">
                                                                             <label class="col-sm-4 control-label no-padding-right"
-                                                                                for="form-field-phone">Description</label>
-    
+                                                                                for="form-field-phone">説明</label>
+
                                                                             <div class="col-sm-8">
                                                                                 <span class="input-icon input-icon-right">
                                                                                     {{ $user->des }}
@@ -126,9 +126,7 @@
                                                                     <div class="col-md-offset-3 col-md-9">
                                                                         <a class="btn btn-info" type="button"  href='/users/{{ $user->user_id }}/edit'>
                                                                             <i class="ace-icon fa fa-check bigger-110"></i>
-                                                                                Edit
-                                                                                your
-                                                                                profile
+                                                                            プロフィールを編集する
                                                                         </a>
                                                                     </div>
                                                                 </div>

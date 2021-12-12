@@ -54,11 +54,11 @@
                         </h2>
                         <ul class="blog-info-link mt-3 mb-4">
                             <li><a style="color:blue; " href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i> <b>{{$post->user->user_name}}</b></a></li>
-                            <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
+                            <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} コメント</a></li>
                             <li><a href="#"><i class="far fa-calendar"></i> {{$post->date_create}} </a></li>
                             <li class="like-info">
                                 <span class="align-middle"><i class="fa fa-heart"></i></span>
-                                <span class="count-like"> {{$count_like}} people like this</span>
+                                <span class="count-like"> {{$count_like}} このような人々</span>
                             </li>
                             <div id="react-btn">
                                 @if($search_user_post->like_state == 0)
@@ -101,7 +101,7 @@
 
                     </div>
                     <div class="comments-area" id="comments-area">
-                        <h4>{{$comment_count}} Comments</h4>
+                        <h4>{{$comment_count}} コメント</h4>
                         @foreach($comments as $comment)
                         <div class="comment-list">
                            <div class="single-comment justify-content-between d-flex">
@@ -152,18 +152,18 @@
                                  </a>
                               </div>
                               <div class="detials">
-                                 <p>Prev Post</p>
+                                 <p>前の投稿</p>
                                  <a href="#">
-                                    <h4 style="color: #2d2d2d;">Space The Final Frontier</h4>
+                                    <h4 style="color: #2d2d2d;">スペースザファイナルフロンティア</h4>
                                  </a>
                               </div>
                            </div>
                            <div
                            class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
                            <div class="detials">
-                              <p>Next Post</p>
+                              <p>次の投稿</p>
                               <a href="#">
-                                 <h4 style="color: #2d2d2d;">Telescopes 101</h4>
+                                 <h4 style="color: #2d2d2d;">望遠鏡101</h4>
                               </a>
                            </div>
                            <div class="arrow">
@@ -181,7 +181,7 @@
                 </div>
 
                 <div class="comment-form">
-                    <h4>Your comment</h4>
+                    <h4>あなたのコメント</h4>
                     <form method="post" class="form-contact comment_form" action="{{URL::to('/posts/{$post->post_id}/comment')}}" id="commentForm">
                         {{ csrf_field() }}
                         <input type="hidden" name="post_id" value='{{$post->post_id}}'>
@@ -194,7 +194,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="button button-contactForm btn_1 boxed-btn">Post Comment</button>
+                            <button type="submit" class="button button-contactForm btn_1 boxed-btn">コメントを投稿</button>
                         </div>
                     </form>
                 </div>
@@ -215,7 +215,7 @@
                         </form>
                     </aside> -->
                     <aside class="single_sidebar_widget popular_post_widget">
-                        <h3 class="widget_title" style="color: #2d2d2d;">Recent Post</h3>
+                        <h3 class="widget_title" style="color: #2d2d2d;">最近の投稿</h3>
                         @foreach($recent_posts as $post)
                         <div class="media post_item">
                             <div class="media-body">
@@ -229,7 +229,7 @@
 
                     </aside>
                     <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title" style="color: #2d2d2d;">You may like these Category</h4>
+                        <h4 class="widget_title" style="color: #2d2d2d;">あなたはこれらのカテゴリーが好きかもしれません</h4>
                         <ul class="list cat-list">
                             @foreach ($tags as $tag )
                             <li>
