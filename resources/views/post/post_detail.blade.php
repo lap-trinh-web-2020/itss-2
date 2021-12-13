@@ -229,7 +229,7 @@
 
                     </aside>
                     <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title" style="color: #2d2d2d;">あなたはこれらのカテゴリーが好きかもしれません</h4>
+                        <h4 class="widget_title" style="color: #2d2d2d;">あなたはこれらのタグが好きかもしれません</h4>
                         <ul class="list cat-list">
                             @foreach ($tags as $tag )
                             <li>

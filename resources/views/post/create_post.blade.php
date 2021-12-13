@@ -30,7 +30,7 @@
 <div class="container">
     <div class="row">
         <div class="comment-form">
-            <h4>あなたのブログ</h4>
+            <h4>あなたのポスト</h4>
             <form class="form-contact comment_form" action="{{URL::to('/create_post')}}" id="commentForm" method="post" enctype="multipart/form-data" >
                 {{ csrf_field() }}
                 <div class="row">

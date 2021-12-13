@@ -28,7 +28,7 @@
 <div class="container">
     <div class="row">
         <div class="comment-form">
-            <h4>あなたのブログ</h4>
+            <h4>あなたのポスト</h4>
             <form class="form-contact comment_form" action="{{URL::to('/edit/'.$post->post_id)}}" id="commentForm" method="post" enctype="multipart/form-data" onsubmit="return validateData()">
                 {{ csrf_field() }}
                 <div class="row">
