@@ -37,7 +37,7 @@
 
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <input class="form-control" name="title" id="title" type="text" placeholder="Title">
+                            <input class="form-control" name="title" id="title" type="text" placeholder="題名">
                             @error('title')
                             <b><span style="color: red;">{{ $message }}</span></b>
                             @enderror
@@ -71,7 +71,7 @@
 
                     <div class="col-12">
                         <div class="form-group">
-                            <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="Description"></textarea>
+                            <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="説明"></textarea>
                             @error('description')
                             <b><span style="color: red;">{{ $message }}</span></b>
                             @enderror
@@ -83,8 +83,8 @@
                     <div class="col-12">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#content" aria-controls="content" role="tab" data-toggle="tab">Edit content</a></li>
-                            <li role="presentation"><a href="#preview" aria-controls="preview" role="tab" data-toggle="tab">Preview changes</a></li>
+                            <li role="presentation" class="active"><a href="#content" aria-controls="content" role="tab" data-toggle="tab">コンテンツを編集する</a></li>
+                            <li role="presentation"><a href="#preview" aria-controls="preview" role="tab" data-toggle="tab">プレビューの変更</a></li>
                         </ul>
                     </div>
                     <div class="col-12">
@@ -93,7 +93,7 @@
                             {{-- <div class="tab-content"> --}}
                                 <div role="tabpanel" class="tab-pane active" id="content">
                                     <div class="form-group">
-                                        <textarea class="form-control w-100" name="detail_content" id="post-content" cols="50" rows="30" placeholder="Content"></textarea>
+                                        <textarea class="form-control w-100" name="detail_content" id="post-content" cols="50" rows="30" placeholder="コンテンツ"></textarea>
                                         @error('detail_content')
                                         <b><span style="color: red;">{{ $message }}</span></b>
                                         @enderror

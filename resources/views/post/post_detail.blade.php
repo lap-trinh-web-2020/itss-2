@@ -20,9 +20,9 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         @if($current_user->user_id == $post->user->user_id)
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">Edit post</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">投稿を編集</a></li>
                                         @endif
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">Delete</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">削除</a></li>
                                     </ol>
                                 </nav>
                             @endif
@@ -189,7 +189,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control w-100" name="content" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                                    <textarea class="form-control w-100" name="content" id="comment" cols="30" rows="9" placeholder="コメントを書く"></textarea>
                                 </div>
                             </div>
                         </div>

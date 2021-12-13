@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <input class="form-control" name="title" id="title" type="text" placeholder="Title" value="{{$post->title}}" >
+                            <input class="form-control" name="title" id="title" type="text" placeholder="題名" value="{{$post->title}}" >
                         </div>
                     </div>
 
@@ -66,7 +66,7 @@
                     </div>
                     <div class="col-12">
                         <div class="form-group">
-                            <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="Description">{{$post->description}}</textarea>
+                            <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="説明">{{$post->description}}</textarea>
                         </div>
                     </div>
                     <div class="col-12">
@@ -82,7 +82,7 @@
                             {{-- <div class="tab-content"> --}}
                                 <div role="tabpanel" class="tab-pane active" id="content">
                                     <div class="form-group">
-                                        <textarea class="form-control w-100" name="detail_content" id="post-content" cols="50" rows="30" placeholder="Content">{{$post->content}}</textarea>
+                                        <textarea class="form-control w-100" name="detail_content" id="post-content" cols="50" rows="30" placeholder="コンテンツ">{{$post->content}}</textarea>
                                     </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="preview" style="padding: 40px  70px 40px 70px">

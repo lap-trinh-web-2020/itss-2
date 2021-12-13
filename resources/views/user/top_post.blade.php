@@ -32,7 +32,7 @@
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-8">
                 <div class="section-tittle text-center mb-55">
-                    <h2>Top 5 posts</h2>
+                    <h2>トップ5の投稿</h2>
                 </div>
             </div>
         </div>
