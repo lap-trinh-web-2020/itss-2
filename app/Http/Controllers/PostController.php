@@ -269,7 +269,7 @@ class PostController extends Controller
     {
         $current_user = User::find(auth()->user()->user_id);
         $posts = Post::where('user_id', $current_user->user_id)->paginate(3);
-        $title = "My posts";
+        $title = "私の投稿";
         if ($request->ajax()) {
             return view('post.post_data', compact('posts', 'title'))->render();
         }

@@ -13,8 +13,8 @@
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/')}}">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts')}}">All post</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/')}}">ホーム</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts')}}">全投稿</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
