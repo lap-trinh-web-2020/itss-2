@@ -15,11 +15,12 @@ class CreateTableCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->integer('product_id')->unsigned();
+            $table->integer('product_price')->nullable();
+
+            $table->primary(['user_id', 'product_id']);
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
-            $table->integer('product_price');
-            $table->timestamps();
         });
     }
 
@@ -30,6 +31,6 @@ class CreateTableCartsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('carts');
     }
 }
