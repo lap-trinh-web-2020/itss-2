@@ -29,7 +29,7 @@
                 </tfoot>
                 <tbody>
                     @foreach ($users as $user)
-                        @if($user->isRestauran == 0 )
+                        @if($user->isrestauran == 0 )
                         <tr>
                             <td><a href="{{ URL::to('users/' . $user->user_id) . '/posts' }}">{{ $user->user_name }}</a></td>
                             <td>{{ $user->email }}</td>

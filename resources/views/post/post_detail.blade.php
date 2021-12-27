@@ -20,9 +20,9 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         @if($current_user->user_id == $post->user->user_id)
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">Edit post</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">編集</a></li>
                                         @endif
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">Delete</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">削除</a></li>
                                     </ol>
                                 </nav>
                             @endif
@@ -45,7 +45,7 @@
                         @if($post->post_url == null)
                         <img class="img-fluid" src="{{asset('/user/img/pj3.1.png')}}" alt="">
                         @else
-                        <img class="img-fluid" src="{{asset('/storage/post_url/'.$post->post_url)}}" alt="">
+                        <img class="img-fluid" src="{{$post->post_url}}" alt="">
                         @endif
                     </div>
                     <div class="blog_details">
@@ -54,11 +54,11 @@
                         </h2>
                         <ul class="blog-info-link mt-3 mb-4">
                             <li><a style="color:blue; " href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i> <b>{{$post->user->user_name}}</b></a></li>
-                            <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
+                            <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} コメント</a></li>
                             <li><a href="#"><i class="far fa-calendar"></i> {{$post->date_create}} </a></li>
                             <li class="like-info">
                                 <span class="align-middle"><i class="fa fa-heart"></i></span>
-                                <span class="count-like"> {{$count_like}} people like this</span>
+                                <span class="count-like"> {{$count_like}} 好きな人の数</span>
                             </li>
                             <div id="react-btn">
                                 @if($search_user_post->like_state == 0)
@@ -101,7 +101,7 @@
 
                     </div>
                     <div class="comments-area" id="comments-area">
-                        <h4>{{$comment_count}} Comments</h4>
+                        <h4>{{$comment_count}} コメント</h4>
                         @foreach($comments as $comment)
                         <div class="comment-list">
                            <div class="single-comment justify-content-between d-flex">
@@ -113,7 +113,7 @@
                                     </div>
                                   @else
                                   <div class="cmt-ava">
-                                        <img src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}" alt="author avatar">
+                                        <img src="{{$comment->avatar_url}}" alt="author avatar">
                                   </div>
                                   @endif
                                  </div>
@@ -181,7 +181,7 @@
                 </div>
 
                 <div class="comment-form">
-                    <h4>Your comment</h4>
+                    <h4>あなたのコメント</h4>
                     <form method="post" class="form-contact comment_form" action="{{URL::to('/posts/{$post->post_id}/comment')}}" id="commentForm">
                         {{ csrf_field() }}
                         <input type="hidden" name="post_id" value='{{$post->post_id}}'>
@@ -189,12 +189,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control w-100" name="content" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                                    <textarea class="form-control w-100" name="content" id="comment" cols="30" rows="9"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="button button-contactForm btn_1 boxed-btn">Post Comment</button>
+                            <button type="submit" class="button button-contactForm btn_1 boxed-btn">コメントを残す</button>
                         </div>
                     </form>
                 </div>
@@ -215,7 +215,7 @@
                         </form>
                     </aside> -->
                     <aside class="single_sidebar_widget popular_post_widget">
-                        <h3 class="widget_title" style="color: #2d2d2d;">Recent Post</h3>
+                        <h3 class="widget_title" style="color: #2d2d2d;">最近の投稿</h3>
                         @foreach($recent_posts as $post)
                         <div class="media post_item">
                             <div class="media-body">
@@ -229,7 +229,7 @@
 
                     </aside>
                     <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title" style="color: #2d2d2d;">You may like these Category</h4>
+                        <h4 class="widget_title" style="color: #2d2d2d;">これらのカテゴリーが好きかもしれない</h4>
                         <ul class="list cat-list">
                             @foreach ($tags as $tag )
                             <li>

@@ -33,7 +33,7 @@ class HomeController extends AdminController
      */
 
         public function homepage(){
-            $posts = Post::orderBy('post_id', 'DESC')->get();
+            $posts = Post::orderBy('post_id', 'DESC')->paginate(6);
             return view('user.home',compact('posts'));
         }
 

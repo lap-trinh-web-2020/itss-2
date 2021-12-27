@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 
@@ -26,9 +26,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-       if(Schema::hasTable('tags')){
+        if (config('app.env') === 'production') {
+            \URL::forceScheme('https');
+        }
+        if (Schema::hasTable('tags')) {
             $tags = DB::table("tags")->get();
-            View::share('tags',$tags);
-        }   
+            View::share('tags', $tags);
+        }
     }
 }

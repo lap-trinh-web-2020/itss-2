@@ -24,6 +24,17 @@ class Post extends Model implements Searchable
         'post_url'
     ];
 
+    public function format() {
+        return [
+            'id' => $this->id,
+            'post_url' => $this->post_url,
+            'title' => $this->title,
+            'description' => $this->description,
+            'image' => $this->images()->first()->url,
+            'category_name' => $this->category()->first()->name,
+        ];
+    }
+
     public function tags(){
         return $this->belongsToMany('App\Tag','post_tag','post_id','tag_id');
     }

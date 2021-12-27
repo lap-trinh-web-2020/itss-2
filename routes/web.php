@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +33,9 @@ Route::get('/top-posts','PostController@get_top_posts');
 
 /*User authen*/
 Route::match(['GET','POST'],'/login','AuthController@login');
-Route::match(['GET','POST'],'/register','AuthController@register');
-Route::post('/store-restauran', 'Authcontroller@store')->name('restauran.store');
+Route::match(['GET'],'/register','AuthController@register');
+Route::post('/register_cus', [AuthController::class, 'register'])->name('register');
+Route::post('/store-restauran', 'AuthController@store')->name('restauran.store');
 Route::match(['GET','POST'],'/profiles','AuthController@profile');
 Route::match(['GET','POST'],'/logout','Auth\LoginController@logout');
 
@@ -40,7 +43,7 @@ Route::match(['GET','POST'],'/logout','Auth\LoginController@logout');
 // Route::match(['GET','POST'],'/change-pass','AuthController@change_pass');
 Route::get('users/{id}','Auth\UserController@show');
 Route::get('users/{id}/edit', 'Auth\UserController@edit')->middleware('require_same_user');
-Route::match(['GET', 'POST'], 'users/{id}/update', 'Auth\UserController@update')->middleware('require_same_user');
+Route::match(['GET', 'POST'], 'users/{id}/update', 'Auth\UserController@update')->middleware('require_same_user')->name('user.update');
 Route::get('users/{user_id}/delete', 'AdminController@delete')->middleware('require_admin');
 Route::get('users/{user_id}/posts', 'Auth\UserController@posts');
 

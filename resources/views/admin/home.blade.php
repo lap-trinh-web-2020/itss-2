@@ -74,7 +74,7 @@
                     <div class="mr-5">{{$number_of_tags}} タグ</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1 edus-nav-item-3" href="#">
-                    <span class="float-left">View Details</span>
+                    <span class="float-left">詳細を見る</span>
                     <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>

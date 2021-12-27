@@ -2,17 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Spatie\Searchable\Searchable;
-use DB;
 use App\User;
 use App\Post;
 use App\Tag;
-use App\PostTag;
-use App\Http\Requests;
-use Session;
-use Illuminate\Support\Facades\Redirect;
-#session_start();
 class AdminController extends Controller
 {
     public function index()
@@ -24,8 +16,8 @@ class AdminController extends Controller
             $tags = $tags->SortByDesc('tag_id');
 
 
-            $number_of_users = User::where('isRestauran', 0)->count();
-            $number_of_restaurans = User::where('isRestauran', 1)->count();
+            $number_of_users = User::where('isrestauran', 0)->count();
+            $number_of_restaurans = User::where('isrestauran', 1)->count();
             $number_of_posts = Post::count();
             $number_of_tags = Tag::count();
             return view('admin.home')
@@ -36,7 +28,7 @@ class AdminController extends Controller
                 ->with(compact('users', $users))
                 ->with(compact('posts', $posts))
                 ->with(compact('tags', $tags));
-        }else{
+        } else{
             return redirect('/');
         }
     }

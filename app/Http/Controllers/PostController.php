@@ -28,7 +28,7 @@ class PostController extends Controller
     function all_post(Request $request)
     {
         $posts = Post::paginate(3);
-        $title = "Posts";
+        $title = "投稿";
         if ($request->ajax()) {
             return view('post.post_data', compact('posts', 'title'))->render();
         }
@@ -39,8 +39,8 @@ class PostController extends Controller
     public function post_detail($post_id)
     {
         $post = Post::find($post_id);
-        if($post === null){
-            return view('error.error')->with('code',404)->with('message','Post id not found');
+        if ($post === null) {
+            return view('error.error')->with('code', 404)->with('message', 'Post id not found');
         }
         $recent_posts = Post::where('post_id', '!=', $post_id)->orderBy('date_create', 'desc')->take(3)->get();
 
@@ -97,8 +97,8 @@ class PostController extends Controller
         })->paginate(3);
 
         $tag = Tag::find($tag_id);
-        if($tag == null){
-            return view('error.error')->with('code',404)->with('message','Tag id not found');
+        if ($tag == null) {
+            return view('error.error')->with('code', 404)->with('message', 'Tag id not found');
         }
 
         $title = strtoupper($tag->tag_title);
@@ -129,12 +129,13 @@ class PostController extends Controller
             $post->title = $request->title;
 
             if ($request->hasFile('post_url')) {
-                $filenameWithExt = $request->file('post_url')->getClientOriginalName();
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                $extension = $request->file('post_url')->getClientOriginalExtension();
-                $filenameToStore = $filename . '_' . time() . '.' . $extension;
-                $path = $request->file('post_url')->storeAs('public/post_url', $filenameToStore);
-                $post->post_url = $filenameToStore;
+                $request->validate(
+                    [
+                        'post_url' => 'image'
+                    ]
+                );
+                $path = $this->save_image($request->file('post_url'));
+                $post->post_url = $path['data']['url'];
             }
 
             $post->content = $request->detail_content;
@@ -154,12 +155,13 @@ class PostController extends Controller
     }
 
     # Edit post
-    public function edit(Request $request,$post_id){
+    public function edit(Request $request, $post_id)
+    {
         $post = Post::find($post_id);
-        if($post == null){
-            return view('error.error')->with('code',404)->with('message','Post id not found');
+        if ($post == null) {
+            return view('error.error')->with('code', 404)->with('message', 'Post id not found');
         }
-        if($this->require_same_user($post_id) == FALSE){
+        if ($this->require_same_user($post_id) == FALSE) {
             return redirect('/');
         }
 
@@ -203,14 +205,15 @@ class PostController extends Controller
     }
 
     # Delete post
-    public function delete($post_id){
+    public function delete($post_id)
+    {
         $post = Post::find($post_id);
-        if($post == null){
-            return view('error.error')->with('code',404)->with('message','Post id not found');
+        if ($post == null) {
+            return view('error.error')->with('code', 404)->with('message', 'Post id not found');
         }
 
-        if($this->require_same_user($post_id) == FALSE){
-            if(auth()->user()->admin == FALSE){
+        if ($this->require_same_user($post_id) == FALSE) {
+            if (auth()->user()->admin == FALSE) {
                 return redirect('/');
             }
         }
@@ -234,12 +237,13 @@ class PostController extends Controller
     }
 
 
-    public function require_same_user($post_id){
+    public function require_same_user($post_id)
+    {
         $post = Post::find($post_id);
         $post_user = $post->user;
-        if(auth()->user() == $post_user){
+        if (auth()->user() == $post_user) {
             return TRUE;
-        }else{
+        } else {
             return FALSE;
         }
     }
@@ -269,7 +273,7 @@ class PostController extends Controller
     {
         $current_user = User::find(auth()->user()->user_id);
         $posts = Post::where('user_id', $current_user->user_id)->paginate(3);
-        $title = "My posts";
+        $title = "私の投稿";
         if ($request->ajax()) {
             return view('post.post_data', compact('posts', 'title'))->render();
         }
@@ -279,11 +283,10 @@ class PostController extends Controller
     public function get_top_posts()
     {
         $tops = DB::table('user_post_like')
-        ->join('posts', 'posts.post_id', '=', 'user_post_like.post_id')
-        ->join('users', 'users.user_id', '=', 'user_post_like.user_id')
-        ->selectRaw('posts.*, users.user_name, sum(like_state) as top')
-        ->groupByRaw('posts.post_id')->orderByDesc('top')->limit(5)->get()->toArray();
-        // dd($top);
+            ->join('posts', 'posts.post_id', '=', 'user_post_like.post_id')
+            ->join('users', 'users.user_id', '=', 'user_post_like.user_id')
+            ->selectRaw('posts.*, users.user_name, sum(like_state) as top')
+            ->groupBy('posts.post_id', 'users.user_name')->orderByDesc('top')->limit(5)->get()->toArray();
         return view('user.top_post', compact('tops'));
     }
 
@@ -297,4 +300,24 @@ class PostController extends Controller
     //     return redirect('/posts/'.$post_id);
     // }
 
+    private function save_image($image, $name = null)
+    {
+        $API_KEY = 'c6817f9f49dc42bb4f04bf9c17721c89';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://api.imgbb.com/1/upload?key=' . $API_KEY);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_SAFE_UPLOAD, true);
+        $extension = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
+        $file_name = ($name) ? $name . '.' . $extension : $image->getClientOriginalName();
+        $data = array('image' => base64_encode(file_get_contents($image)), 'name' => $file_name);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        $result = curl_exec($ch);
+        if (curl_errno($ch)) {
+            return 'Error:' . curl_error($ch);
+        } else {
+            return json_decode($result, true);
+        }
+        curl_close($ch);
+    }
 }

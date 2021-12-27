@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class RequireAdmin
 {
@@ -15,7 +16,7 @@ class RequireAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->admin == FALSE){
+        if(Auth::check() && auth()->user()->admin == FALSE){
             return redirect('/');
         }
         return $next($request);

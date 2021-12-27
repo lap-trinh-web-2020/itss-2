@@ -27,21 +27,18 @@ class UserController extends Controller
 
         if ($request->isMethod("POST")) {
             if ($request->hasFile('avatar_url')) {
-                $filenameWithExt = $request->file('avatar_url')->getClientOriginalName();
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                $extension = $request->file('avatar_url')->getClientOriginalExtension();
-                $filenameToStore = $filename . '_' . time() . '.' . $extension;
-                $path = $request->file('avatar_url')->storeAs('public/avatar_url', $filenameToStore);
-                $user->avatar_url = $filenameToStore;
+                $path = $this->save_image($request->file('avatar_url'));
+                $user->avatar_url = $path['data']['url'];
             }
             $request->validate([
-                'phone' => 'min:8|numeric',
+                'phone' => 'min:11|numeric',
             ]);
 
             $user->last_name = $request->input('lastname');
             $user->first_name = $request->input('firstname');
             $user->birthday = $request->input('birthday');
             $user->gender = $request->input('gender');
+            $user->des = $request->input('des');
 
             $user->address = $request->input('address');
             $user->phone = $request->input('phone');
@@ -70,6 +67,27 @@ class UserController extends Controller
         $user = User::find($user_id);
         $posts = User::find($user_id)->posts;
         return view('user.posts')->with(compact(['posts', $posts], ['user', $user]));
+    }
+
+    private function save_image($image, $name = null)
+    {
+        $API_KEY = 'c6817f9f49dc42bb4f04bf9c17721c89';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://api.imgbb.com/1/upload?key=' . $API_KEY);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_SAFE_UPLOAD, true);
+        $extension = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
+        $file_name = ($name) ? $name . '.' . $extension : $image->getClientOriginalName();
+        $data = array('image' => base64_encode(file_get_contents($image)), 'name' => $file_name);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        $result = curl_exec($ch);
+        if (curl_errno($ch)) {
+            return 'Error:' . curl_error($ch);
+        } else {
+            return json_decode($result, true);
+        }
+        curl_close($ch);
     }
 
 }

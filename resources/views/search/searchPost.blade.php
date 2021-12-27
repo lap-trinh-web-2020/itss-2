@@ -64,7 +64,7 @@
                                                                 @if($searchResult->searchable->post_url == null)
                                                                     <img src="{{asset('/user/img/pj3.1.png')}}" alt="" style="height: 200px;">
                                                                 @else
-                                                                    <img src="{{asset('/storage/post_url/'.$searchResult->searchable->post_url)}}" alt=""  style="height: 200px;">
+                                                                    <img src="{{$searchResult->searchable->post_url}}" alt=""  style="height: 200px;">
                                                                 @endif
                                                             </div>
                                                         </div>

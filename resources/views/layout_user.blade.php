@@ -52,8 +52,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Alert for confirm password -->
     <script>
-        var msg = '{{Session::get('alert')}}';
-        var exist = '{{Session::has('alert')}}';
+        var msg = '{{Session::get("alert")}}';
+        var exist = '{{Session::has("alert")}}';
         if(exist){
           alert(msg);
         }
@@ -100,7 +100,7 @@
                                         <form action="{{ route('search.result') }}">
                                             <div class="form-group">
                                                 <div class="input-group mb-3">
-                                                    <input type="text" name="query" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                                    <input type="text" name="query" class="form-control" placeholder='探索。。。' onfocus="this.placeholder = ''" onblur="this.placeholder = '探索。。。'">
                                                     <div class="input-group-append">
                                                         <button class="btns" type="submit"><i class="ti-search"></i></button>
                                                     </div>
@@ -116,7 +116,7 @@
                                             <ul id="navigation" class="d-flex justify-content-end align-items-center">
 
                                                 @if(Auth::user())
-                                                    <li><a style="color:black"  href="{{ URL::to('users/' . Auth::user()->user_id) }}"> いらっしゃいませ {{Auth::user()->user_name}}!!</a></li>
+                                                    <li><a style="color:black"  href="{{ URL::to('users/' . Auth::user()->user_id) }}">{{Auth::user()->user_name}}!!</a></li>
                                                     <li><a style="color:black"  href="{{ URL::to('/top-posts') }}">投稿ランク</a></li>
                                                     <li><a style="color:black" href="{{ URL::to('/my-posts') }}">私の投稿</a></li>
                                                     <li><a style="color:black" href="{{ URL::to('/create_post') }}">投稿を作成する</a></li>
@@ -140,13 +140,7 @@
                                                             @endif
                                                             <li><a
                                                                     href="{{ URL::to('users/' . Auth::user()->user_id) }}">プロフィールを見る</a></li>
-                                                            <li><a
-                                                                    href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">プロファイル編集</a></li>
-                                                            <!-- @if (auth()->user()->admin)
-                                                                 <li><a href="{{ URL::to('admin/home-page') }}">Admin
-                                                                        Page</a></li>
-                                                            @endif -->
-                                                            <!-- <li><a href="{{URL::to('/my-posts')}}">My posts</a></li> -->
+                                                            <li><a href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">プロファイル編集</a></li>
                                                             <li><a href="{{ URL::to('/logout') }}">ログアウト</a></li>
                                                         </ul>
                                                     </li>
@@ -198,7 +192,7 @@
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>Our Team</h4>
+                                    <h4>私たちのチーム</h4>
                                     <ul>
                                         <li><a href="https://github.com/">Mai Mạnh Thục</a></li>
                                         <li><a href="https://github.com/">Nguyễn Thị Nguyệt Ánh</a></li>
@@ -211,7 +205,7 @@
                         <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>Role</h4>
+                                    <h4>役割</h4>
                                     <ul>
                                         <li> <a href = "＃">リーダー</a> </li>
                                          <li> <a href = "＃"> SPリーダー</a> </li>
