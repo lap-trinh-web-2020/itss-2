@@ -9,12 +9,12 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="bounceIn" data-delay="0.2s">Change password</h1>
+                                <h1 data-animation="bounceIn" data-delay="0.2s">パスワードを変更する</h1>
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">All Blog</a></li>
+                                        <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+                                        <li class="breadcrumb-item"><a href="#">全ブログ</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="button button-contactForm btn_1 boxed-btn">Save</button>
+                            <button type="submit" class="button button-contactForm btn_1 boxed-btn">セーブ</button>
                         </div>
                     </form>
                 </div>
