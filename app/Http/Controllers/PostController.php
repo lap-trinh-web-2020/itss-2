@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use App\ProductPost;
 use App\Tag;
 use App\User;
 use App\UserPostLike;
@@ -113,6 +115,8 @@ class PostController extends Controller
     public function create(Request $request)
     {
         $current_user = User::find(auth()->user()->user_id);
+        $listProduct = Product::all();
+
         if ($request->isMethod('post')) {
             # Validate post form data
             $request->validate(
@@ -120,7 +124,7 @@ class PostController extends Controller
                     'title' => ['required', 'min:4', 'max:255'],
                     'tags' => 'required',
                     'description' => 'required',
-                    'detail_content' => 'required'
+                    'detail_content' => 'required',
                 ]
             );
 
@@ -149,9 +153,34 @@ class PostController extends Controller
             foreach ($tags as $tag_id) {
                 $post->tags()->attach($tag_id);
             }
+
+            $products = $request->get('products');
+
+            if ($products) {
+                foreach ($products as $product) {
+                    $idProduct = array_search($product['name'], $listProduct->pluck('product_name', 'product_id')->toArray());
+                    if ($idProduct) {
+                        ProductPost::create([
+                            'product_id' => $idProduct,
+                            'post_id' => $post->post_id,
+                            'quantily' => $product['quantily'],
+                        ]);
+                    } else {
+                        $productCreated = Product::create([
+                            'product_id' => count($listProduct) + 1, //Đoạn này không tạo DB bằng migrate nên nó không tự nhảy số, phải làm sida ntn
+                            'product_name' => $product['name'],
+                        ]);
+                        ProductPost::create([
+                            'product_id' => $productCreated->product_id,
+                            'post_id' => $post->post_id,
+                            'quantily' => $product['quantily'],
+                        ]);
+                    }
+                }
+            }
             return redirect('/posts/' . $post_id);
         }
-        return view('post.create_post');
+        return view('post.create_post', compact('listProduct'));
     }
 
     # Edit post

@@ -39,6 +39,10 @@ class Post extends Model implements Searchable
         return $this->belongsToMany('App\Tag','post_tag','post_id','tag_id');
     }
 
+    public function product(){
+        return $this->belongsToMany('App\Product','product_of_post','post_id','product_id');
+    }
+
     public function user(){
         return $this->belongsTo('App\User','user_id');
     }
