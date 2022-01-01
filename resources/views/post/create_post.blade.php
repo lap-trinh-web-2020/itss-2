@@ -76,8 +76,15 @@
                             @enderror
                         </div>
                     </div>
-
-
+                    <div class="col-12 mb-5">
+                        <div id="list-product">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <button class="btn btn-success" id="add-more-product" type="button">Thêm</button>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="col-12">
                         <!-- Nav tabs -->
@@ -132,9 +139,59 @@
         alert("Please choose tag");
         return false;
     }
+
+    const listProduct = @json($listProduct);
+    const renderListProduct = () => {
+        let html = '';
+        listProduct.forEach((item) => {
+            if(item.product_name) {
+                html += `<option value="${item.product_name}">${item.product_name}</option>`
+            }
+        })
+        return html;
+    }
+    let numberProduct = 1;
+
+    $('#add-more-product').on('click', function () {
+        $('#list-product').append(`
+            <div class="row mb-2" id="div-delete-product-${numberProduct}">
+                <div class="col-md-6">
+                    <select class="form-control select-2" name="products[${numberProduct}][name]">
+                        <option value=""></option>
+                        ${renderListProduct()}
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="number" min="0" step="1" placeholder="Số lượng" name="products[${numberProduct}][quantily]">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-danger btn-delete-product" id="delete-product-${numberProduct}" type="button">Xoá</button>
+                </div>
+            </div>
+        `)
+
+        numberProduct++;
+
+        $(".select-2").select2({
+            tags: true,
+            theme: "classic",
+            placeholder: 'Select a product',
+        });
+
+        $('.btn-delete-product').click(function(event){
+            $(`#div-${event.target.id}`).remove()
+        });
+    })
 </script>
-
-
-
-
+<style>
+    .select2-selection__rendered {
+        line-height: 48px !important;
+    }
+    .select2-container .select2-selection--single {
+        height: 48px !important;
+    }
+    .select2-selection__arrow {
+        height: 46px !important;
+    }
+</style>
 @endsection
