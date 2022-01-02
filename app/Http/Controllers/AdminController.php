@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Product;
 use App\Post;
 use App\Tag;
 class AdminController extends Controller
@@ -13,6 +14,7 @@ class AdminController extends Controller
             $users = User::all();
             $posts = Post::all();
             $tags = Tag::all();
+            $products = Product::all();
             $tags = $tags->SortByDesc('tag_id');
 
 
@@ -20,13 +22,16 @@ class AdminController extends Controller
             $number_of_restaurans = User::where('isrestauran', 1)->count();
             $number_of_posts = Post::count();
             $number_of_tags = Tag::count();
+            $number_of_product = Product::count();
             return view('admin.home')
                 ->with(compact('number_of_users', $number_of_users))
                 ->with(compact('number_of_restaurans', $number_of_restaurans))
                 ->with(compact('number_of_posts', $number_of_posts))
                 ->with(compact('number_of_tags', $number_of_tags))
+                ->with(compact('number_of_product', $number_of_product))
                 ->with(compact('users', $users))
                 ->with(compact('posts', $posts))
+                ->with(compact('products', $products))
                 ->with(compact('tags', $tags));
         } else{
             return redirect('/');

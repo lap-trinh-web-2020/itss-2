@@ -27,6 +27,9 @@ Route::get('/posts/{post_id}/react','PostController@react')->name('post.react');
 Route::get('/my-posts','PostController@get_my_posts');
 Route::get('/top-posts','PostController@get_top_posts');
 
+Route::get('/product','ProductController@all_product');
+
+
 // Route::get('/posts/{post_id}/unactive-post','PostController@post_detail')->name('post.unlike');
 // Route::get('/active-post/{post_id}','PostController@active_post');
 // Route::get('/unactive-post/{post_id}','PostController@unactive_post');

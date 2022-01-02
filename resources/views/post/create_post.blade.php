@@ -159,10 +159,10 @@
                     <select class="form-control select-2" name="products[${numberProduct}][name]">
                         <option value=""></option>
                         ${renderListProduct()}
-                    </select>
+                    </select>b v
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="number" min="0" step="1" placeholder="Số lượng" name="products[${numberProduct}][quantily]">
+                    <input class="form-control" type="number" min="0" step="0.1" placeholder="Số lượng" name="products[${numberProduct}][quantily]">
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-danger btn-delete-product" id="delete-product-${numberProduct}" type="button">Xoá</button>
