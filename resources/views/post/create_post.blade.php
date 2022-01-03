@@ -81,7 +81,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2">
-                                <button class="btn btn-success" id="add-more-product" type="button">Thêm</button>
+                                <button class="btn btn-success" id="add-more-product" type="button">新しい材料を追加</button>
                             </div>
                         </div>
                     </div>

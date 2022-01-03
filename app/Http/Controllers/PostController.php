@@ -55,7 +55,7 @@ class PostController extends Controller
             ->join('posts', 'comments.post_id', '=', 'posts.post_id')
             ->join('users', 'comments.user_id', '=', 'users.user_id')
             ->where('posts.post_id', '=', $post_id)
-            ->select('comments.content', 'users.user_name', 'users.avatar_url')
+            ->select('comments.content', 'users.user_name', 'users.avatar_url', 'comments.url_img')
             ->paginate(5);
 
 
@@ -260,8 +260,19 @@ class PostController extends Controller
             $dataa["post_id"] = $request->post_id;
             $dataa["user_id"] = $request->user_id;
             $dataa["content"] = $request->content;
+            
+
+            if ($request->hasFile('url_img')) {
+                $filenameWithExt = $request->file('url_img')->getClientOriginalName();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                $extension = $request->file('url_img')->getClientOriginalExtension();
+                $filenameToStore = $filename . '_' . time() . '.' . $extension;
+                $path = $request->file('url_img')->storeAs('public/url_img', $filenameToStore);
+                $dataa["url_img"] = $filenameToStore;
+            }
             DB::table("comments")->insert($dataa);
         }
+
         return redirect("/posts/{$request->post_id}");
     }
 

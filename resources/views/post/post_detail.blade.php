@@ -13,18 +13,21 @@
                             <h1 data-animation="bounceIn" data-delay="0.2s">{{$post->title}}</h1>
 
                             @foreach($post_tags as $tag)
-                                <button type="button" class="btn-warning btn" style="padding: 15px 10px !important;"><a href="{{ URL::to('/posts/tag/'.$tag->tag_id) }}">{{$tag->tag_title}}</a></button>
+                            <button type="button" class="btn-warning btn" style="padding: 15px 10px !important;"><a
+                                    href="{{ URL::to('/posts/tag/'.$tag->tag_id) }}">{{$tag->tag_title}}</a></button>
                             @endforeach
-                            <br/><br/>
+                            <br /><br />
                             @if(($current_user->user_id == $post->user->user_id) or ($current_user->admin))
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        @if($current_user->user_id == $post->user->user_id)
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">編集</a></li>
-                                        @endif
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">削除</a></li>
-                                    </ol>
-                                </nav>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    @if($current_user->user_id == $post->user->user_id)
+                                    <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">編集</a>
+                                    </li>
+                                    @endif
+                                    <li class="breadcrumb-item"><a
+                                            href="{{URL::to('/posts/delete/'.$post->post_id)}}">削除</a></li>
+                                </ol>
+                            </nav>
                             @endif
                         </div>
                     </div>
@@ -53,7 +56,8 @@
                             {{$post->title}}
                         </h2>
                         <ul class="blog-info-link mt-3 mb-4">
-                            <li><a style="color:blue; " href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i> <b>{{$post->user->user_name}}</b></a></li>
+                            <li><a style="color:blue; " href="{{ URL::to('users/' . $post->user->user_id) }}"><i
+                                        class="fa fa-user"></i> <b>{{$post->user->user_name}}</b></a></li>
                             <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} コメント</a></li>
                             <li><a href="#"><i class="far fa-calendar"></i> {{$post->date_create}} </a></li>
                             <li class="like-info">
@@ -62,37 +66,43 @@
                             </li>
                             <div id="react-btn">
                                 @if($search_user_post->like_state == 0)
-                                <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span class='fa-thumb-styling fa fa-thumbs-up react-ajax ' post-id="{{ $post->post_id}}"></span></a>
+                                <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span
+                                        class='fa-thumb-styling fa fa-thumbs-up react-ajax '
+                                        post-id="{{ $post->post_id}}"></span></a>
                                 @else
-                                <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span class='fa-thumb-styling fa fa-thumbs-up react-ajax reacted' post-id="{{ $post->post_id}}"></span></a>
+                                <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span
+                                        class='fa-thumb-styling fa fa-thumbs-up react-ajax reacted'
+                                        post-id="{{ $post->post_id}}"></span></a>
                                 @endif
                                 {{-- <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a> --}}
                             </div>
                         </ul>
                         <script>
-                            $(document).ready(function() {
-                                $(document).on('click', '.react-ajax', function(event) {
-                                    event.preventDefault();
-                                    var post_id = $(this).attr('post-id');
-                                    console.log("post id is " + post_id);
-                                    fetch_data(post_id);
-                                });
-
-                                function fetch_data(post_id) {
-                                    $(".react-ajax").toggleClass("reacted");
-                                    $.ajax({
-                                        url: post_id + "/react",
-                                        success: function(data) {
-                                            console.log(data);
-                                            $('.count-like').html(data + " people like this");
-                                        }
-                                    });
-                                }
+                        $(document).ready(function() {
+                            $(document).on('click', '.react-ajax', function(event) {
+                                event.preventDefault();
+                                var post_id = $(this).attr('post-id');
+                                console.log("post id is " + post_id);
+                                fetch_data(post_id);
                             });
+
+                            function fetch_data(post_id) {
+                                $(".react-ajax").toggleClass("reacted");
+                                $.ajax({
+                                    url: post_id + "/react",
+                                    success: function(data) {
+                                        console.log(data);
+                                        $('.count-like').html(data + " people like this");
+                                    }
+                                });
+                            }
+                        });
                         </script>
                         <div class="quote-wrapper">
                             <div class="quotes">
-                                <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>
+                                <script
+                                    src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js">
+                                </script>
                                 <mark-down pedantic>
                                     {{$post->content}}
                                 </mark-down>
@@ -104,33 +114,38 @@
                         <h4>{{$comment_count}} コメント</h4>
                         @foreach($comments as $comment)
                         <div class="comment-list">
-                           <div class="single-comment justify-content-between d-flex">
-                              <div class="user justify-content-between d-flex">
-                                 <div class="thumb">
-                                  @if($comment->avatar_url == null)
-                                    <div class="cmt-ava">
-                                        <img src="{{asset('/user/img/default_avt.jpg')}}">
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        @if($comment->avatar_url == null)
+                                        <div class="cmt-ava">
+                                            <img src="{{asset('/user/img/default_avt.jpg')}}">
+                                        </div>
+                                        @else
+                                        <div class="cmt-ava">
+                                            <img src="{{$comment->avatar_url}}" alt="author avatar">
+                                        </div>
+                                        @endif
                                     </div>
-                                  @else
-                                  <div class="cmt-ava">
-                                        <img src="{{$comment->avatar_url}}" alt="author avatar">
-                                  </div>
-                                  @endif
-                                 </div>
-                                 <div class="desc">
-                                    <p class="comment">
-                                        {{$comment->content}}
-                                    </p>
-                                    <div class="d-flex justify-content-between">
-                                       <div class="d-flex align-items-center">
-                                          <h5>
-                                             <a href="{{ URL::to('users/' . $post->user->user_id) }}">{{$comment->user_name}}</a>
-                                          </h5>
-                                       </div>
+                                    <div class="desc">
+
+                                        <p><a style="color:blue; " href="{{ URL::to('users/' . $post->user->user_id) }}">{{$comment->user_name}}</a></p>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <h5>
+                                                    @if ($comment->url_img != NULL)
+                                                    <img class="img-fluid" src="{{$comment->url_img}}" alt="" style="height: 200px; width: 200px">
+                                                    @endif
+                                                    <p class="comment">
+                                                        {{$comment->content}}
+                                                    </p>
+
+                                                </h5>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                           </div>
+                                </div>
+                            </div>
                         </div>
                         @endforeach
                         <p>{{$comments->links()}}</p>
@@ -182,16 +197,29 @@
 
                 <div class="comment-form">
                     <h4>あなたのコメント</h4>
-                    <form method="post" class="form-contact comment_form" action="{{URL::to('/posts/{$post->post_id}/comment')}}" id="commentForm">
+                    <form method="post" class="form-contact comment_form"
+                        action="{{URL::to('/posts/{$post->post_id}/comment')}}" id="commentForm">
                         {{ csrf_field() }}
                         <input type="hidden" name="post_id" value='{{$post->post_id}}'>
                         <input type="hidden" name="user_id" value="{{$current_user->user_id}}">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control w-100" name="content" id="comment" cols="30" rows="9"></textarea>
+                                    <textarea class="form-control w-100" name="content" id="comment" cols="30"
+                                        rows="9"></textarea>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-xs-12 col-sm-8">
+                                <label for="url_img" class="btn btn3 custom-file-upload">
+                                    アップロード
+                                </label>
+
+                                <input type="file" name="url_img" class="file-upload" id="url_img" required
+                                    accept="image/png, image/jpeg">
+                            </div>
+                            <div class="vspace-12-sm"></div>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="button button-contactForm btn_1 boxed-btn">コメントを残す</button>
