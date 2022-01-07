@@ -267,8 +267,8 @@ class PostController extends Controller
             $dataa = array();
             $dataa["post_id"] = $request->post_id;
             $dataa["user_id"] = $request->user_id;
-            $dataa["content"] = $request->content;
-            
+            $dataa["content"] = $request->get('content');
+
 
             if ($request->hasFile('url_img')) {
                 $request->validate(

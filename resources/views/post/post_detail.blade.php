@@ -108,8 +108,8 @@
                                     <table>
                                         @foreach($product_of_posts as $product_of_post)
                                         <tr>
-                                            <td>{{$product_of_post->product_name}}</td>
-                                            <td>{{$product_of_post->quantily}} キログガム</td>
+                                            <td class="{{$product_of_post->product_price ? 'product-green' : 'product-red'}}">{{$product_of_post->product_name}}</td>
+                                            <td>{{$product_of_post->quantily}} キログラム</td>
                                         </tr>
                                         @endforeach
 
