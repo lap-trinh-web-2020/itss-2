@@ -1,8 +1,11 @@
 <!-- DataTables Example -->
 <div class="card mb-3 edus-content-item-5">
+    
     <div class="card-header">
         <i class="fas fa-table"></i>
         すべての材料
+        <div class="float-right"><a href="{{ URL::to('admin/create_restauran') }}"><button class="btn btn-outline-secondary btn-sm">新しい材料を追加する</button></a>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -29,7 +32,7 @@
 
                     <td><a href="{{ URL::to('#')}}">{{ $product->product_name }}</a></td>
                     <td>
-                        <a href={{ URL::to('#') }}>{{$product->product_price}}</a>
+                        <a href={{ URL::to('#') }}>{{$product->product_price ? $product->product_price : 'まだ売らない'}}</a>
                         
                     </td>
                     <td>

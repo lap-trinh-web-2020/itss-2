@@ -103,6 +103,19 @@
                                 <script
                                     src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js">
                                 </script>
+                                <div>
+                                    <h2>材料</h2>
+                                    <table>
+                                        @foreach($product_of_posts as $product_of_post)
+                                        <tr>
+                                            <td>{{$product_of_post->product_name}}</td>
+                                            <td>{{$product_of_post->quantily}} キログガム</td>
+                                        </tr>
+                                        @endforeach
+
+                                    </table>
+                                </div>
+                                <h2>内容</h2>
                                 <mark-down pedantic>
                                     {{$post->content}}
                                 </mark-down>
@@ -129,12 +142,15 @@
                                     </div>
                                     <div class="desc">
 
-                                        <p><a style="color:blue; " href="{{ URL::to('users/' . $post->user->user_id) }}">{{$comment->user_name}}</a></p>
+                                        <p><a style="color:blue; "
+                                                href="{{ URL::to('users/' . $post->user->user_id) }}">{{$comment->user_name}}</a>
+                                        </p>
                                         <div class="d-flex justify-content-between">
                                             <div class="d-flex align-items-center">
                                                 <h5>
                                                     @if ($comment->url_img != NULL)
-                                                    <img class="img-fluid" src="{{$comment->url_img}}" alt="" style="height: 200px; width: 200px">
+                                                    <img class="img-fluid" src="{{$comment->url_img}}" alt=""
+                                                        style="height: 200px; width: 200px">
                                                     @endif
                                                     <p class="comment">
                                                         {{$comment->content}}
@@ -150,55 +166,13 @@
                         @endforeach
                         <p>{{$comments->links()}}</p>
                     </div>
-
-                    <div class="navigation-top">
-                        {{-- <div class="navigation-area">
-                           <div class="row">
-                              <div
-                              class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                              <div class="thumb">
-                                 <a href="#">
-                                    <img class="img-fluid" src="assets/img/post/preview.png" alt="">
-                                 </a>
-                              </div>
-                              <div class="arrow">
-                                 <a href="#">
-                                    <span class="lnr text-white ti-arrow-left"></span>
-                                 </a>
-                              </div>
-                              <div class="detials">
-                                 <p>Prev Post</p>
-                                 <a href="#">
-                                    <h4 style="color: #2d2d2d;">Space The Final Frontier</h4>
-                                 </a>
-                              </div>
-                           </div>
-                           <div
-                           class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                           <div class="detials">
-                              <p>Next Post</p>
-                              <a href="#">
-                                 <h4 style="color: #2d2d2d;">Telescopes 101</h4>
-                              </a>
-                           </div>
-                           <div class="arrow">
-                              <a href="#">
-                                 <span class="lnr text-white ti-arrow-right"></span>
-                              </a>
-                           </div>
-                           <div class="thumb">
-                              <a href="#">
-                                 <img class="img-fluid" src="assets/img/post/next.png" alt="">
-                              </a>
-                           </div>
-                        </div> --}}
-                    </div>
                 </div>
 
                 <div class="comment-form">
                     <h4>あなたのコメント</h4>
                     <form method="post" class="form-contact comment_form"
-                        action="{{URL::to('/posts/{$post->post_id}/comment')}}" id="commentForm">
+                        action="{{URL::to('/posts/{$post->post_id}/comment')}}" id="commentForm"
+                        enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="hidden" name="post_id" value='{{$post->post_id}}'>
                         <input type="hidden" name="user_id" value="{{$current_user->user_id}}">
@@ -229,19 +203,6 @@
             </div>
             <div class="col-lg-3">
                 <div class="blog_right_sidebar">
-                    <!-- <aside class="single_sidebar_widget search_widget">
-                        <form action="{{ route('search.result') }}">
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <input type="text" name="query" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
-                                    <div class="input-group-append">
-                                        <button class="btns" type="button"><i class="ti-search"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Search</button>
-                        </form>
-                    </aside> -->
                     <aside class="single_sidebar_widget popular_post_widget">
                         <h3 class="widget_title" style="color: #2d2d2d;">最近の投稿</h3>
                         @foreach($recent_posts as $post)

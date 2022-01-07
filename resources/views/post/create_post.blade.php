@@ -81,7 +81,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2">
-                                <button class="btn btn-success" id="add-more-product" type="button">新しい材料を追加</button>
+                                <button class="btn btn-success" id="add-more-product" type="button">材料を追加</button>
                             </div>
                         </div>
                     </div>
@@ -105,13 +105,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div role="tabpanel" class="tab-pane" id="preview" style="padding: 40px 70px 40px 70px">
-                                    <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>
-                                    <mark-down>
-
-                                    </mark-down>
-                                </div>
-                            {{-- </div> --}}
                         </div>
 
                     </div>
@@ -159,13 +152,21 @@
                     <select class="form-control select-2" name="products[${numberProduct}][name]">
                         <option value=""></option>
                         ${renderListProduct()}
-                    </select>b v
+                    </select>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="number" min="0" step="0.1" placeholder="Số lượng" name="products[${numberProduct}][quantily]">
+                    <div class="col">
+                        <div class="col-md-6">
+                        <input class="form-control" type="number" min="0" step="0.1" placeholder="量" name="products[${numberProduct}][quantily]">
+                        </div>
+                        <div class="col-md-6" style="align-content: center;">
+                            <p>キログラムガム</p>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="col-md-2">
-                    <button class="btn btn-danger btn-delete-product" id="delete-product-${numberProduct}" type="button">Xoá</button>
+                    <button class="btn btn-danger btn-delete-product" id="delete-product-${numberProduct}" type="button">削除</button>
                 </div>
             </div>
         `)
@@ -175,7 +176,7 @@
         $(".select-2").select2({
             tags: true,
             theme: "classic",
-            placeholder: 'Select a product',
+            placeholder: '材料',
         });
 
         $('.btn-delete-product').click(function(event){

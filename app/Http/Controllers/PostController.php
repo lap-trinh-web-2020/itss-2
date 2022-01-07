@@ -79,6 +79,13 @@ class PostController extends Controller
             $query->where('posts.post_id', $post_id);
         })->get();
 
+
+        $product_of_posts = DB::table('product_of_post')
+        ->join('products', 'products.product_id', '=', 'product_of_post.product_id')
+        ->where('product_of_post.post_id', '=', $post_id)
+        ->select('products.product_name', 'products.product_price','product_of_post.quantily')
+        ->get();
+
         return view('post.post_detail', compact(
             'post',
             'recent_posts',
@@ -87,7 +94,8 @@ class PostController extends Controller
             'current_user',
             'search_user_post',
             'count_like',
-            'post_tags'
+            'post_tags',
+            'product_of_posts'
         ));
     }
 
@@ -263,12 +271,14 @@ class PostController extends Controller
             
 
             if ($request->hasFile('url_img')) {
-                $filenameWithExt = $request->file('url_img')->getClientOriginalName();
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                $extension = $request->file('url_img')->getClientOriginalExtension();
-                $filenameToStore = $filename . '_' . time() . '.' . $extension;
-                $path = $request->file('url_img')->storeAs('public/url_img', $filenameToStore);
-                $dataa["url_img"] = $filenameToStore;
+                $request->validate(
+                    [
+                        'url_img' => 'image'
+                    ]
+                );
+                $path = $this->save_image($request->file('url_img'));
+                $dataa["url_img"]= $path['data']['url'];
+
             }
             DB::table("comments")->insert($dataa);
         }
