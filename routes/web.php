@@ -69,3 +69,8 @@ Route::match(['GET','POST'],'tags/new','TagController@create')->middleware('requ
 Route::get('/tags/{tag_id}','TagController@show')->middleware('require_admin');
 Route::match(['GET','POST'],'/tags/{tag_id}/edit','TagController@edit')->middleware('require_admin');
 Route::get('/tags/delete/{tag_id}','TagController@delete')->middleware('require_admin');
+
+Route::get('/cart/addToCart', 'CartController@add')->name('addToCart');
+Route::post('/cart/updateCart', 'CartController@update')->name('updateCart');
+Route::get('/cart/deleteCart', 'CartController@delete')->name('deleteCart');
+Route::get('/cart', 'CartController@index')->name('cart');

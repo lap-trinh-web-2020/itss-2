@@ -17,4 +17,8 @@ class User extends Authenticatable // change model to authenticable
     public function posts(){
         return $this->hasMany(Post::class, 'user_id');
     }
+
+    public function carts(){
+        return $this->hasMany(Cart::class, 'user_id');
+    }
 }
