@@ -97,3 +97,10 @@ input[class="file-upload"] {
     background: #0008ff;
     border-radius: 50%;
 }
+
+.product-red {
+    color: #9b0000;
+}
+.product-green {
+    color: #007c00;
+}
