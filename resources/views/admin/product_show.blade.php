@@ -32,8 +32,7 @@
 
                     <td><a href="{{ URL::to('#')}}">{{ $product->product_name }}</a></td>
                     <td>
-                        <a href={{ URL::to('#') }}>{{$product->product_price ? $product->product_price : 'まだ売らない'}}</a>
-                        
+                        <p>{{$product->product_price ? $product->product_price : 'まだ売らない'}}</p>
                     </td>
                     <td>
                         @if($product->url_img != null)

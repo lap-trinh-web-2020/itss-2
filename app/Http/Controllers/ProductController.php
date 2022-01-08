@@ -42,9 +42,7 @@ class ProductController extends Controller
         if ($request->isMethod('post')) {
             $product = new Product();
             $product->product_name = $request->product_name;
-            if($request->product_price != NULL){
-                $product->product_price = $request->product_price;
-            }
+            $product->product_price = $request->product_price;
             if ($request->hasFile('url_img')) {
                 $path = $this->save_image($request->file('url_img'));
                 $product->url_img = $path['data']['url'];
@@ -93,8 +91,10 @@ class ProductController extends Controller
         }
         $products = Product::all();
         if($request->isMethod('post')){
+            // dd($request);
+
             $product->product_name = $request->product_name;
-            $product->product_price = $request->product_price;
+            $product->product_price = $request->get('product_price');
             if ($request->hasFile('url_img')) {
                 $path = $this->save_image($request->file('url_img'));
                 $product->url_img = $path['data']['url'];

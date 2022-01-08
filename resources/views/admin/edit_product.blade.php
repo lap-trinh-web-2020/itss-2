@@ -12,7 +12,6 @@
     </ul>
 </div>
 <div class="container">
-
     <form action="{{URL::to('admin/product/edit/' . $product->product_id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @if ($errors->any())
@@ -26,13 +25,13 @@
         </div>
         <div class="form-group">
             <label for="price">お金 (１キロガム)</label>
-            <input type="number" min="0" step="0.1" id="product_price" name="product_price" value={{ $product->product_price }}>
+            <input type="number" min="0" step="0.1" id="product_price" name="product_price" value={{ $product->product_price ? $product->product_price : 0}}>
         </div>
         @if($product->url_img != NULL)
         <img src="{{ $product->url_img }}">
         @endif
         <div class="form-group">
-            <label for="price">写真をアプロード</label>
+            <label for="img">写真をアプロード</label>
             <input type="file" name="url_img" accept="image/png, image/jpeg">
         </div>
         <div class="form-group" >
