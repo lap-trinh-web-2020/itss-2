@@ -50,7 +50,7 @@ class ProductController extends Controller
                 $product->url_img = $path['data']['url'];
             }
             $product->save();
-            return view('product.show', compact('listProduct'));
+            return redirect('admin.home-page');
         }
         return view('admin.create_product', compact('listProduct'));
     }
