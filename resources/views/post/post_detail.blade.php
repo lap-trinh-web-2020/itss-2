@@ -105,11 +105,12 @@
                                 </script>
                                 <div>
                                     <h2>材料</h2>
-                                    <table>
+                                    <table class="table">
                                         @foreach($product_of_posts as $product_of_post)
                                         <tr>
                                             <td class="{{$product_of_post->product_price ? 'product-green' : 'product-red'}}">{{$product_of_post->product_name}}</td>
                                             <td>{{$product_of_post->quantily}} キログラム</td>
+                                            <td><a href="{{route('addToCart', ['id' => $product_of_post->product_id])}}">カートに追加</a></td>
                                         </tr>
                                         @endforeach
 

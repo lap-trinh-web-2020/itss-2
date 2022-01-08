@@ -15,7 +15,7 @@
                 <p style="white-space: nowrap;overflow: hidden;width: 20em;text-overflow: ellipsis;">
                     {{$product->product_price}} / 1キロ</p>
             </div>
-            <a href="{{URL::to('#')}}" class="border-btn border-btn2">カートに追加</a>
+            <a href="{{route('addToCart', ['id' => $product->product_id])}}" class="border-btn border-btn2">カートに追加</a>
         </div>
         @endif
 

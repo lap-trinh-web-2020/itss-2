@@ -119,11 +119,10 @@
                                     <div class="main-menu d-none d-lg-block col-m-8 col-m-12">
                                         <nav>
                                             <ul id="navigation" class="d-flex justify-content-end align-items-center">
-
                                                 @if(Auth::user())
                                                     <li><a style="color:black"  href="{{ URL::to('users/' . Auth::user()->user_id) }}">{{Auth::user()->user_name}}!!</a></li>
                                                     <li><a style="color:black"  href="{{ URL::to('/top-posts') }}">投稿ランク</a></li>
-                                                    <li><a style="color:black" href="{{ URL::to('#') }}">私のカート</a></li>
+                                                    <li><a style="color:black" href="{{ route('cart') }}">私のカート ({{count(Auth::user()->carts()->get()) ?? 0}})</a></li>
                                                     <li><a style="color:black" href="{{ URL::to('/create_post') }}">投稿を作成する</a></li>
 
                                                 @endif
@@ -150,7 +149,7 @@
                                                                     href="{{ URL::to('users/' . Auth::user()->user_id) }}">プロフィールを見る</a></li>
                                                             <li><a href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">プロファイル編集</a></li>
                                                             <li><a href="{{ URL::to('/logout') }}">ログアウト</a></li>
-                                                            
+
                                                         </ul>
                                                     </li>
                                                 @else

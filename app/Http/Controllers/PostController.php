@@ -83,7 +83,7 @@ class PostController extends Controller
         $product_of_posts = DB::table('product_of_post')
         ->join('products', 'products.product_id', '=', 'product_of_post.product_id')
         ->where('product_of_post.post_id', '=', $post_id)
-        ->select('products.product_name', 'products.product_price','product_of_post.quantily')
+        ->select('products.product_name', 'products.product_price','product_of_post.quantily', 'product_of_post.product_id')
         ->get();
 
         return view('post.post_detail', compact(
