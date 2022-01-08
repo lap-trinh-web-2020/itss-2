@@ -5,7 +5,7 @@
         <div class="properties__card " style="width: 350px ">
             <div class="properties__img overlay1">
                 @if($product->url_img == null)
-                <img src="{{asset('/user/img/pj3.1.png')}}" alt="" style="height: 200px;">
+                <img src="{{asset('/user/img/cover.jpeg')}}" alt="" style="height: 200px;">
                 @else
                 <img src="{{$product->url_img}}" alt="" style="height: 200px;">
                 @endif
@@ -13,7 +13,7 @@
             <div class="properties__caption" style="height: 100px;">
                 <h3>{{$product->product_name}}</h3>
                 <p style="white-space: nowrap;overflow: hidden;width: 20em;text-overflow: ellipsis;">
-                    {{$product->product_price}} / 1キロ</p>
+                    {{$product->product_price}} $ / 1キロ</p>
             </div>
             <a href="{{route('addToCart', ['id' => $product->product_id])}}" class="border-btn border-btn2">カートに追加</a>
         </div>
