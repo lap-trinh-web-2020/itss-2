@@ -42,7 +42,7 @@
 
 <!-- Register -->
 
-<main class="login-body" data-vide-bg="{{asset('/user/img/login-bg.mp4')}}">
+<main class="login-body" data-vide-bg="{{asset('/user/img/background_login.jpeg')}}">
     @yield('content')
 </main>
 

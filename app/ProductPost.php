@@ -10,4 +10,8 @@ class ProductPost extends Model
     protected $fillable  = ['product_id', 'post_id', 'quantily'];
     public $timestamps = false;
 
+    public function products(){
+        return $this->belongsTo(Product::class, 'product_id', 'product_id');
+    }
+
 }

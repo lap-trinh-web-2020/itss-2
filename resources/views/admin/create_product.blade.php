@@ -33,14 +33,14 @@
 </section>
 <div class="container">
 
-    <form action="{{ route('restauran.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @if ($errors->any())
         @foreach ($errors->all() as $error)
         <div>{{$error}}</div>
         @endforeach
         @endif
-        <div class="form-input">
+        <!-- <div class="form-input">
             <label for="email" class="col-form-label text-md-right">アバター</label>
             <input type="file" name="url_img" value="{{ old('url_img') }}" required accept="image/png, image/jpeg">
             @error('avatar_url')
@@ -48,35 +48,22 @@
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
+        </div> -->
+        <div class="form-group">
+            <label for="product_name">材料名：</label>
+            <input type="text" class="form-control" id="product_name" name="product_name" required="required">
         </div>
         <div class="form-group">
-            <label for="user_name">ユーザー名：</label>
-            <input type="text" class="form-control" id="user_name" name="user_name" required="required" value="{{old('user_name')}}">
+            <label for="price">お金 (１キロガム)</label>
+            <input type="number" min="0" step="0.1" id="product_price" name="product_price">
+        </div>
+        <div class="form-group">
+            <label for="price">写真をアプロード</label>
+            <input type="file" name="url_img" required accept="image/png, image/jpeg">
         </div>
 
-        <div class="form-group">
-            <label for="phone">電話：</label>
-            <input type="text" class="form-control" id="phone" name="phone" required="required" value="{{old('phone')}}">
-        </div>
-
-        <div class="form-group">
-            <label for="email">メール：</label>
-            <input type="email" class="form-control" id="email" name="email" required="required" value="{{old('email')}}">
-        </div>
-
-        <div class="form-group">
-            <label for="password">パスワード：</label>
-            <input type="password" class="form-control" id="password" name="password" required="required" value="{{old('password')}}">
-        </div>
-
-        <div class="form-group">
-            <label for="des">説明：</label>
-            <input style="height:100px; width: 100%" type="text" class="form-control" id="des" name="des" required="required" value="{{old('des')}}">
-        </div>
-
-
-        <div class="form-group">
-            <button style="cursor:pointer" type="submit" class="btn btn-primary">レストランを追加</button>
+        <div class="form-group" >
+            <button style="cursor:pointer" type="submit" class="btn btn-primary">材料を追加</button>
         </div>
     </form>
 </div>

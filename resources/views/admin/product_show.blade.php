@@ -4,7 +4,7 @@
     <div class="card-header">
         <i class="fas fa-table"></i>
         すべての材料
-        <div class="float-right"><a href="{{ URL::to('admin/create_restauran') }}"><button class="btn btn-outline-secondary btn-sm">新しい材料を追加する</button></a>
+        <div class="float-right"><a href="{{ URL::to('admin/create_product') }}"><button class="btn btn-outline-secondary btn-sm">新しい材料を追加する</button></a>
         </div>
     </div>
     <div class="card-body">
@@ -41,7 +41,8 @@
                         @endif 
                     </td>
                     <td>{{ $product->created_at }}</td>
-                    <td><a class="btn btn-danger btn-sm" href={{ URL::to('#') }} onclick="return alert_delete('削除してもよろしいですか？')">削除</a></td>
+                    <td><a class="btn btn-primary btn-sm" href={{ URL::to('admin/product/edit/' . $product->product_id)}}>編集</a></td>
+                    <td><a class="btn btn-danger btn-sm" href={{ URL::to('admin/product/delete/'. $product->product_id) }} onclick="return alert_delete('削除してもよろしいですか？')">削除</a></td>
                     </tr>
                     @endforeach
                 </tbody>

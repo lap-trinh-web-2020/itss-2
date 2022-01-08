@@ -110,7 +110,9 @@
                                         <tr>
                                             <td class="{{$product_of_post->product_price ? 'product-green' : 'product-red'}}">{{$product_of_post->product_name}}</td>
                                             <td>{{$product_of_post->quantily}} キログラム</td>
-                                            <td><a href="{{route('addToCart', ['id' => $product_of_post->product_id])}}">カートに追加</a></td>
+                                            @if($product_of_post->product_price != NULL)
+                                                <td><a href="{{route('addToCart', ['id' => $product_of_post->product_id])}}">カートに追加</a></td>
+                                            @endif
                                         </tr>
                                         @endforeach
 
@@ -190,7 +192,6 @@
                                 <label for="url_img" class="btn btn3 custom-file-upload">
                                     アップロード
                                 </label>
-
                                 <input type="file" name="url_img" class="file-upload" id="url_img" required
                                     accept="image/png, image/jpeg">
                             </div>
