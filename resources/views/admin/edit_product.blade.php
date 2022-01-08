@@ -13,7 +13,7 @@
 </div>
 <div class="container">
 
-    <form action="{{url('admin/product/edit/'). $product->product_id}}" method="POST" enctype="multipart/form-data">
+    <form action="{{URL::to('admin/product/edit/' . $product->product_id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @if ($errors->any())
         @foreach ($errors->all() as $error)
