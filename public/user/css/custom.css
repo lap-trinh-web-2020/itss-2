@@ -104,3 +104,8 @@ input[class="file-upload"] {
 .product-green {
     color: #007c00;
 }
+
+.modal-preview-cart {
+    opacity: 1 !important;
+    margin-top: 100px;
+}

@@ -75,5 +75,6 @@ Route::get('/tags/delete/{tag_id}','TagController@delete')->middleware('require_
 
 Route::get('/cart/addToCart', 'CartController@add')->name('addToCart');
 Route::post('/cart/updateCart', 'CartController@update')->name('updateCart');
+Route::get('/cart/submitCart', 'CartController@submitCart')->name('submitCart');
 Route::get('/cart/deleteCart', 'CartController@delete')->name('deleteCart');
 Route::get('/cart', 'CartController@index')->name('cart');

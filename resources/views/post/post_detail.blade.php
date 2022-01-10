@@ -110,13 +110,43 @@
                                         <tr>
                                             <td class="{{$product_of_post->product_price ? 'product-green' : 'product-red'}}">{{$product_of_post->product_name}}</td>
                                             <td>{{$product_of_post->quantily}} キログラム</td>
-                                            @if($product_of_post->product_price != NULL)
-                                                <td><a href="{{route('addToCart', ['id' => $product_of_post->product_id])}}">カートに追加</a></td>
-                                            @endif
                                         </tr>
                                         @endforeach
-
                                     </table>
+                                    <button type="button" class="btn btn-success mb-5" data-toggle="modal" data-target="#previeCart">カートに追加</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade modal-preview-cart" id="previeCart" tabindex="-1" role="dialog" aria-labelledby="previeCart" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                </div>
+                                                <div class="modal-body pt-3">
+                                                    <h1 class="modal-title p-3 text-center">Xem trước khi thêm vào cart</h1>
+                                                    <p>Danh sách</p>
+                                                    <table class="table">
+                                                        @php
+                                                            $total = 0;
+                                                        @endphp
+                                                        @foreach($product_of_posts as $product_of_post)
+                                                            @php
+                                                                $total = $total + ($product_of_post->product_price ? ($product_of_post->product_price * $product_of_post->quantily) : 0);
+                                                            @endphp
+                                                            <tr>
+                                                                <td>{{$product_of_post->product_name}}</td>
+                                                                <td>{{$product_of_post->quantily . "キログラム"}} </td>
+                                                                <td>{{$product_of_post->product_price ? $product_of_post->product_price . "yen" : "売らない"}} </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </table>
+                                                    <p>Tổng tiền: {{$total}} yen</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <a class="btn btn-primary" href="{{route('addToCart', ['id' => $product_of_posts->pluck("product_id")->toArray(), 'quantily' => $product_of_posts->pluck("quantily")->toArray()])}}">Add To Cart</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <h2>内容</h2>
                                 <mark-down pedantic>
