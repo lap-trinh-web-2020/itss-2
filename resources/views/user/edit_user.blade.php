@@ -5,7 +5,7 @@
         <section class="slider-area slider-area2">
             <div class="slider-active">
                 <!-- Single Slider -->
-                <div class="single-slider slider-height2">
+                <div class="single-slider slider-height2" style="height: 0%">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
@@ -48,15 +48,15 @@
                                                             <div class="row">
                                                                 @if ($user->avatar_url != null)
                                                                 <div class="block-ava">
-                                                                    <img src="{{ $user->avatar_url }}">
+                                                                    <img src="{{ $user->avatar_url }}" id="blah">
                                                                 </div>
                                                                 @else
                                                                 <div class="block-ava">
-                                                                    <img src="{{asset('/user/img/default_avt.jpg')}}">
+                                                                    <img src="{{asset('/user/img/default_avt.jpg')}}" id="blah">
                                                                 </div>
                                                                 @endif
                                                                 <div class="col-xs-12 col-sm-4">
-                                                                    <input type="file" name="avatar_url">
+                                                                    <input type="file" name="avatar_url" onchange="readURL(this);">
                                                                 </div>
                                                             </div>
 
@@ -198,3 +198,18 @@
     </main>
 </section>
 @endsection
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result);
+                
+            };
+            reader.readAsDataURL(input.files[0]);
+            
+        }
+    }
+</script>

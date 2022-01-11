@@ -16,6 +16,7 @@
                         <th>価格</th>
                         <th>写真</th>
                         <th>時間</th>
+                        <th>編集</th>
                         <th>削除</th>
                 </thead>
                 <tfoot>
@@ -24,6 +25,7 @@
                         <th>価格</th>
                         <th>写真</th>
                         <th>時間</th>
+                        <th>編集</th>
                         <th>削除</th>
                     </tr>
                 </tfoot>

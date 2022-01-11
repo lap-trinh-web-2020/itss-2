@@ -11,9 +11,9 @@
                 @endif
             </div>
             <div class="properties__caption" style="height: 100px;">
-                <h3>{{$product->product_name}}</h3>
-                <p style="white-space: nowrap;overflow: hidden;width: 20em;text-overflow: ellipsis;">
-                    {{$product->product_price}} $ / 1キロ</p>
+                <h3 style="text-align: center">{{$product->product_name}}</h3>
+                <p style="white-space: nowrap;overflow: hidden;width: 20em;text-overflow: ellipsis; text-align: center">
+                    {{$product->product_price}} ￥/ 1キロ</p>
             </div>
             <a href="{{route('addToCart', ['id' => $product->product_id])}}" class="border-btn border-btn2">カートに追加</a>
         </div>
