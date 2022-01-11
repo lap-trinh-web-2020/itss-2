@@ -37,7 +37,8 @@
 
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <input class="form-control" name="title" id="title" type="text" placeholder="Title">
+                            <b style="color: red">*</b>
+                            <input class="form-control" name="title" id="title" type="text" placeholder="Title" required>
                             @error('title')
                             <b><span style="color: red;">{{ $message }}</span></b>
                             @enderror
@@ -46,17 +47,21 @@
 
                     <div class="col-sm-4">
                         <div class="col-xs-12 col-sm-8">
+                            <br>
                             <label for="post_url" class="btn btn3 custom-file-upload">
                                     アップロード
                             </label>
 
-                            <input type="file" name="post_url" class="file-upload" id="post_url" required accept="image/png, image/jpeg">
+                            <input type="file" name="post_url" class="file-upload" id="post_url" required accept="image/png, image/jpeg" onchange="readURL(this);"> <br>
                         </div>
                         <div class="vspace-12-sm"></div>
                     </div>
-
                     <div class="col-12">
-                        <p>タグ</p>
+                        <img
+                        style=" max-width:400px;max-height: 400px" hidden id="blah" />
+                    </div>
+                    <div class="col-12">
+                        <p>タグ <b style="color: red">*</b></p>
                         <div class="form-group">
                             @foreach($tags as $tag)
                             <label class="checkbox-inline"><input type="checkbox" name="tags[]" value="{{$tag->tag_id}}">{{$tag->tag_title}}</label>
@@ -70,7 +75,7 @@
 
                     <div class="col-12">
                         <div class="form-group">
-                            <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="説明。。。"></textarea>
+                            <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="説明。。。" required></textarea>
                             @error('description')
                             <b><span style="color: red;">{{ $message }}</span></b>
                             @enderror
@@ -183,6 +188,19 @@
             $(`#div-${event.target.id}`).remove()
         });
     })
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result);
+                $("#blah").removeAttr('hidden');
+            };
+            reader.readAsDataURL(input.files[0]);
+            
+        }
+    }
 </script>
 <style>
     .select2-selection__rendered {

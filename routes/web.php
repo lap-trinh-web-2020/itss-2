@@ -58,6 +58,7 @@ Route::match(['GET','POST'],'admin/create_restauran','TagController@create2')->m
 Route::match(['GET','POST'],'admin/create_product','ProductController@create')->middleware('require_admin')->name('product.store');
 Route::get('admin/product/delete/{product_id}','ProductController@delete')->middleware('require_admin');
 Route::match(['GET','POST'],'admin/product/edit/{product_id}','ProductController@edit')->middleware('require_admin');
+Route::get('admin/users/{id}','AdminController@show_user_info')->middleware('require_admin');
 
 
 Auth::routes();

@@ -31,7 +31,7 @@
                     @foreach ($users as $user)
                         @if ($user->isrestauran == 1)
                             <tr>
-                                <td><a href="{{ URL::to('users/' . $user->user_id) . '/posts' }}">{{ $user->user_name }}</a></td>
+                                <td><a href="{{ URL::to('admin/users/' . $user->user_id)}}">{{ $user->user_name }}</a></td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->posts->count() }}</td>
                                 <td><a class="btn btn-primary btn-sm" href={{ URL::to('users/' . $user->user_id) }}>見せる</a></td>

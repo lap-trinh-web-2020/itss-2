@@ -49,7 +49,10 @@
                         </div>
                         <div class="vspace-12-sm"></div>
                     </div>
-
+                    <div class="col-12">
+                        <img
+                        style=" max-width:400px;max-height: 400px" hidden id="blah" />
+                    </div>
                     <div class="col-12">
                         <p>タグ</p>
                         <div class="form-group">
@@ -117,6 +120,19 @@
         }
         alert("Please choose tag");
         return false;
+    }
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result);
+                $("#blah").removeAttr('hidden');
+            };
+            reader.readAsDataURL(input.files[0]);
+            
+        }
     }
 </script>
 @endsection
