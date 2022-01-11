@@ -126,23 +126,29 @@
                                                     <table class="table">
                                                         @php
                                                             $total = 0;
+                                                            $listProductId = [];
+                                                            $listQuantily = [];
                                                         @endphp
                                                         @foreach($product_of_posts as $product_of_post)
-                                                            @php
-                                                                $total = $total + ($product_of_post->product_price ? ($product_of_post->product_price * $product_of_post->quantily) : 0);
-                                                            @endphp
-                                                            <tr>
-                                                                <td>{{$product_of_post->product_name}}</td>
-                                                                <td>{{$product_of_post->quantily . "キログラム"}} </td>
-                                                                <td>{{$product_of_post->product_price ? $product_of_post->product_price . "yen" : "売らない"}} </td>
-                                                            </tr>
+                                                            @if($product_of_post->product_price)
+                                                                @php
+                                                                    $total = $total + ($product_of_post->product_price ? ($product_of_post->product_price * $product_of_post->quantily) : 0);
+                                                                    $listProductId[] = $product_of_post->product_id;
+                                                                    $listQuantily[] = $product_of_post->quantily;
+                                                                @endphp
+                                                                <tr>
+                                                                    <td>{{$product_of_post->product_name}}</td>
+                                                                    <td>{{$product_of_post->quantily . "キログラム"}} </td>
+                                                                    <td>{{$product_of_post->product_price ? $product_of_post->product_price . "yen" : "売らない"}} </td>
+                                                                </tr>
+                                                            @endif
                                                         @endforeach
                                                     </table>
-                                                    <p>Tổng tiền: {{$total}} yen</p>
+                                                    <p>Tổng tiền: {{Auth::user()->isrestauran ? $total*95/100 : $total}} yen</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <a class="btn btn-primary" href="{{route('addToCart', ['id' => $product_of_posts->pluck("product_id")->toArray(), 'quantily' => $product_of_posts->pluck("quantily")->toArray()])}}">Add To Cart</a>
+                                                    <a class="btn btn-primary" href="{{route('addToCart', ['id' => $listProductId, 'quantily' => $listQuantily])}}">Add To Cart</a>
                                                 </div>
                                             </div>
                                         </div>
