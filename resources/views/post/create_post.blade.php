@@ -49,7 +49,7 @@
                         <div class="col-xs-12 col-sm-8">
                             <br>
                             <label for="post_url" class="btn btn3 custom-file-upload">
-                                    アップロード
+                                画像をアップロード
                             </label>
 
                             <input type="file" name="post_url" class="file-upload" id="post_url" required accept="image/png, image/jpeg" onchange="readURL(this);"> <br>
@@ -165,7 +165,7 @@
                         <input class="form-control" type="number" min="0" step="0.1" placeholder="量" name="products[${numberProduct}][quantily]">
                         </div>
                         <div class="col-md-6" style="align-content: center;">
-                            <p>キログラムガム</p>
+                            <p>キロ</p>
                         </div>
                     </div>
                 </div>

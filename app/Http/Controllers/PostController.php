@@ -195,6 +195,7 @@ class PostController extends Controller
     public function edit(Request $request, $post_id)
     {
         $post = Post::find($post_id);
+        $listProduct = Product::all();
         if ($post == null) {
             return view('error.error')->with('code', 404)->with('message', 'Post id not found');
         }
@@ -238,7 +239,7 @@ class PostController extends Controller
             $post->save();
             return redirect('/posts/' . $post_id);
         }
-        return view('post.edit_post', compact('post', 'selected_tags_array'));
+        return view('post.edit_post', compact('post', 'selected_tags_array','listProduct'));
     }
 
     # Delete post

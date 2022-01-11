@@ -121,9 +121,16 @@
                                             <ul id="navigation" class="d-flex justify-content-end align-items-center">
                                                 @if(Auth::user())
                                                     <li><a style="color:black"  href="{{ URL::to('users/' . Auth::user()->user_id) }}">{{Auth::user()->user_name}}!!</a></li>
-                                                    <li><a style="color:black"  href="{{ URL::to('/top-posts') }}">投稿ランク</a></li>
-                                                    <li><a style="color:black" href="{{ route('cart') }}">私のカート ({{count(Auth::user()->carts()->get()) ?? 0}})</a></li>
-                                                    <li><a style="color:black" href="{{ URL::to('/create_post') }}">投稿を作成する</a></li>
+                                                    <li><a style="color:black" >投稿</a>
+                                                        <ul class="submenu">                                                           
+                                                            <li><a href="{{ URL::to('/my-posts') }}">私の投稿</a></li>
+                                                            <li><a  href="{{ URL::to('/create_post') }}">投稿を作成する</a></li>
+                                                            <li><a   href="{{ URL::to('/top-posts') }}">投稿ランク</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    
+                                                    <li><a style="color:black" href="{{ route('cart') }}">カート ({{count(Auth::user()->carts()->get()) ?? 0}})</a></li>
+                                                    
 
                                                 @endif
                                                 <!-- <li><a href="{{ URL::to('create_post') }}">Create</a></li> -->
@@ -144,7 +151,6 @@
                                                             @if(Auth::user()->admin)
                                                                 <li><a   href="{{ URL::to('admin/home-page') }}">管理者</a></li>
                                                             @endif
-                                                            <li><a href="{{ URL::to('/my-posts') }}">私の投稿</a></li>
                                                             <li><a
                                                                     href="{{ URL::to('users/' . Auth::user()->user_id) }}">プロフィールを見る</a></li>
                                                             <li><a href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">プロファイル編集</a></li>
@@ -200,27 +206,14 @@
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>私たちのチーム</h4>
-                                    <ul>
-                                        <li><a href="https://github.com/">Mai Mạnh Thục</a></li>
-                                        <li><a href="https://github.com/">Nguyễn Thị Nguyệt Ánh</a></li>
-                                        <li><a href="https://github.com/">Đỗ Đức Thuận</a></li>
-                                        <li><a href="https://github.com/">Phạm Văn Hưng</a></li>
-                                    </ul>
+                                    <h4>Footer</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>役割</h4>
-                                    <ul>
-                                        <li> <a href = "＃">リーダー</a> </li>
-                                         <li> <a href = "＃"> SPリーダー</a> </li>
-                                         <li> <a href = "＃">開発</a> </li>
-                                         <li> <a href = "＃">開発</a> </li>
-                                    </ul>
-
+                                    <h4>Footer</h4>
                                 </div>
                             </div>
                         </div>
