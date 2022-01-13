@@ -18,7 +18,7 @@ class CreateTableCartsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users');
-            $table->foreign('product_id')->references('product_id')->on('products');
+            $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
             $table->float('quantily');
         });
     }
