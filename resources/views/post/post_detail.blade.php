@@ -126,16 +126,22 @@
                                                     <table class="table">
                                                         @php
                                                             $total = 0;
+                                                            $listProductId = [];
+                                                            $listQuantily = [];
                                                         @endphp
                                                         @foreach($product_of_posts as $product_of_post)
-                                                            @php
-                                                                $total = $total + ($product_of_post->product_price ? ($product_of_post->product_price * $product_of_post->quantily) : 0);
-                                                            @endphp
-                                                            <tr>
-                                                                <td>{{$product_of_post->product_name}}</td>
-                                                                <td>{{$product_of_post->quantily . "キログラム"}} </td>
-                                                                <td>{{$product_of_post->product_price ? $product_of_post->product_price . "yen" : "売らない"}} </td>
-                                                            </tr>
+                                                            @if($product_of_post->product_price)
+                                                                @php
+                                                                    $total = $total + ($product_of_post->product_price ? ($product_of_post->product_price * $product_of_post->quantily) : 0);
+                                                                    $listProductId[] = $product_of_post->product_id;
+                                                                    $listQuantily[] = $product_of_post->quantily;
+                                                                @endphp
+                                                                <tr>
+                                                                    <td>{{$product_of_post->product_name}}</td>
+                                                                    <td>{{$product_of_post->quantily . "キログラム"}} </td>
+                                                                    <td>{{$product_of_post->product_price ? $product_of_post->product_price . "yen" : "売らない"}} </td>
+                                                                </tr>
+                                                            @endif
                                                         @endforeach
                                                     </table>
                                                     <p>合計: {{$total}} ￥</p>
