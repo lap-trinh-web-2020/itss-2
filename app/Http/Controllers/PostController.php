@@ -85,7 +85,11 @@ class PostController extends Controller
         ->where('product_of_post.post_id', '=', $post_id)
         ->select('products.product_name', 'products.product_price','product_of_post.quantily', 'product_of_post.product_id')
         ->get();
-
+        foreach ($product_of_posts as $key => $value) {
+            if($value->product_price == null)
+            $value->product_price = 0;
+        }
+        // dd($product_of_posts);
         return view('post.post_detail', compact(
             'post',
             'recent_posts',
@@ -135,7 +139,6 @@ class PostController extends Controller
                     'detail_content' => 'required',
                 ]
             );
-
             $post = new Post();
             $post->user_id = $current_user->user_id;
             $post->title = $request->title;
@@ -196,6 +199,12 @@ class PostController extends Controller
     {
         $post = Post::find($post_id);
         $listProduct = Product::all();
+        $product_of_posts = DB::table('product_of_post')
+        ->join('products', 'products.product_id', '=', 'product_of_post.product_id')
+        ->where('product_of_post.post_id', '=', $post_id)
+        ->select('products.product_name', 'products.product_price','product_of_post.quantily', 'product_of_post.product_id')
+        ->get();
+        // dd($product_of_posts);
         if ($post == null) {
             return view('error.error')->with('code', 404)->with('message', 'Post id not found');
         }
@@ -210,16 +219,20 @@ class PostController extends Controller
         }
 
         if ($request->isMethod('post')) {
+            DB::table('product_of_post')
+            ->where('post_id','=', $post_id)->delete();
+            // dd($request);
             $post = Post::find($post_id);
             $post->title = $request->title;
 
             if ($request->hasFile('post_url')) {
-                $filenameWithExt = $request->file('post_url')->getClientOriginalName();
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                $extension = $request->file('post_url')->getClientOriginalExtension();
-                $filenameToStore = $filename . '_' . time() . '.' . $extension;
-                $path = $request->file('post_url')->storeAs('public/post_url', $filenameToStore);
-                $post->post_url = $filenameToStore;
+                $request->validate(
+                    [
+                        'post_url' => 'image'
+                    ]
+                );
+                $path = $this->save_image($request->file('post_url'));
+                $post->post_url = $path['data']['url'];
             }
 
             $post->content = $request->detail_content;
@@ -237,9 +250,33 @@ class PostController extends Controller
                 $post->tags()->attach($tag_id);
             }
             $post->save();
+            $products = $request->get('products');
+            if ($products) {
+                foreach ($products as $product) {
+                    $idProduct = array_search($product['name'], $listProduct->pluck('product_name', 'product_id')->toArray());
+                    if ($idProduct) {
+                        ProductPost::create([
+                            'product_id' => $idProduct,
+                            'post_id' => $post->post_id,
+                            'quantily' => $product['quantily'],
+                        ]);
+                    } else {
+                        $productCreated = Product::create([
+                            // 'product_id' => count($listProduct) + 1, //Đoạn này không tạo DB bằng migrate nên nó không tự nhảy số, phải làm sida ntn
+                            'product_name' => $product['name'],
+                        ]);
+                        ProductPost::create([
+                            'product_id' => $productCreated->product_id,
+                            'post_id' => $post->post_id,
+                            'quantily' => $product['quantily'],
+                        ]);
+                    }
+                }
+            }
+
             return redirect('/posts/' . $post_id);
         }
-        return view('post.edit_post', compact('post', 'selected_tags_array','listProduct'));
+        return view('post.edit_post', compact('post', 'selected_tags_array','listProduct','product_of_posts'));
     }
 
     # Delete post
@@ -281,6 +318,7 @@ class PostController extends Controller
                 $dataa["url_img"]= $path['data']['url'];
 
             }
+            // dd($dataa);
             DB::table("comments")->insert($dataa);
         }
 

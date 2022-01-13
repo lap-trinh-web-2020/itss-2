@@ -50,8 +50,7 @@
                         <div class="vspace-12-sm"></div>
                     </div>
                     <div class="col-12">
-                        <img
-                        style=" max-width:400px;max-height: 400px" hidden id="blah" />
+                        <img src="{{$post->post_url}}" style=" max-width:400px;max-height: 400px" id="blah" />
                     </div>
                     <div class="col-12">
                         <p>タグ</p>
@@ -74,31 +73,35 @@
                     </div>
                     <div class="col-12 mb-5">
                         <div id="list-product" style="margin-top: 20px">
-                            {{-- @foreach ($collection as $item) --}}
-                                <div class="row mb-2" id="div-delete-product-${numberProduct}">
-                                    <div class="col-md-6">
-                                        <select class="form-control select-2" name="products[${numberProduct}][name]">
+                            @foreach ($product_of_posts as $key => $prod)
+                                <div class="row mb-2" id="div-delete-product-{{$key+1}}">
+                                    <div class="col-md-6">                                
+                                        {{-- @dd($prod->product_name)        --}}
+                                        <select class="form-control select-2" name="products[{{$key+1}}][name]" theme="classic" >                                                                                          
                                             @foreach ($listProduct as $item)
-                                                <option value="{{$item->product_name}}"></option>
+                                                @if($item->product_name == $prod->product_name)
+                                                <option value="{{$item->product_name}}" selected>{{$item->product_name}}</option>
+                                                @else
+                                                <option value="{{$item->product_name}}">{{$item->product_name}}</option>
+                                                @endif
                                             @endforeach                                           
                                         </select>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="col">
                                             <div class="col-md-6">
-                                            <input class="form-control" type="number" min="0" step="0.1" placeholder="量" name="products[${numberProduct}][quantily]">
+                                            <input class="form-control" type="number" min="0" placeholder="量" name="products[{{$key+1}}][quantily]" value="{{$prod->quantily}}" required>
                                             </div>
                                             <div class="col-md-6" style="align-content: center;">
                                                 <p>キロ</p>
                                             </div>
                                         </div>
                                     </div>
-                    
                                     <div class="col-md-2">
-                                        <button class="btn btn-danger btn-delete-product" id="delete-product-${numberProduct}" type="button">削除</button>
+                                        <button class="btn btn-danger btn-delete-product" id="delete-product-{{$key+1}}" type="button">削除</button>
                                     </div>
                                 </div>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </div>
                         <div class="row">
                             <div class="col-md-2">
@@ -132,7 +135,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin: 6% auto">
                     <button type="submit" class="button button-contactForm btn_1 boxed-btn">アップデート</button>
                 </div>
             </form>
@@ -161,13 +164,14 @@
             reader.onload = function (e) {
                 $('#blah')
                     .attr('src', e.target.result);
-                $("#blah").removeAttr('hidden');
             };
             reader.readAsDataURL(input.files[0]);
             
         }
     }
+
     const listProduct = @json($listProduct);
+    const productPost = @json($product_of_posts);
     const renderListProduct = () => {
         let html = '';
         listProduct.forEach((item) => {
@@ -177,7 +181,7 @@
         })
         return html;
     }
-    let numberProduct = 1;
+    let numberProduct = productPost.length+1;
 
     $('#add-more-product').on('click', function () {
         $('#list-product').append(`
@@ -191,7 +195,7 @@
                 <div class="col-md-4">
                     <div class="col">
                         <div class="col-md-6">
-                        <input class="form-control" type="number" min="0" step="0.1" placeholder="量" name="products[${numberProduct}][quantily]">
+                        <input class="form-control" type="number" min="0" step="0.1" placeholder="量" name="products[${numberProduct}][quantily]" required>
                         </div>
                         <div class="col-md-6" style="align-content: center;">
                             <p>キロ</p>
@@ -212,11 +216,14 @@
             theme: "classic",
             placeholder: '材料',
         });
-
         $('.btn-delete-product').click(function(event){
             $(`#div-${event.target.id}`).remove()
         });
     })
+    $('.btn-delete-product').click(function(event){
+            $(`#div-${event.target.id}`).remove()
+        });
+
 </script>
 @endsection
 <style>

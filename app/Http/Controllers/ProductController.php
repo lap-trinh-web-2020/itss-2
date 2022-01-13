@@ -29,7 +29,8 @@ class ProductController extends Controller
     # Get all post
     function all_product(Request $request)
     {
-        $listProduct = Product::all();
+        $listProduct = Product::where('product_price', '!=',null)->get();
+        // dd($listProduct);
         if ($request->ajax()) {
             return view('admin.home-page', compact('listProduct'))->render();
         }

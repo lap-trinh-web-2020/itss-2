@@ -120,9 +120,9 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                 </div>
-                                                <div class="modal-body pt-3">
-                                                    <h1 class="modal-title p-3 text-center">Xem trước khi thêm vào cart</h1>
-                                                    <p>Danh sách</p>
+                                                <div class="modal-body pt-3" style="margin-top: 12%">
+                                                    <h1 class="modal-title p-3 text-center">材料リスト</h1>
+                                                    
                                                     <table class="table">
                                                         @php
                                                             $total = 0;
@@ -138,11 +138,11 @@
                                                             </tr>
                                                         @endforeach
                                                     </table>
-                                                    <p>Tổng tiền: {{$total}} yen</p>
+                                                    <p>合計: {{$total}} ￥</p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <a class="btn btn-primary" href="{{route('addToCart', ['id' => $product_of_posts->pluck("product_id")->toArray(), 'quantily' => $product_of_posts->pluck("quantily")->toArray()])}}">Add To Cart</a>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
+                                                    <a class="btn btn-primary" href="{{route('addToCart', ['id' => $product_of_posts->pluck("product_id")->toArray(), 'quantily' => $product_of_posts->pluck("quantily")->toArray(), 'price' => $product_of_posts->pluck("product_price")->toArray()])}}">カートに追加</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -203,6 +203,10 @@
 
                 <div class="comment-form">
                     <h4>あなたのコメント</h4>
+                    <div class="col-12">
+                        <img
+                        style=" max-width:200px;max-height: 200px; margin: -3% 0 20px 0" hidden id="blah" />
+                    </div>
                     <form method="post" class="form-contact comment_form"
                         action="{{URL::to('/posts/{$post->post_id}/comment')}}" id="commentForm"
                         enctype="multipart/form-data">
@@ -213,17 +217,17 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <textarea class="form-control w-100" name="content" id="comment" cols="30"
-                                        rows="9"></textarea>
+                                        rows="9" required></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="col-xs-12 col-sm-8">
                                 <label for="url_img" class="btn btn3 custom-file-upload">
-                                    アップロード
+                                    <i class="fas fa-image"></i>
                                 </label>
-                                <input type="file" name="url_img" class="file-upload" id="url_img" required
-                                    accept="image/png, image/jpeg">
+                                <input type="file" name="url_img" class="file-upload" id="url_img"
+                                    accept="image/png, image/jpeg" onchange="readURL(this);">
                             </div>
                             <div class="vspace-12-sm"></div>
                         </div>
@@ -268,5 +272,18 @@
     </div>
 </section>
 <!-- Blog Area End -->
-
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result);
+                $("#blah").removeAttr('hidden');
+            };
+            reader.readAsDataURL(input.files[0]);
+            
+        }
+    }
+</script>
 @endsection
