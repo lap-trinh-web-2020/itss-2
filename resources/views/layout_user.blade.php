@@ -59,6 +59,7 @@
           alert(msg);
         }
     </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- User-profile CSS here -->
     <!-- <link rel="stylesheet" href="{{ asset('/user/css/user-profile.css') }}" /> -->
@@ -120,7 +121,6 @@
                                         <nav>
                                             <ul id="navigation" class="d-flex justify-content-end align-items-center">
                                                 @if(Auth::user())
-                                                    <li><a style="color:black"  href="{{ URL::to('users/' . Auth::user()->user_id) }}">{{Auth::user()->user_name}}!!</a></li>
                                                     <li><a style="color:black" >投稿</a>
                                                         <ul class="submenu">                                                           
                                                             <li><a href="{{ URL::to('/my-posts') }}">私の投稿</a></li>
@@ -153,9 +153,7 @@
                                                             @endif
                                                             <li><a
                                                                     href="{{ URL::to('users/' . Auth::user()->user_id) }}">プロフィールを見る</a></li>
-                                                            <li><a href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">プロファイル編集</a></li>
                                                             <li><a href="{{ URL::to('/logout') }}">ログアウト</a></li>
-
                                                         </ul>
                                                     </li>
                                                 @else
