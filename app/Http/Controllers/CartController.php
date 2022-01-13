@@ -31,12 +31,20 @@ class CartController extends Controller
         }
         foreach ($listId as $key => $idProduct) {
             // dd($listQuantily);
-            if($request->price[$key]!=0){
-            Cart::firstOrCreate([
-                'product_id' => $idProduct,
-                'user_id' => Auth::id(),
-                'quantily' => $listQuantily[$key] ?? null
-            ]);}
+            if($request->price){
+                if($request->price[$key]!=0){
+                Cart::firstOrCreate([
+                    'product_id' => $idProduct,
+                    'user_id' => Auth::id(),
+                    'quantily' => $listQuantily[$key] ?? null
+                ]);}
+            }else{
+                Cart::firstOrCreate([
+                    'product_id' => $idProduct,
+                    'user_id' => Auth::id(),
+                    'quantily' => $listQuantily[$key] ?? null
+                ]);
+            }
         }
         return redirect()->route('cart');
     }
