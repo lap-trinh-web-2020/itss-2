@@ -1,9 +1,9 @@
-<!-- DataTables Example -->
-<div class="card mb-3 edus-content-item-3">
+@extends('layout_admin')
+@section('content')
+<div class="card">
     <div class="card-header">
-        <i class="fas fa-table"></i>
-        すべてのタグ
-        <div class="float-right"><a href="{{ URL::to('tags/new') }}"><button class="btn btn-outline-secondary btn-sm">新しいタグを追加する</button></a>
+        <strong style="font-size: 25px">タグ管理</strong>
+        <div class="float-right"><a href="{{ URL::to('tags/new') }}"><button class="btn btn-outline-success">新しいタグ</button></a>
         </div>
     </div>
     <div class="card-body">
@@ -46,3 +46,4 @@
         event.preventDefault();
     }
 </script>
+@endsection

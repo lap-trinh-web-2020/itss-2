@@ -100,11 +100,11 @@
 
 
     </div>
-@include('admin.users_show')
-@include('admin.restauran_show')
-@include('admin.posts_show')
-@include('admin.tags_show')
-@include('admin.product_show')
+{{-- @include('admin.users_show')
+@include('admin.restauran_show') --}}
+{{-- @include('admin.posts_show') --}}
+{{-- @include('admin.tags_show')
+@include('admin.product_show') --}}
 
 </div>
 <!-- /.container-fluid -->
