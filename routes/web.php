@@ -79,3 +79,11 @@ Route::post('/cart/updateCart', 'CartController@update')->name('updateCart');
 Route::get('/cart/submitCart', 'CartController@submitCart')->name('submitCart');
 Route::get('/cart/deleteCart', 'CartController@delete')->name('deleteCart');
 Route::get('/cart', 'CartController@index')->name('cart');
+
+Route::prefix('admin')->middleware('require_admin')->group(function () {
+    Route::get('/users','AdminController@manageUsers')->name('admin.users');
+    Route::get('/restaurants','AdminController@manageRestaurants')->name('admin.restaurants');
+    Route::get('/posts','AdminController@managePosts')->name('admin.posts');
+    Route::get('/tags','AdminController@manageTags')->name('admin.tags');
+    Route::get('/products','AdminController@manageProducts')->name('admin.products');
+});

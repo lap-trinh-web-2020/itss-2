@@ -49,7 +49,8 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ URL::to('users/' . auth()->user()->user_id) }}">プロフィール</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ URL::to('users/' . auth()->user()->user_id . '/edit') }}">プロファイル編集</a>
+                    <a class="dropdown-item"
+                        href="{{ URL::to('users/' . auth()->user()->user_id . '/edit') }}">プロファイル編集</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ URL::to('logout') }}">ログアウト</a>
                 </div>
@@ -59,32 +60,45 @@
     </nav>
 
     <div id="wrapper">
+        <!-- Sidebar Menu -->
+        <div class="sidebar text-center">
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.users') }}" class="nav-link ">
+                            <i class="nav-icon fas fa-users"></i>&nbsp;&nbsp;&nbsp;
+                            <span>ユーザー</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.restaurants') }}" class="nav-link">
+                            <i class="nav-icon fas fa-university"></i>&nbsp;&nbsp;&nbsp;
+                            <span>レストラン</span>
+                        </a>
+                    </li>
 
-        <!-- Sidebar -->
-        <ul class="sidebar navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/admin/home-page">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>管理ページ</span>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>管理</span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                    <h6 class="dropdown-header">管理者プロファイル：</h6>
-                    <a class="dropdown-item" href={{ URL::to('/users/' . auth()->user()->user_id) }}>プロフィールを見る</a>
-                    <a class="dropdown-item" href={{ URL::to('/users/' . auth()->user()->user_id) . '/edit' }}>プロファイル編集</a>
-                    <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header">その他のアクション：</h6>
-                    <a class="dropdown-item" href={{URL::to('/tags/new')}}>タグを追加する</a>
-                </div>
-            </li>
-        </ul>
-
+                    <li class="nav-item">
+                        <a href="{{ route('admin.posts') }}" class="nav-link">
+                            <i class="nav-icon fas fa-list-alt"></i>&nbsp;&nbsp;&nbsp;
+                            <span>投稿</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.tags') }}" class="nav-link">
+                            <i class="nav-icon fas fa-tags"></i>&nbsp;&nbsp;&nbsp;
+                            <span>タグ</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.products') }}" class="nav-link">
+                            <i class="nav-icon fa fas fa-book"></i>&nbsp;&nbsp;&nbsp;
+                            <span>材料</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
         <div id="content-wrapper">
             @yield('content')
         </div>
@@ -106,7 +120,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">出発する準備はできましたか？</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">x</span>
                     </button>
                 </div>
                 <div class="modal-body">現在のセッションを終了する準備ができている場合は、下の[ログアウト]を選択してください。</div>
@@ -134,7 +148,7 @@
     <script src="{{ asset('/admin/js/sb-admin.min.js"') }}"></script>
 
     <!-- Demo scripts for this page-->
-    <script src="{{ asset('/admin/js/demo/datatables-demo.js') }}"></script>
+    <script src="{{ asset(' /admin/js/demo/datatables-demo.js') }}"></script>
     <script src="{{ asset('/admin/js/demo/chart-area-demo.js') }}"></script>
 
 </body>

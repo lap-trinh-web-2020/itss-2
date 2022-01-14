@@ -24,17 +24,9 @@ class AdminController extends Controller
             $number_of_posts = Post::count();
             $number_of_tags = Tag::count();
             $number_of_product = Product::count();
-            return view('admin.home')
-                ->with(compact('number_of_users', $number_of_users))
-                ->with(compact('number_of_restaurans', $number_of_restaurans))
-                ->with(compact('number_of_posts', $number_of_posts))
-                ->with(compact('number_of_tags', $number_of_tags))
-                ->with(compact('number_of_product', $number_of_product))
-                ->with(compact('users', $users))
-                ->with(compact('posts', $posts))
-                ->with(compact('products', $products))
-                ->with(compact('tags', $tags));
-        } else{
+            return view('admin.home', compact('number_of_users', 'number_of_restaurans','number_of_posts', 'number_of_product',
+                                                'number_of_tags', 'users', 'posts', 'products', 'tags'));
+        } else {
             return redirect('/');
         }
     }
@@ -67,8 +59,42 @@ class AdminController extends Controller
         if(empty($like)){
             $like=0;
         }
-        
+
         return view('admin.users_info', compact('user','post', 'like'));
     }
 
+    public function manageUsers()
+    {
+        $users = User::where('isrestauran', '=', 0)->get();
+
+        return view('admin.users_show', compact('users'));
+    }
+
+    public function manageRestaurants()
+    {
+        $restaurants = User::where('isrestauran', '=', 1)->get();
+
+        return view('admin.restauran_show', compact('restaurants'));
+    }
+
+    public function managePosts()
+    {
+        $posts = Post::all();
+
+        return view('admin.posts_show', compact('posts'));
+    }
+
+    public function manageTags()
+    {
+        $tags = Tag::all();
+
+        return view('admin.tags_show', compact('tags'));
+    }
+
+    public function manageProducts()
+    {
+        $products = Product::all();
+
+        return view('admin.product_show', compact('products'));
+    }
 }

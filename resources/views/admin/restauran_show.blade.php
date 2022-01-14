@@ -1,9 +1,9 @@
-<!-- DataTables Example -->
+@extends('layout_admin')
+@section('content')
 <div class="card mb-3 edus-content-item-4">
     <div class="card-header">
-        <i class="fas fa-table"></i>
-        すべてのレストラン
-        <div class="float-right"><a href="{{ URL::to('admin/create_restauran') }}"><button class="btn btn-outline-secondary btn-sm">新しいレストランを追加する</button></a>
+        <strong style="font-size: 25px">レストラン管理</strong>
+        <div class="float-right"><a href="{{ URL::to('admin/create_restauran') }}"><button class="btn btn-outline-success">新しいレストラン</button></a>
         </div>
     </div>
     <div class="card-body">
@@ -12,32 +12,22 @@
                 <thead>
                     <tr>
                         <th>レストラン名</th>
-                         <th>メール</th>
-                         <th>投稿</th>
-                         <th>詳細</th>
-                         <th>アクション</th>
+                        <th>メール</th>
+                        <th>投稿</th>
+                        <th>アクション</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                    <th>レストラン名</th>
-                         <th>メール</th>
-                         <th>投稿</th>
-                         <th>詳細</th>
-                         <th>アクション</th>
-                    </tr>
-                </tfoot>
                 <tbody>
-                    @foreach ($users as $user)
-                        @if ($user->isrestauran == 1)
-                            <tr>
-                                <td><a href="{{ URL::to('admin/users/' . $user->user_id)}}">{{ $user->user_name }}</a></td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->posts->count() }}</td>
-                                <td><a class="btn btn-primary btn-sm" href={{ URL::to('users/' . $user->user_id) }}>見せる</a></td>
-                                <td><a class="btn btn-danger btn-sm" href={{ URL::to('users/' . $user->user_id . '/delete') }} onclick="return alert_delete('削除してもよろしいですか？');">消去</a></td>
-                            </tr>
-                        @endif
+                    @foreach ($restaurants as $user)
+                    <tr>
+                        <td><a href="{{ URL::to('admin/users/' . $user->user_id)}}">{{ $user->user_name }}</a></td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->posts->count() }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href={{ URL::to('users/' . $user->user_id) }}>見せる</a>
+                            <a class="btn btn-danger btn-sm" href={{ URL::to('users/' . $user->user_id . '/delete') }} onclick="return alert_delete('削除してもよろしいですか？');">消去</a>
+                        </td>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -50,5 +40,4 @@
         event.preventDefault();
     }
 </script>
-
-
+@endsection

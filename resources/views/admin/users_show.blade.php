@@ -1,8 +1,8 @@
-<!-- DataTables Example -->
-<div class="card mb-3 edus-content-item-1">
+@extends('layout_admin')
+@section('content')
+<div class="card">
     <div class="card-header">
-        <i class="fas fa-table"></i>
-        全てのユーザー
+        <strong style="font-size: 25px">ユーザー管理</strong>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -10,23 +10,12 @@
                 <thead>
                     <tr>
                         <th>ユーザー名</th>
-                         <th>メール</th>
-                         <th>投稿</th>
-                         <th>管理者</th>
-                         <th>詳細</th>
-                         <th>アクション</th>
+                        <th>メール</th>
+                        <th>投稿</th>
+                        <th>管理者</th>
+                        <th>アクション</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>ユーザー名</th>
-                         <th>メール</th>
-                         <th>投稿</th>
-                         <th>管理者</th>
-                         <th>詳細</th>
-                         <th>アクション</th>
-                    </tr>
-                </tfoot>
                 <tbody>
                     @foreach ($users as $user)
                         @if($user->isrestauran == 0 )
@@ -35,8 +24,10 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->posts->count() }}</td>
                             <td>{{$user->admin == 1 ? 1:0 }}</td>
-                            <td><a class="btn btn-primary btn-sm" href={{ URL::to('users/' . $user->user_id) }}>見せる</a></td>
-                            <td><a class="btn btn-danger btn-sm" href={{ URL::to('users/' . $user->user_id . '/delete') }} onclick="return alert_delete('削除してもよろしいですか？');">削除</a></td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href={{ URL::to('users/' . $user->user_id) }}>見せる</a>
+                                <a class="btn btn-danger btn-sm" href={{ URL::to('users/' . $user->user_id . '/delete') }} onclick="return alert_delete('削除してもよろしいですか？');">削除</a>
+                            </td>
                         </tr>
                         @endif
                     @endforeach
@@ -51,5 +42,4 @@
         event.preventDefault();
     }
 </script>
-
-
+@endsection
