@@ -31,14 +31,15 @@ class CartController extends Controller
         }
         foreach ($listId as $key => $idProduct) {
             // dd($listQuantily);
-            if($request->price){
-                if($request->price[$key]!=0){
-                Cart::firstOrCreate([
-                    'product_id' => $idProduct,
-                    'user_id' => Auth::id(),
-                    'quantily' => $listQuantily[$key] ?? null
-                ]);}
-            }else{
+            if ($request->price) {
+                if ($request->price[$key] != 0) {
+                    Cart::firstOrCreate([
+                        'product_id' => $idProduct,
+                        'user_id' => Auth::id(),
+                        'quantily' => $listQuantily[$key] ?? null
+                    ]);
+                }
+            } else {
                 Cart::firstOrCreate([
                     'product_id' => $idProduct,
                     'user_id' => Auth::id(),
@@ -53,7 +54,7 @@ class CartController extends Controller
     {
         // dd($request->quantily[0]);
         foreach ($request->id as $key => $id) {
-            Cart::where('id', $id)->update(['quantily'=> $request->quantily[$key]]);
+            Cart::where('id', $id)->update(['quantily' => $request->quantily[$key]]);
         }
         return redirect()->route('cart');
     }
@@ -70,13 +71,25 @@ class CartController extends Controller
         $success = true;
         return view('cart.index', compact('success'));
     }
-    
+
     public function addCart(Request $request)
-    {   
-        Cart::firstOrCreate([
+    {
+        $quan_old = 0;
+
+        $cart = Cart::where([
             'product_id' => $request->id,
             'user_id' => Auth::id(),
-            'quantily' => $request->quantily
+        ])->get();
+
+        if (!empty($cart[0])) {
+            $quan_old = $cart[0]->quantily;
+        }
+
+        Cart::updateOrCreate([
+            'product_id' => $request->id,
+            'user_id' => Auth::id(),
+        ], [
+            'quantily' => ($quan_old + $request->quantily)
         ]);
         return \response()->json([
             "data" => count(Auth::user()->carts()->get()),

@@ -1,6 +1,29 @@
 @extends('layout_user')
 @section('content')
 
+<style>
+    .modal-open .modal {
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 10000;
+        /* Sit on top */
+        padding-top: 100px;
+        /* Location of the box */
+        left: 0;
+        top: -3px;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+</style>
 <!--? slider Area Start-->
 <section class="slider-area slider-area2">
     <div class="slider-active">
@@ -13,8 +36,7 @@
                             <h1 data-animation="bounceIn" data-delay="0.2s">{{$post->title}}</h1>
 
                             @foreach($post_tags as $tag)
-                            <button type="button" class="btn-warning btn" style="padding: 15px 10px !important;"><a
-                                    href="{{ URL::to('/posts/tag/'.$tag->tag_id) }}">{{$tag->tag_title}}</a></button>
+                            <button type="button" class="btn-warning btn" style="padding: 15px 10px !important;"><a href="{{ URL::to('/posts/tag/'.$tag->tag_id) }}">{{$tag->tag_title}}</a></button>
                             @endforeach
                             <br /><br />
                             @if(($current_user->user_id == $post->user->user_id) or ($current_user->admin))
@@ -24,8 +46,7 @@
                                     <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">編集</a>
                                     </li>
                                     @endif
-                                    <li class="breadcrumb-item"><a
-                                            href="{{URL::to('/posts/delete/'.$post->post_id)}}">削除</a></li>
+                                    <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">削除</a></li>
                                 </ol>
                             </nav>
                             @endif
@@ -56,8 +77,7 @@
                             {{$post->title}}
                         </h2>
                         <ul class="blog-info-link mt-3 mb-4">
-                            <li><a style="color:blue; " href="{{ URL::to('users/' . $post->user->user_id) }}"><i
-                                        class="fa fa-user"></i> <b>{{$post->user->user_name}}</b></a></li>
+                            <li><a style="color:blue; " href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i> <b>{{$post->user->user_name}}</b></a></li>
                             <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} コメント</a></li>
                             <li><a href="#"><i class="far fa-calendar"></i> {{$post->date_create}} </a></li>
                             <li class="like-info">
@@ -66,42 +86,37 @@
                             </li>
                             <div id="react-btn">
                                 @if($search_user_post->like_state == 0)
-                                <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span
-                                        class='fa-thumb-styling fa fa-thumbs-up react-ajax '
-                                        post-id="{{ $post->post_id}}"></span></a>
+                                <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span class='fa-thumb-styling fa fa-thumbs-up react-ajax ' post-id="{{ $post->post_id}}"></span></a>
                                 @else
-                                <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span
-                                        class='fa-thumb-styling fa fa-thumbs-up react-ajax reacted'
-                                        post-id="{{ $post->post_id}}"></span></a>
+                                <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span class='fa-thumb-styling fa fa-thumbs-up react-ajax reacted' post-id="{{ $post->post_id}}"></span></a>
                                 @endif
                                 {{-- <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a> --}}
                             </div>
                         </ul>
                         <script>
-                        $(document).ready(function() {
-                            $(document).on('click', '.react-ajax', function(event) {
-                                event.preventDefault();
-                                var post_id = $(this).attr('post-id');
-                                console.log("post id is " + post_id);
-                                fetch_data(post_id);
-                            });
-
-                            function fetch_data(post_id) {
-                                $(".react-ajax").toggleClass("reacted");
-                                $.ajax({
-                                    url: post_id + "/react",
-                                    success: function(data) {
-                                        console.log(data);
-                                        $('.count-like').html(data + " people like this");
-                                    }
+                            $(document).ready(function() {
+                                $(document).on('click', '.react-ajax', function(event) {
+                                    event.preventDefault();
+                                    var post_id = $(this).attr('post-id');
+                                    console.log("post id is " + post_id);
+                                    fetch_data(post_id);
                                 });
-                            }
-                        });
+
+                                function fetch_data(post_id) {
+                                    $(".react-ajax").toggleClass("reacted");
+                                    $.ajax({
+                                        url: post_id + "/react",
+                                        success: function(data) {
+                                            console.log(data);
+                                            $('.count-like').html(data + " people like this");
+                                        }
+                                    });
+                                }
+                            });
                         </script>
                         <div class="quote-wrapper">
                             <div class="quotes">
-                                <script
-                                    src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js">
+                                <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js">
                                 </script>
                                 <div>
                                     <h2>材料</h2>
@@ -109,7 +124,7 @@
                                         @foreach($product_of_posts as $product_of_post)
                                         <tr>
                                             <td class="{{$product_of_post->product_price ? 'product-green' : 'product-red'}}">{{$product_of_post->product_name}}</td>
-                                            <td>{{$product_of_post->quantily}} キログラム</td>
+                                            <td>{{$product_of_post->quantily}} キロ</td>
                                         </tr>
                                         @endforeach
                                     </table>
@@ -122,33 +137,33 @@
                                                 </div>
                                                 <div class="modal-body pt-3" style="margin-top: 12%">
                                                     <h1 class="modal-title p-3 text-center">材料リスト</h1>
-                                                    
+
                                                     <table class="table" style="text-align: center">
                                                         <thead>
                                                             <tr>
                                                                 <th scope="col">材料名</th>
                                                                 <th scope="col">量</th>
-                                                                <th scope="col">単価</th>                                                            
+                                                                <th scope="col">単価</th>
                                                             </tr>
                                                         </thead>
                                                         @php
-                                                            $total = 0;
-                                                            $listProductId = [];
-                                                            $listQuantily = [];
+                                                        $total = 0;
+                                                        $listProductId = [];
+                                                        $listQuantily = [];
                                                         @endphp
                                                         @foreach($product_of_posts as $product_of_post)
-                                                            @if($product_of_post->product_price)
-                                                                @php
-                                                                    $total = $total + ($product_of_post->product_price ? ($product_of_post->product_price * $product_of_post->quantily) : 0);
-                                                                    $listProductId[] = $product_of_post->product_id;
-                                                                    $listQuantily[] = $product_of_post->quantily;
-                                                                @endphp
-                                                                <tr>
-                                                                    <td>{{$product_of_post->product_name}}</td>
-                                                                    <td>{{$product_of_post->quantily . "キロ"}} </td>
-                                                                    <td>{{$product_of_post->product_price ? $product_of_post->product_price . "￥／キロ" : "売らない"}} </td>
-                                                                </tr>
-                                                            @endif
+                                                        @if($product_of_post->product_price)
+                                                        @php
+                                                        $total = $total + ($product_of_post->product_price ? ($product_of_post->product_price * $product_of_post->quantily) : 0);
+                                                        $listProductId[] = $product_of_post->product_id;
+                                                        $listQuantily[] = $product_of_post->quantily;
+                                                        @endphp
+                                                        <tr>
+                                                            <td>{{$product_of_post->product_name}}</td>
+                                                            <td>{{$product_of_post->quantily . "キロ"}} </td>
+                                                            <td>{{$product_of_post->product_price ? $product_of_post->product_price . "￥／キロ" : "売らない"}} </td>
+                                                        </tr>
+                                                        @endif
                                                         @endforeach
                                                     </table>
                                                     <p>合計: {{$total}} ￥</p>
@@ -188,15 +203,13 @@
                                     </div>
                                     <div class="desc">
 
-                                        <p><a style="color:blue; "
-                                                href="{{ URL::to('users/' . $post->user->user_id) }}">{{$comment->user_name}}</a>
+                                        <p><a style="color:blue; " href="{{ URL::to('users/' . $post->user->user_id) }}">{{$comment->user_name}}</a>
                                         </p>
                                         <div class="d-flex justify-content-between">
                                             <div class="d-flex align-items-center">
                                                 <h5>
                                                     @if ($comment->url_img != NULL)
-                                                    <img class="img-fluid" src="{{$comment->url_img}}" alt=""
-                                                        style="height: 200px; width: 200px">
+                                                    <img class="img-fluid" src="{{$comment->url_img}}" alt="" style="height: 200px; width: 200px">
                                                     @endif
                                                     <p class="comment">
                                                         {{$comment->content}}
@@ -217,20 +230,16 @@
                 <div class="comment-form">
                     <h4>あなたのコメント</h4>
                     <div class="col-12">
-                        <img
-                        style=" max-width:200px;max-height: 200px; margin: -3% 0 20px 0" hidden id="blah" />
+                        <img style=" max-width:200px;max-height: 200px; margin: -3% 0 20px 0" hidden id="blah" />
                     </div>
-                    <form method="post" class="form-contact comment_form"
-                        action="{{URL::to('/posts/{$post->post_id}/comment')}}" id="commentForm"
-                        enctype="multipart/form-data">
+                    <form method="post" class="form-contact comment_form" action="{{URL::to('/posts/{$post->post_id}/comment')}}" id="commentForm" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="hidden" name="post_id" value='{{$post->post_id}}'>
                         <input type="hidden" name="user_id" value="{{$current_user->user_id}}">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control w-100" name="content" id="comment" cols="30"
-                                        rows="9" required></textarea>
+                                    <textarea class="form-control w-100" name="content" id="comment" cols="30" rows="9" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -239,8 +248,7 @@
                                 <label for="url_img" class="btn btn3 custom-file-upload">
                                     <i class="fas fa-image"></i>
                                 </label>
-                                <input type="file" name="url_img" class="file-upload" id="url_img"
-                                    accept="image/png, image/jpeg" onchange="readURL(this);">
+                                <input type="file" name="url_img" class="file-upload" id="url_img" accept="image/png, image/jpeg" onchange="readURL(this);">
                             </div>
                             <div class="vspace-12-sm"></div>
                         </div>
@@ -289,13 +297,13 @@
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 $('#blah')
                     .attr('src', e.target.result);
                 $("#blah").removeAttr('hidden');
             };
             reader.readAsDataURL(input.files[0]);
-            
+
         }
     }
 </script>

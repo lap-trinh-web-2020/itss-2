@@ -45,39 +45,38 @@
                         @php
                         $total = $total + ($cart->products()->first()->product_price * $cart->quantily);
                         @endphp
-                        <tr>                            
+                        <tr>
                             <input type="text" value="{{$cart->id}}" name="id[]" hidden>
                             <td>{{$cart->products()->first()->product_name}}</td>
-                            <td><input type="number" min="0" step="0.1" value="{{$cart->quantily}}" name="quantily[]"
-                                    data-key="{{$key}}"
-                                    data-productPrice="{{$cart->products()->first()->product_price}}" class="quantily">
+                            <td><input type="number" min="0" step="0.1" value="{{$cart->quantily}}" name="quantily[]" data-key="{{$key}}" data-productPrice="{{$cart->products()->first()->product_price}}" class="quantily">
                             </td>
                             <td>{{ $cart->products()->first()->product_price}} ￥/キロガム</td>
                             <td><span id="price_{{$key}}" class="price">{{ $cart->products()->first()->product_price *
                                     $cart->quantily }}</span> ￥</td>
                             <td>
-                                
-                                <a class="btn btn-sm btn-danger" onclick="return deleteItem();"
-                                    href="{{route('deleteCart', ['id' => $cart->id])}}">削除</a>
+
+                                <a class="btn btn-sm btn-danger" onclick="return deleteItem();" href="{{route('deleteCart', ['id' => $cart->id])}}">削除</a>
                             </td>
                         </tr>
                         @endforeach
-                        <button type="submit" class="btn btn-sm btn-success col-md-1">更新</button>
+                        <div class="d-flex justify-content-end"><button type="submit" class="btn btn-sm btn-success col-md-1 mb-3">更新</button></div>
                     </form>
                 </tbody>
             </table>
 
-            <p>合計金額: <span id="total">{{Auth::user()->isrestauran ? $total*95/100 : $total}}</span> ￥</p>
+            <div class="d-flex justify-content-end mt-2">
+                <p>合計金額: <span id="total">{{Auth::user()->isrestauran ? $total*95/100 : $total}}</span> ￥</p>
+            </div>
             <div class="row d-flex flex-column">
                 <form action="{{route('submitCart')}}">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>住所</label>
-                            <input type="text" class="form-control" placeholder="住所入力" required>
+                            <input type="text" class="form-control" placeholder="住所入力" required style="min-height: 35px;">
                         </div>
                         <div class="form-group">
                             <label>メール</label>
-                            <input type="email" class="form-control" placeholder="メール入力" required>
+                            <input type="email" class="form-control" placeholder="メール入力" required style="min-height: 35px;">
                         </div>
                         <button type="submit" class="btn btn-success">送信</button>
                     </div>
@@ -93,15 +92,19 @@
 </div>
 
 <script>
-    const isrestauran = {{ Auth:: user() -> isrestauran}};
-    $('.quantily').on('input', function () {
+    const isrestauran = {
+        {
+            Auth::user() - > isrestauran
+        }
+    };
+    $('.quantily').on('input', function() {
         const key = $(this).data('key');
         const quantily = $(this).val();
         const productprice = $(this).data('productprice');
         $(`#price_${key}`).text(Math.round(quantily * productprice * 10) / 10)
 
         let total = 0;
-        $(".price").each(function (index) {
+        $(".price").each(function(index) {
             total += parseFloat($(`#price_${index}`).text());
         })
         $("#total").text(isrestauran ? total * 95 / 100 : total);
