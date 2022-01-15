@@ -13,7 +13,7 @@
                         <th>メール</th>
                         <th>投稿</th>
                         <th>管理者</th>
-                        <th>アクション</th>
+                        <th class="col-1">アクション</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,7 +24,7 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->posts->count() }}</td>
                             <td>{{$user->admin == 1 ? 1:0 }}</td>
-                            <td>
+                            <td class="col-1">
                                 <a class="btn btn-primary btn-sm" href={{ URL::to('users/' . $user->user_id) }}>見せる</a>
                                 <a class="btn btn-danger btn-sm" href={{ URL::to('users/' . $user->user_id . '/delete') }} onclick="return alert_delete('削除してもよろしいですか？');">削除</a>
                             </td>

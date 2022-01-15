@@ -15,7 +15,7 @@
                         <th>価格</th>
                         <th>写真</th>
                         <th>時間</th>
-                        <th>削除</th>
+                        <th class="col-1">アクション</th>
                 </thead>
                 <tbody>
                     @foreach ($products as $product)
@@ -30,7 +30,7 @@
                         @endif
                     </td>
                     <td>{{ $product->created_at }}</td>
-                    <td>
+                    <td class="col-1">
                         <a class="btn btn-primary btn-sm" href={{ URL::to('admin/product/edit/' . $product->product_id)}}>編集</a>
                         <a class="btn btn-danger btn-sm" href={{ URL::to('admin/product/delete/'. $product->product_id) }} onclick="return alert_delete('削除してもよろしいですか？')">削除</a>
                     </td>

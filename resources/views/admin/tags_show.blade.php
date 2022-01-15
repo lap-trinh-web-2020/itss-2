@@ -13,26 +13,19 @@
                     <tr>
                         <th>タグ名</th>
                          <th>投稿</th>
-                         <th>詳細</th>
-                         <th colspan = "2">アクション</th>
+                         <th class = "col-2">アクション</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>タグ名</th>
-                         <th>投稿</th>
-                         <th>詳細</th>
-                         <th colspan = "2">アクション</th>
-                    </tr>
-                </tfoot>
                 <tbody>
                     @foreach ($tags as $tag)
                         <tr>
                             <td><a href="{{ URL::to('tags/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a></td>
                             <td>{{ $tag->posts->count() }}</td>
-                            <td><a class="btn btn-primary btn-sm" href={{ URL::to('tags/' . $tag->tag_id) }}>すべての投稿を表示</a></td>
-                            <td><a class="btn btn-primary btn-sm" href={{ URL::to('tags/' . $tag->tag_id) . '/edit' }}>編集</a></td>
-                            <td><a class="btn btn-danger btn-sm" href={{ URL::to('tags/delete/' . $tag->tag_id) }}  onclick="return alert_delete('削除してもよろしいですか？');">削除</a></td>
+                            <td class="col-2">
+                                <a class="btn btn-primary btn-sm" href={{ URL::to('tags/' . $tag->tag_id) }}>すべての投稿</a>
+                                <a class="btn btn-warning btn-sm" href={{ URL::to('tags/' . $tag->tag_id) . '/edit' }}>編集</a>
+                                <a class="btn btn-danger btn-sm" href={{ URL::to('tags/delete/' . $tag->tag_id) }}  onclick="return alert_delete('削除してもよろしいですか？');">削除</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
