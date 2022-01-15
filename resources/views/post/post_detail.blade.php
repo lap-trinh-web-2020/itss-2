@@ -123,7 +123,14 @@
                                                 <div class="modal-body pt-3" style="margin-top: 12%">
                                                     <h1 class="modal-title p-3 text-center">材料リスト</h1>
                                                     
-                                                    <table class="table">
+                                                    <table class="table" style="text-align: center">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">材料名</th>
+                                                                <th scope="col">量</th>
+                                                                <th scope="col">単価</th>                                                            
+                                                            </tr>
+                                                        </thead>
                                                         @php
                                                             $total = 0;
                                                             $listProductId = [];
@@ -138,8 +145,8 @@
                                                                 @endphp
                                                                 <tr>
                                                                     <td>{{$product_of_post->product_name}}</td>
-                                                                    <td>{{$product_of_post->quantily . "キログラム"}} </td>
-                                                                    <td>{{$product_of_post->product_price ? $product_of_post->product_price . "yen" : "売らない"}} </td>
+                                                                    <td>{{$product_of_post->quantily . "キロ"}} </td>
+                                                                    <td>{{$product_of_post->product_price ? $product_of_post->product_price . "￥／キロ" : "売らない"}} </td>
                                                                 </tr>
                                                             @endif
                                                         @endforeach
@@ -147,7 +154,7 @@
                                                     <p>合計: {{$total}} ￥</p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                                                     <a class="btn btn-primary" href="{{route('addToCart', ['id' => $product_of_posts->pluck("product_id")->toArray(), 'quantily' => $product_of_posts->pluck("quantily")->toArray(), 'price' => $product_of_posts->pluck("product_price")->toArray()])}}">カートに追加</a>
                                                 </div>
                                             </div>

@@ -90,7 +90,7 @@
                                     <div class="col-md-4">
                                         <div class="col">
                                             <div class="col-md-6">
-                                            <input class="form-control" type="number" min="0" placeholder="量" name="products[{{$key+1}}][quantily]" value="{{$prod->quantily}}" required>
+                                            <input class="form-control" type="number" min="0" placeholder="量" step="0.1" name="products[{{$key+1}}][quantily]" value="{{$prod->quantily}}" required>
                                             </div>
                                             <div class="col-md-6" style="align-content: center;">
                                                 <p>キロ</p>

@@ -129,7 +129,7 @@
                                                         </ul>
                                                     </li>
                                                     
-                                                    <li><a style="color:black" href="{{ route('cart') }}">カート ({{count(Auth::user()->carts()->get()) ?? 0}})</a></li>
+                                                    <li><a style="color:black" id="cartnum" href="{{ route('cart') }}">カート ({{count(Auth::user()->carts()->get()) ?? 0}})</a></li>
                                                     
 
                                                 @endif
@@ -201,7 +201,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
+                        {{-- <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
                                     <h4>Footer</h4>
@@ -214,7 +214,7 @@
                                     <h4>Footer</h4>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">

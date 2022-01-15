@@ -75,6 +75,7 @@ Route::match(['GET','POST'],'/tags/{tag_id}/edit','TagController@edit')->middlew
 Route::get('/tags/delete/{tag_id}','TagController@delete')->middleware('require_admin');
 
 Route::get('/cart/addToCart', 'CartController@add')->name('addToCart');
+Route::get('/cart/addCart','CartController@addCart')->name('addCart');
 Route::post('/cart/updateCart', 'CartController@update')->name('updateCart');
 Route::get('/cart/submitCart', 'CartController@submitCart')->name('submitCart');
 Route::get('/cart/deleteCart', 'CartController@delete')->name('deleteCart');

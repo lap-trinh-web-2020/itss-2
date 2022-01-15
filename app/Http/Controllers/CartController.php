@@ -70,4 +70,16 @@ class CartController extends Controller
         $success = true;
         return view('cart.index', compact('success'));
     }
+    
+    public function addCart(Request $request)
+    {   
+        Cart::firstOrCreate([
+            'product_id' => $request->id,
+            'user_id' => Auth::id(),
+            'quantily' => $request->quantily
+        ]);
+        return \response()->json([
+            "data" => count(Auth::user()->carts()->get()),
+        ], 200);
+    }
 }

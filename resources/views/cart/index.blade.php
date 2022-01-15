@@ -48,7 +48,7 @@
                         <tr>                            
                             <input type="text" value="{{$cart->id}}" name="id[]" hidden>
                             <td>{{$cart->products()->first()->product_name}}</td>
-                            <td><input type="number" min="0" value="{{$cart->quantily}}" name="quantily[]"
+                            <td><input type="number" min="0" step="0.1" value="{{$cart->quantily}}" name="quantily[]"
                                     data-key="{{$key}}"
                                     data-productPrice="{{$cart->products()->first()->product_price}}" class="quantily">
                             </td>
