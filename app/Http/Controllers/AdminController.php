@@ -9,28 +9,6 @@ use App\Tag;
 use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
-    public function index()
-    {
-        if(auth()->user()->admin){
-            $users = User::all();
-            $posts = Post::all();
-            $tags = Tag::all();
-            $products = Product::all();
-            $tags = $tags->SortByDesc('tag_id');
-
-
-            $number_of_users = User::where('isrestauran', 0)->count();
-            $number_of_restaurans = User::where('isrestauran', 1)->count();
-            $number_of_posts = Post::count();
-            $number_of_tags = Tag::count();
-            $number_of_product = Product::count();
-            return view('admin.home', compact('number_of_users', 'number_of_restaurans','number_of_posts', 'number_of_product',
-                                                'number_of_tags', 'users', 'posts', 'products', 'tags'));
-        } else {
-            return redirect('/');
-        }
-    }
-
     public function delete($user_id){
         $user = User::find($user_id);
         if(!isset($user)){

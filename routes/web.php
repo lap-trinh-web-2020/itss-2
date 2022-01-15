@@ -51,7 +51,7 @@ Route::get('users/{user_id}/delete', 'AdminController@delete')->middleware('requ
 Route::get('users/{user_id}/posts', 'Auth\UserController@posts');
 
 /*Admin route*/
-Route::get('admin/home-page','AdminController@index')->middleware('require_admin')->name('admin.home-page');
+Route::get('admin/home-page','AdminController@manageUsers')->middleware('require_admin')->name('admin.home-page');
 // Route::match(['GET','POST'],'/admin-change-pass','AdminController@change_pass');
 Route::get('/home-page','HomeController@homepage');
 Route::match(['GET','POST'],'admin/create_restauran','TagController@create2')->middleware('require_admin');
