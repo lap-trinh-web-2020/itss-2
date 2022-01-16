@@ -17,7 +17,16 @@
         </div>
     </div>
 </section>
-
+<script>
+    function deleteItem() {
+        var r = confirm("この材料を削除しますか？");
+        if (r == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 <div class="courses-area section-padding40 fix">
     <div class="container">
         <div class="row d-flex flex-column" id="table_data">
@@ -110,14 +119,7 @@
         $("#total").text(isrestauran ? total * 95 / 100 : total);
     })
 
-    function deleteItem() {
-        var r = confirm("この材料を削除しますか？");
-        if (r == true) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    
 </script>
 
 @endsection

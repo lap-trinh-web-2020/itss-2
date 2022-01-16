@@ -36,7 +36,7 @@
     function addCart(name, price, id) {    
         // document.getElementsByClassName("swal2-popup").style.fontSize = "large"
         Swal.fire({
-            title: name + 'を追加',
+            title: name + 'の追加',
             html: '<table class="table" style="text-align: center" >' +
                 '<thead>' +
                 '<tr>'+
@@ -52,7 +52,6 @@
                 '</tr>'+
                 '</table>'+
                 '<p style="font-size: 2rem">合計:<span id="total">0</span>￥</p>',
-            text: "You won't be able to revert this!",
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
@@ -70,7 +69,6 @@
                             quantily: document.getElementById('quantily').value,
                         },
                         success: (response) => {
-                            console.log(response)
                             Swal.fire(
                                 '追加完了',
                                 '',
