@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'first_name' => Str::random(10),
             'last_name' => Str::random(10),
-            'user_name' => 'test1',
+            'user_name' => 'anhldq',
             'password' => Hash::make('123456'),
             'gender' => 'male',
             'birthday' => date('Y-m-d H:i:s',mt_rand(1, 2147385600)),
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'first_name' => Str::random(10),
             'last_name' => Str::random(10),
-            'user_name' => 'test2',
+            'user_name' => 'trunglha',
             'password' => Hash::make('123456'),
             'gender' => 'female',
             'birthday' => date('Y-m-d H:i:s',mt_rand(1, 2147385600)),
@@ -55,9 +55,9 @@ class UserSeeder extends Seeder
             'des' => Str::random(10),
         ]);
         DB::table('users')->insert([
-            'first_name' => 'admin2',
+            'first_name' => 'restauran',
             'last_name' => 'A',
-            'user_name' => 'admin2 ',
+            'user_name' => 'restauran',
             'password' => Hash::make('12345678'),
             'gender' => 'male',
             'birthday' => date('Y-m-d H:i:s',mt_rand(1, 2147385600)),
