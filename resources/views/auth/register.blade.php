@@ -9,7 +9,7 @@
         <div class="logo-login">
             <a href="/"><img src="{{ asset('/user/img/logo/loder.png') }}" alt=""></a>
         </div>
-        <h2>ここで登録</h2>
+        <h2>登録</h2>
         <div class="form-input">
             <label for="name" class="col-form-label text-md-right">名前</label>
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">

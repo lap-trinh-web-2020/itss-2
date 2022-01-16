@@ -10,7 +10,7 @@
             <div class="logo-login">
                 <a href="/"><img src="{{ asset('/user/img/logo/loder.png') }}" alt=""></a>
             </div>
-            <h2>ここでログイン</h2>
+            <h2>ログイン</h2>
             <div class="form-input">
                 <label for="email">メールアドレス</label>
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
