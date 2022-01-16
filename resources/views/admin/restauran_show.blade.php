@@ -14,7 +14,7 @@
                         <th>レストラン名</th>
                         <th>メール</th>
                         <th>投稿</th>
-                        <th class="col-1">アクション</th>
+                        <th style="width: 30%;">アクション</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,8 +36,8 @@
 </div>
 <script>
     function alert_delete($message) {
-        if(!confirm($message))
-        event.preventDefault();
+        if (!confirm($message))
+            event.preventDefault();
     }
 </script>
 @endsection

@@ -16,7 +16,7 @@ class RequireAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && auth()->user()->admin == FALSE){
+        if(!Auth::check() || auth()->user()->admin == FALSE){
             return redirect('/');
         }
         return $next($request);

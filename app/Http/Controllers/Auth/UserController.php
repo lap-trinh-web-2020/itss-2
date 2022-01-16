@@ -26,13 +26,17 @@ class UserController extends Controller
         $user = User::find(auth()->user()->user_id);
 
         if ($request->isMethod("POST")) {
+
+            $request->validate([
+                'phone' => 'min:11|numeric',
+            ], [
+                'phone.min' => '10桁の電話番号を入力してください'
+            ]);
+
             if ($request->hasFile('avatar_url')) {
                 $path = $this->save_image($request->file('avatar_url'));
                 $user->avatar_url = $path['data']['url'];
             }
-            $request->validate([
-                'phone' => 'min:11|numeric',
-            ]);
 
             $user->last_name = $request->input('lastname');
             $user->first_name = $request->input('firstname');
