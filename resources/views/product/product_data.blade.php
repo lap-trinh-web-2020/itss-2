@@ -1,4 +1,5 @@
-<div class="row justify-content-center">
+<strong style="font-size: 40px; margin-left: 1%">材料リスト</strong>
+<div class="row mt-5">
     @foreach($listProduct as $product)
     <div class="properties properties_home pb-20">
         @if($product->product_price != NULL)
@@ -17,14 +18,13 @@
             </div>
             <a style="cursor: pointer"
                 onclick="addCart('{{$product->product_name}}', {{$product->product_price}}, {{$product->product_id}});"
-                class="border-btn border-btn2">カートに追加</a>
-
+                class="border-btn border-btn2">カートに追加
+            </a>
         </div>
         @endif
 
     </div>
     @endforeach
-
 </div>
 
 <script>
@@ -33,7 +33,7 @@
         total = quantity*price
         document.getElementById("total").innerHTML = total.toFixed(2)
     }
-    function addCart(name, price, id) {    
+    function addCart(name, price, id) {
         // document.getElementsByClassName("swal2-popup").style.fontSize = "large"
         Swal.fire({
             title: name + 'の追加',
@@ -92,6 +92,6 @@
 
 <style>
     .swal2-popup{
-        font-size: 2rem !important; 
+        font-size: 2rem !important;
     }
 </style>

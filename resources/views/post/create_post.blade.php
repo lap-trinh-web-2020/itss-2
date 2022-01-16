@@ -7,30 +7,20 @@
         <!-- Single Slider -->
         <div class="single-slider slider-height2">
             <div class="container">
-                <div class="row">
-                    <div class="col-xl-8 col-lg-11 col-md-12">
-                        <div class="hero__caption hero__caption2">
-                            <h1 data-animation="bounceIn" data-delay="0.2s">新しい投稿を作成する</h1>
-                            <!-- breadcrumb Start-->
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{URL::to('/')}}">ホーム</a></li>
-                                    <li class="breadcrumb-item"><a href="{{URL::to('/posts')}}">全て投稿</a></li>
-                                </ol>
-                            </nav>
-                            <!-- breadcrumb End -->
-                        </div>
-                    </div>
+                <div class="text-center" style="margin-top: 200px">
+                    <h1 style="color: white; font-size: 80px">新しい投稿作成</h1>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<div class="container">
+<div class="container mt-5">
+    <div style="text-align: center">
+        <strong style="font-size: 40px; text-align:center">登校の情報</strong>
+    </div>
     <div class="row">
         <div class="comment-form">
-            <h4>登校の情報</h4>
             <form class="form-contact comment_form" action="{{URL::to('/create_post')}}" id="commentForm" method="post" enctype="multipart/form-data" >
                 @csrf
                 <div class="row">
@@ -198,7 +188,7 @@
                 $("#blah").removeAttr('hidden');
             };
             reader.readAsDataURL(input.files[0]);
-            
+
         }
     }
 </script>
