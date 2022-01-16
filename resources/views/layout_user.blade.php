@@ -9,29 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/user/img/favicon.ico') }}">
-
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="{{ asset('/profile/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/profile/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
-
     <!-- text fonts -->
     <link rel="stylesheet" href="{{ asset('/profile/css/fonts.googleapis.com.css') }}" />
-
     <!-- ace styles -->
-    <link rel="stylesheet" href="{{ asset('/profile/css/ace.min.css') }}" class="ace-main-stylesheet"
-        id="main-ace-style" />
-
+    <link rel="stylesheet" href="{{ asset('/profile/css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style" />
     <link rel="stylesheet" href="{{ asset('/profile/css/ace-skins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/profile/css/ace-rtl.min.css') }}" />
-
-
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="{{ asset('/profile/css/jquery-ui.custom.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/profile/css/jquery.gritter.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/profile/css/select2.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/profile/css/bootstrap-datepicker3.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/profile/css/bootstrap-editable.min.css') }}" />
-
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('/user/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/user/css/owl.carousel.min.css') }}">
@@ -48,10 +40,8 @@
     <link rel="stylesheet" href="{{ asset('/user/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('/user/css/style.css') }}">
 
-
     <script src="{{ asset('/user/js/jquery.min.js') }}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <!-- Alert for confirm password -->
     <script>
         var msg = '{{Session::get("alert")}}';
@@ -60,16 +50,15 @@
             alert(msg);
         }
     </script>
-    {{--
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- User-profile CSS here -->
+    <link rel="stylesheet" href="{{ asset('/user/css/user-profile.css') }}" />
     <link rel="stylesheet" href="{{ asset('/user/css/custom.css') }}">
     <!-- Select2 -->
-    {{--
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
-
 <body>
     <!-- ? Preloader Start -->
     <div id="preloader-active">
@@ -224,10 +213,12 @@
     <div id="back-top">
         <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
     </div>
-
     <!-- JS here -->
     <script src="{{ asset('/user/js/vendor/modernizr-3.5.0.min.js') }}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{{ asset('/user/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('/user/js/popper.min.js') }}"></script>
+    <script src="{{ asset('/user/js/bootstrap.min.js') }}"></script>
     <!-- Jquery Mobile Menu -->
     <script src="{{ asset('/user/js/jquery.slicknav.min.js') }}"></script>
     <!-- Jquery Slick , Owl-Carousel Plugins -->
@@ -237,7 +228,6 @@
     <script src="{{ asset('/user/js/wow.min.js') }}"></script>
     <script src="{{ asset('/user/js/animated.headline.js') }}"></script>
     <script src="{{ asset('/user/js/jquery.magnific-popup.js') }}"></script>
-
     <!-- Date Picker -->
     <script src="{{ asset('/user/js/gijgo.min.js') }}"></script>
     <!-- Nice-select, sticky -->
@@ -250,18 +240,14 @@
     <script src="{{ asset('/user/js/waypoints.min.js') }}"></script>
     <script src="{{ asset('/user/js/jquery.countdown.min.js') }}"></script>
     <script src="{{ asset('/user/js/hover-direction-snake.min.js') }}"></script>
-
     <!-- contact js -->
     <script src="{{ asset('/user/js/contact.js') }}"></script>
     <script src="{{ asset('/user/js/jquery.form.js') }}"></script>
     <script src="{{ asset('/user/js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('/user/js/mail-script.js') }}"></script>
     <script src="{{ asset('/user/js/jquery.ajaxchimp.min.js') }}"></script>
-
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{ asset('/user/js/plugins.js') }}"></script>
     <script src="{{ asset('/user/js/main.js') }}"></script>
-
 </body>
-
 </html>
