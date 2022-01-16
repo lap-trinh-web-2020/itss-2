@@ -12,7 +12,7 @@
                         <th>タイトル</th>
                         <th>著者</th>
                         <th>時間</th>
-                        <th class="col-1">アクション</th>
+                        <th style="width: 30%;">アクション</th>
                 </thead>
                 <tbody>
                     @foreach ($posts as $post)

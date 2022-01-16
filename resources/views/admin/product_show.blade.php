@@ -15,21 +15,21 @@
                         <th>価格</th>
                         <th>写真</th>
                         <th>時間</th>
-                        <th class="col-1">アクション</th>
+                        <th style="width: 30%;">アクション</th>
                 </thead>
                 <tbody>
                     @foreach ($products as $product)
 
                     <td><a href="{{ URL::to('#')}}">{{ $product->product_name }}</a></td>
                     <td>
-                        <p>{{$product->product_price ? $product->product_price : 'まだ売らない'}}</p>
+                        <p>{{$product->product_price ? $product->product_price.' ¥' : 'まだ売らない'}}</p>
                     </td>
-                    <td>
+                    <td style="text-align: center; vertical-align: revert;">
                         @if($product->url_img != null)
-                            <img class="img-fluid" src="{{$product->url_img}}" alt="" style="width: 200px; height: 200px; ">
+                        <img class="img-fluid" src="{{$product->url_img}}" alt="" style="width: 140px; height: 130px; ">
                         @endif
                     </td>
-                    <td>{{ $product->created_at }}</td>
+                    <td>{{ $product->date_create }}</td>
                     <td class="col-1">
                         <a class="btn btn-primary btn-sm" href={{ URL::to('admin/product/edit/' . $product->product_id)}}>編集</a>
                         <a class="btn btn-danger btn-sm" href={{ URL::to('admin/product/delete/'. $product->product_id) }} onclick="return alert_delete('削除してもよろしいですか？')">削除</a>

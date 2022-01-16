@@ -68,11 +68,14 @@ class AuthController extends Controller
         $request->flash();
         $request->validate(
             [
+                'email' => 'required|email|unique:users,email',
                 'phone' => 'required|min:11|numeric',
                 'avatar_url' => 'required',
                 'avatar_url.*' => 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:4096',
             ],
             [
+                'email.email' => "メールの正しい形式を入力してください",
+                'email.unique' => "メールは既に存在します。 別のメールアドレスを入力してください",
                 'phone.min' => '10文字で電話を入力してください',
                 'avatar_url.required' => 'イメージをアップロードしてください',
                 'avatar_url.*.mimes' => '画像拡張子は「jpg, png, jpeg, gif, svg」が必要です',
