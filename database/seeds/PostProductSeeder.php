@@ -67,5 +67,10 @@ class TagSeeder extends Seeder
             'post_id' => 10,
             'quantity' => 2.6
         ]);
+        DB::table('product_of_post')->insert([
+            'product_id' => 3,
+            'post_id' => 10,
+            'quantity' => 2.6
+        ]);
     }
 }
