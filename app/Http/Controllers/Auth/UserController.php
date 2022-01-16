@@ -48,14 +48,14 @@ class UserController extends Controller
             if (Hash::check($request->input('pass0'),$hashedPassword)) {
                 if($request->input('pass1')==$request->input('pass2')){
                     $user->password = Hash::make($request->input('pass1'));
-                    return redirect("/users/$user->user_id")->with('alert', 'Your password updated!!');
+                    return redirect("/users/$user->user_id")->with('alert', 'パスワードが更新されました。');
 
                 }else{
-                    return redirect("/users/$user->user_id/edit")->with('alert','Confirm password not match!!');
+                    return redirect("/users/$user->user_id/edit")->with('alert','パスワードが一致しないことを確認します。');
                 }
             } else {
                 // Current Password not match ps in db
-                return redirect("/users/$user->user_id/edit")->with('alert', 'Your current password not correct!!');
+                return redirect("/users/$user->user_id/edit")->with('alert', '現在のパスワードが正しくありません。');
             }
         }
         $user->save();

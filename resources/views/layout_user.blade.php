@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>FOOD SHARERING</title>
+    <title>レシピ共有</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -121,7 +121,7 @@
                                         <nav>
                                             <ul id="navigation" class="d-flex justify-content-end align-items-center">
                                                 @if(Auth::user())
-                                                    <li><a style="color:black" >投稿</a>
+                                                    <li><a>投稿</a>
                                                         <ul class="submenu">                                                           
                                                             <li><a href="{{ URL::to('/my-posts') }}">私の投稿</a></li>
                                                             <li><a  href="{{ URL::to('/create_post') }}">投稿を作成する</a></li>
@@ -129,24 +129,24 @@
                                                         </ul>
                                                     </li>
                                                     
-                                                    <li><a style="color:black" id="cartnum" href="{{ route('cart') }}">カート ({{count(Auth::user()->carts()->get()) ?? 0}})</a></li>
+                                                    <li><a id="cartnum" href="{{ route('cart') }}">カート ({{count(Auth::user()->carts()->get()) ?? 0}})</a></li>
                                                     
 
                                                 @endif
                                                 <!-- <li><a href="{{ URL::to('create_post') }}">Create</a></li> -->
-                                                <li><a  style="color:black" href="#">タグ</a>
+                                                <li><a href="#">タグ</a>
                                                     <ul class="submenu">
                                                         @foreach ($tags as $tag)
-                                                        <li><a  href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a>
+                                                        <li><a href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a>
                                                         </li>
                                                         @endforeach
                                                     </ul>
                                                 </li>
-                                                <li><a  style="color:black" href="{{ URL::to('/product') }}">材料</a>
+                                                <li><a href="{{ URL::to('/product') }}">材料</a>
                                                 </li>
 
                                                 @if (!session('status') && auth()->user())
-                                                    <li><a style="color:black" >アカウント</a>
+                                                    <li><a>アカウント</a>
                                                         <ul class="submenu">
                                                             @if(Auth::user()->admin)
                                                                 <li><a   href="{{ URL::to('admin/home-page') }}">管理者</a></li>
@@ -189,7 +189,7 @@
                             <div class="single-footer-caption mb-50">
                                 <div class="single-footer-caption mb-30">
                                     <!-- logo -->
-                                    <div class="footer-logo mb-25">
+                                    <div class="footer-logo mb-3">
                                         <a href="index.html"><img src="{{ asset('/user/img/logo/logo2_footer.png') }}" alt=""></a>
                                     </div>
                                     <!-- social -->
@@ -216,7 +216,7 @@
                             </div>
                         </div> --}}
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mt-5">
                                 <div class="footer-tittle">
                                     <h4>連絡先 </h4>
                                     <ul>

@@ -13,40 +13,40 @@ class TagSeeder extends Seeder
     public function run()
     {
         DB::table('tags')->insert([
-            'tag_title' => 'Desserts',
+            'tag_title' => 'デザート',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Appetize',
+            'tag_title' => '前菜',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Juice',
+            'tag_title' => 'ジュース',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Main Dishes',
+            'tag_title' => 'メインディッシュ',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Pourtry'
+            'tag_title' => '家禽'
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Seafood',
+            'tag_title' => 'シーフード',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Specialties',
+            'tag_title' => '特産品',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Snacks',
+            'tag_title' => 'おやつ',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Sweet Things',
+            'tag_title' => '甘いもの',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Chickens',
+            'tag_title' => '鶏',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Diet',
+            'tag_title' => 'ダイエット',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Salty Food',
+            'tag_title' => '塩辛い食べ物',
         ]);
     }
 }

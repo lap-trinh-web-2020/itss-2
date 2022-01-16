@@ -15,7 +15,7 @@ class AdminController extends Controller
             return redirect('/admin/home-page');
         }
         if($user->admin){
-            return redirect('/admin/home-page')->with('alert','Cannot delete admin user!');
+            return redirect('/admin/home-page')->with('alert','管理者ユーザーを削除できません。');
         }
 
         User::find($user_id)->delete();

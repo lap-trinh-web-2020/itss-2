@@ -91,7 +91,8 @@
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
                                     <a href="{{ URL::to('/') }}"><img src="{{ asset('/user/img/logo/logo.png') }}"
-                                            alt=""></a>
+                                        style="background: whitesmoke; border-radius: 15px; height: 90px; margin: 20px 0 0 0;"
+                                        alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
@@ -168,7 +169,7 @@
                             <div class="single-footer-caption mb-50">
                                 <div class="single-footer-caption mb-30">
                                     <!-- logo -->
-                                    <div class="footer-logo mb-25">
+                                    <div class="footer-logo mb-3">
                                         <a href="{{ URL::to('/') }}"><img
                                                 src="{{ asset('/user/img/logo/logo2_footer.png') }}" alt=""></a>
                                     </div>
