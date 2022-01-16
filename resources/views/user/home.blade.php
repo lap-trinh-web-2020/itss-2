@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-12">
                         <div class="hero__caption hero__caption2">
-                            <h1 data-animation="fadeInLeft" data-delay="0.2s">レシビを共有する<br> プラットフォーム</h1>
+                            <h1 data-animation="fadeInLeft" data-delay="0.2s">レシピを共有する<br> プラットフォーム</h1>
                             <p data-animation="fadeInLeft" data-delay="0.4s">家族や友達と一緒に食べると、いつも美味しくなります</p>
                         </div>
                     </div>
@@ -28,6 +28,6 @@
 </div>
 
 <script type="text/javascript">
-    
+
 </script>
 @endsection

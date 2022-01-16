@@ -2319,7 +2319,7 @@ hr {
 }
 
 .section-padding40 {
-    padding-top: 100px;
+    padding-top: 30px;
     padding-bottom: 100px
 }
 
@@ -7257,4 +7257,22 @@ b, sup, sub, u, del {
 
 .switch-wrap {
     margin-bottom: 10px
+}
+.change-color-button-detail {
+    height: 50px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    color: #FF9F67;
+    font-family: "Josefin Sans", sans-serif;
+    background: none;
+    text-transform: capitalize;
+    padding: 17px 42px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: color 0.4s linear;
+}
+.change-color-button-detail:hover {
+    background-color: orange;
 }

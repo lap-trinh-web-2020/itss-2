@@ -6,20 +6,8 @@
             <!-- Single Slider -->
             <div class="single-slider slider-height2">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-xl-8 col-lg-11 col-md-12">
-                            <div class="hero__caption hero__caption2">
-                                <h1 data-animation="bounceIn" data-delay="0.2s">全て投稿</h1>
-                                <!-- breadcrumb Start-->
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/')}}">ホーム</a></li>
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts')}}">全て投稿</a></li>
-                                    </ol>
-                                </nav>
-                                <!-- breadcrumb End -->
-                            </div>
-                        </div>
+                    <div class="text-center" style="margin-top: 200px">
+                        <h1 style="color: white; font-size: 80px">私の投稿</h1>
                     </div>
                 </div>
             </div>
@@ -29,14 +17,6 @@
     <!-- Courses area start -->
     <div class="courses-area section-padding40 fix">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-8">
-                    <div class="section-tittle text-center mb-55">
-                        <h2>{{$title}}</h2>
-                    </div>
-                </div>
-            </div>
-
             <div class="row d-flex flex-column" id="table_data">
                 @include('post.post_data')
             </div>
