@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="{{ asset('/profile/css/fonts.googleapis.com.css') }}" />
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="{{ asset('/profile/css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="{{ asset('/profile/css/ace.min.css') }}" class="ace-main-stylesheet"
+        id="main-ace-style" />
 
     <link rel="stylesheet" href="{{ asset('/profile/css/ace-skins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/profile/css/ace-rtl.min.css') }}" />
@@ -55,25 +56,22 @@
     <script>
         var msg = '{{Session::get("alert")}}';
         var exist = '{{Session::has("alert")}}';
-        if(exist){
-          alert(msg);
+        if (exist) {
+            alert(msg);
         }
     </script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    {{--
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <!-- User-profile CSS here -->
-    <!-- <link rel="stylesheet" href="{{ asset('/user/css/user-profile.css') }}" /> -->
     <link rel="stylesheet" href="{{ asset('/user/css/custom.css') }}">
-
-
     <!-- Select2 -->
+    {{--
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 </head>
 
 <body>
     <!-- ? Preloader Start -->
-
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
@@ -95,49 +93,50 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="{{ URL::to('/') }}"><img src="{{ asset('/user/img/logo/logo.png') }}" alt=""></a>
+                                    <a href="{{ URL::to('/') }}"><img src="{{ asset('/user/img/logo/logo.png') }}"
+                                            alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
                                 <div class="menu-wrapper d-flex align-items-center justify-content-end">
                                     <!-- Main-menu -->
                                     <div class="blog_right_sidebar col-xl-4 col-lg-4" style="margin-top:20px">
-                                    <aside class="single_sidebar_widget search_widget" style="margin:0;padding:0">
-                                        <form action="{{ route('search.result') }}">
-                                            <div class="form-group">
-                                                <div class="input-group mb-3">
-                                                    <input type="text" name="query" class="form-control" placeholder='探索。。。' onfocus="this.placeholder = ''" onblur="this.placeholder = '探索。。。'">
-                                                    <div class="input-group-append">
-                                                        <button class="btns" type="submit"><i class="ti-search"></i></button>
+                                        <aside class="single_sidebar_widget search_widget" style="margin:0;padding:0">
+                                            <form action="{{ route('search.result') }}">
+                                                <div class="form-group">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" name="query" class="form-control"
+                                                            placeholder='探索。。。' onfocus="this.placeholder = ''"
+                                                            onblur="this.placeholder = '探索。。。'">
+                                                        <div class="input-group-append">
+                                                            <button class="btns" type="submit"><i
+                                                                    class="ti-search"></i></button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!-- <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Search</button> -->
-                                        </form>
-                                    </aside>
+                                            </form>
+                                        </aside>
                                     </div>
-
                                     <div class="main-menu d-none d-lg-block col-m-8 col-m-12">
                                         <nav>
                                             <ul id="navigation" class="d-flex justify-content-end align-items-center">
                                                 @if(Auth::user())
-                                                    <li><a>投稿</a>
-                                                        <ul class="submenu">                                                           
-                                                            <li><a href="{{ URL::to('/my-posts') }}">私の投稿</a></li>
-                                                            <li><a  href="{{ URL::to('/create_post') }}">投稿を作成する</a></li>
-                                                            <li><a   href="{{ URL::to('/top-posts') }}">投稿ランク</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    
-                                                    <li><a id="cartnum" href="{{ route('cart') }}">カート ({{count(Auth::user()->carts()->get()) ?? 0}})</a></li>
-                                                    
-
+                                                <li><a>投稿</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="{{ URL::to('/my-posts') }}">私の投稿</a></li>
+                                                        <li><a href="{{ URL::to('/create_post') }}">投稿を作成する</a></li>
+                                                        <li><a href="{{ URL::to('/top-posts') }}">投稿ランク</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a id="cartnum" href="{{ route('cart') }}">カート
+                                                        ({{count(Auth::user()->carts()->get()) ?? 0}})</a></li>
                                                 @endif
                                                 <!-- <li><a href="{{ URL::to('create_post') }}">Create</a></li> -->
                                                 <li><a href="#">タグ</a>
                                                     <ul class="submenu">
                                                         @foreach ($tags as $tag)
-                                                        <li><a href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a>
+                                                        <li><a href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}">{{
+                                                                $tag->tag_title }}</a>
                                                         </li>
                                                         @endforeach
                                                     </ul>
@@ -146,19 +145,22 @@
                                                 </li>
 
                                                 @if (!session('status') && auth()->user())
-                                                    <li><a>アカウント</a>
-                                                        <ul class="submenu">
-                                                            @if(Auth::user()->admin)
-                                                                <li><a   href="{{ URL::to('admin/home-page') }}">管理者</a></li>
-                                                            @endif
-                                                            <li><a
-                                                                    href="{{ URL::to('users/' . Auth::user()->user_id) }}">プロフィールを見る</a></li>
-                                                            <li><a href="{{ URL::to('/logout') }}">ログアウト</a></li>
-                                                        </ul>
-                                                    </li>
+                                                <li><a>アカウント</a>
+                                                    <ul class="submenu">
+                                                        @if(Auth::user()->admin)
+                                                        <li><a href="{{ URL::to('admin/home-page') }}">管理者</a></li>
+                                                        @endif
+                                                        <li><a
+                                                                href="{{ URL::to('users/' . Auth::user()->user_id) }}">プロフィールを見る</a>
+                                                        </li>
+                                                        <li><a href="{{ URL::to('/logout') }}">ログアウト</a></li>
+                                                    </ul>
+                                                </li>
                                                 @else
-                                                <li class="button-header margin-left "><a href="{{ URL::to('/register') }}" class="btn">サインアップ</a></li>
-                                                <li class="button-header"><a href="{{ URL::to('/login') }}" class="btn btn3">ログイン</a></li>
+                                                <li class="button-header margin-left "><a
+                                                        href="{{ URL::to('/register') }}" class="btn">サインアップ</a></li>
+                                                <li class="button-header"><a href="{{ URL::to('/login') }}"
+                                                        class="btn btn3">ログイン</a></li>
                                                 @endif
                                             </ul>
                                         </nav>
@@ -190,7 +192,8 @@
                                 <div class="single-footer-caption mb-30">
                                     <!-- logo -->
                                     <div class="footer-logo mb-3">
-                                        <a href="index.html"><img src="{{ asset('/user/img/logo/logo2_footer.png') }}" alt=""></a>
+                                        <a href="index.html"><img src="{{ asset('/user/img/logo/logo2_footer.png') }}"
+                                                alt=""></a>
                                     </div>
                                     <!-- social -->
                                     <div class="footer-social">
@@ -201,20 +204,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Footer</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Footer</h4>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                             <div class="single-footer-caption mt-5">
                                 <div class="footer-tittle">
@@ -238,12 +227,7 @@
 
     <!-- JS here -->
     <script src="{{ asset('/user/js/vendor/modernizr-3.5.0.min.js') }}"></script>
-    <!-- Jquery, Popper, Bootstrap -->
-    {{--<script src="{{ asset('/user/js/vendor/jquery-1.12.4.min.js') }}"></script>
-    --}}
     <script src="{{ asset('/user/js/popper.min.js') }}"></script>
-    {{--<script src="{{ asset('/user/js/bootstrap.min.js') }}"></script>
-    --}}
     <!-- Jquery Mobile Menu -->
     <script src="{{ asset('/user/js/jquery.slicknav.min.js') }}"></script>
     <!-- Jquery Slick , Owl-Carousel Plugins -->
