@@ -47,7 +47,7 @@
                 '</thead>'+
                 '<tr>'+
                 '<td>'+name+'</td>'+
-                '<td><input onchange="totalP(this.value,'+price+');" type="number" id="quantily" min="0" step="0.1" placeholder="量" required></td>'+
+                '<td><input onchange="totalP(this.value,'+price+');" type="number" id="quantily" min="0" step="0.1" placeholder="量"></td>'+
                 '<td>'+price+'￥／キロ</td>'+
                 '</tr>'+
                 '</table>'+

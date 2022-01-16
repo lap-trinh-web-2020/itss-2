@@ -73,7 +73,9 @@ class CartController extends Controller
     }
 
     public function addCart(Request $request)
-    {
+    {   
+        if($request->quantily==0)
+        return \response()->json([], 403);
         $quan_old = 0;
 
         $cart = Cart::where([
