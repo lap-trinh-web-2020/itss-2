@@ -33,20 +33,25 @@ class CartController extends Controller
             // dd($listQuantily);
             if ($request->price) {
                 if ($request->price[$key] != 0) {
-                    Cart::firstOrCreate([
+                    $quan_old = 0;
+
+                    $cart = Cart::where([
                         'product_id' => $idProduct,
                         'user_id' => Auth::id(),
-                        'quantily' => $listQuantily[$key] ?? null
+                    ])->get();
+
+                    if (!empty($cart[0])) {
+                        $quan_old = $cart[0]->quantily;
+                    }
+
+                    Cart::updateOrCreate([
+                        'product_id' => $idProduct,
+                        'user_id' => Auth::id(),
+                    ], [
+                        'quantily' => ($quan_old + $listQuantily[$key])
                     ]);
-                }
-            } else {
-                Cart::firstOrCreate([
-                    'product_id' => $idProduct,
-                    'user_id' => Auth::id(),
-                    'quantily' => $listQuantily[$key] ?? null
-                ]);
             }
-        }
+        }}
         return redirect()->route('cart');
     }
 
@@ -73,7 +78,9 @@ class CartController extends Controller
     }
 
     public function addCart(Request $request)
-    {
+    {   
+        if($request->quantily==0)
+        return \response()->json([], 403);
         $quan_old = 0;
 
         $cart = Cart::where([
