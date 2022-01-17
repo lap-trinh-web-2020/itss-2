@@ -48,14 +48,14 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach ($tops as $key => $top)
+                    @foreach ($posts as $key => $top)
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td><a href="{{URL::to('/posts/'.$top->post_id)}}" class="border-btn border-btn2">{{$top->title}} </a></td>
-                        <td>{{$top->description}}</td>
-                        <td>{{$top->date_create}}</td>
-                        <td>{{$top->user_name}}</td>
-                        <td>{{$top->top}}</td>
+                        <td><a href="{{URL::to('/posts/'.$top[0]->post_id)}}" class="border-btn border-btn2">{{$top[0]->title}} </a></td>
+                        <td>{{$top[0]->description}}</td>
+                        <td>{{$top[0]->date_create}}</td>
+                        <td>{{$post_user[$key]->user_name}}</td>
+                        <td>{{$top[1]}}</td>
                     </tr>
                     @endforeach
                 </tbody>
