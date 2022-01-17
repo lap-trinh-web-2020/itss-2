@@ -121,10 +121,11 @@
                                 <div>
                                     <h2>材料</h2>
                                     <table class="table">
-                                        @foreach($product_of_posts as $product_of_post)
+                                        @foreach($product_of_posts as $key => $product_of_post)
                                         <tr>
                                             <td class="{{$product_of_post->product_price ? 'product-green' : 'product-red'}}">{{$product_of_post->product_name}}</td>
                                             <td>{{$product_of_post->quantily}} キロ</td>
+                                            <td>{{$product_of_post->product_price ? $product_of_post->product_price.'￥／キロ' : '売らない'}}</td>
                                         </tr>
                                         @endforeach
                                     </table>
@@ -135,7 +136,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                 </div>
-                                                <div class="modal-body pt-3" style="margin-top: 12%">
+                                                <div class="modal-body pt-3">
                                                     <h1 class="modal-title p-3 text-center">材料リスト</h1>
 
                                                     <table class="table" style="text-align: center">
