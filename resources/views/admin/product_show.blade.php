@@ -32,7 +32,7 @@
                     <td>{{ $product->date_create }}</td>
                     <td class="col-1">
                         <a class="btn btn-primary btn-sm" href={{ URL::to('admin/product/edit/' . $product->product_id)}}>編集</a>
-                        <a class="btn btn-danger btn-sm" href={{ URL::to('admin/product/delete/'. $product->product_id) }} onclick="return alert_delete('削除してもよろしいですか？')">削除</a>
+                        <a class="btn btn-danger btn-sm" href={{ URL::to('admin/product/delete/'. $product->product_id) }} onclick="return confirm('削除してもよろしいですか？')">削除</a>
                     </td>
                     </tr>
                     @endforeach

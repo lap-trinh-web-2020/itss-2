@@ -52,7 +52,7 @@
             </div>
         </form>
     </div>
-    <div class="container">
+    {{-- <div class="container">
         @include('admin.tags_show')
-    </div>
+    </div> --}}
 @endsection

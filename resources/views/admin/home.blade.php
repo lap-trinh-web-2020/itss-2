@@ -87,7 +87,7 @@
                     <div class="card-body-icon">
                         <i class="fas fa-fw fa-shopping-cart"></i>
                     </div>
-                    <div class="mr-5">{{$number_of_product}} 材料</div>
+                    <div class="mr-5">{{$number_of_products}} 材料</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1 edus-nav-item-5" href="#">
                     <span class="float-left">詳細を見る</span>
