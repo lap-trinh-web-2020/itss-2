@@ -26,7 +26,8 @@ class TagController extends Controller
             $tag->tag_title = $request->title;
             $request->validate(['title' => "required|max:30|min:1|unique:tags,tag_title"]);
             $tag->save();
-            return redirect('tags/new')->with(compact('tags', $tags));
+            $tags = Tag::all();
+            return view('admin.tags_show')->with(compact('tags', $tags));
         }
         return view('tag.new')->with(compact('tags', $tags));
     }
@@ -70,9 +71,9 @@ class TagController extends Controller
             $request->validate(['title' => "required|max:30|min:3|unique:tags,tag_title"]);
             $tag->tag_title = $request->title;
             $tag->save();
-            return redirect("tags/$tag->tag_id/edit")
-                    ->with(compact('tags', $tags))
-                    ->with(compact('tag',$tag));
+            $tags = Tag::all();
+            return view("admin.tags_show")
+                    ->with(compact('tags', $tags));
         }
         return view('tag.edit')->with(compact('tag',$tag))->with(compact('tags',$tags));
     }
@@ -85,6 +86,6 @@ class TagController extends Controller
             return redirect('/');
         }
         Tag::where('tag_id', $tag_id)->delete();
-        return redirect('/admin/home-page');
+        return redirect('/admin/tags');
     }
 }

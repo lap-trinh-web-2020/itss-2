@@ -44,12 +44,13 @@ class ProductController extends Controller
             $product = new Product();
             $product->product_name = $request->product_name;
             $product->product_price = $request->product_price;
+            $product->date_create = date("Y-m-d");
             if ($request->hasFile('url_img')) {
                 $path = $this->save_image($request->file('url_img'));
                 $product->url_img = $path['data']['url'];
             }
             $product->save();
-            return  redirect('/admin/home-page');
+            return  redirect('/admin/products');
         }
         return view('admin.create_product', compact('listProduct'));
     }
@@ -82,7 +83,7 @@ class ProductController extends Controller
             return redirect('admin.home-page');
         }
         Product::where('product_id', $product_id)->delete();
-        return redirect('/admin/home-page');
+        return redirect('/admin/products');
     }
 
     public function edit(Request $request,$product_id){

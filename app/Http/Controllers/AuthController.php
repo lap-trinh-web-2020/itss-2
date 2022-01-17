@@ -7,6 +7,8 @@ use App\User;
 use App\Post;
 use App\Tag;
 use App\PostTag;
+use App\Product;
+use App\ProductPost;
 use DB;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Hash;
@@ -99,18 +101,22 @@ class AuthController extends Controller
         $number_of_restaurans = User::where('isrestauran', 1)->count();
         $number_of_posts = Post::count();
         $number_of_tags = Tag::count();
+        $number_of_products = Post::count();
         $users = User::all();
         $posts = Post::all();
         $tags = Tag::all();
         $tags = $tags->SortByDesc('tag_id');
+        $products = Product::all();
 
         return view('admin.home')
             ->with(compact('number_of_users', $number_of_users))
             ->with(compact('number_of_restaurans', $number_of_restaurans))
             ->with(compact('number_of_posts', $number_of_posts))
             ->with(compact('number_of_tags', $number_of_tags))
+            ->with(compact('number_of_products', $number_of_products))
             ->with(compact('users', $users))
             ->with(compact('posts', $posts))
+            ->with(compact('products', $products))
             ->with(compact('tags', $tags));
     }
 
